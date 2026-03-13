@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MORMELERIA PIETRA. - Mármol, Granito y Diseño de Interiores</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #7c8b6f;
+            --color-primary-dark: #5a6b4f;
+            --color-dark: #1a1a1a;
+            --color-light: #f5f5f0;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-dark);
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           NAVEGACIÓN
+        ============================================ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 4%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 4%;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .navbar.scrolled .nav-links a,
+        .navbar.scrolled .logo {
+            color: var(--color-dark);
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: opacity 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: currentColor;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .btn-quote {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-quote:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .navbar.scrolled .icon-btn {
+            color: var(--color-dark);
+        }
+
+        /* ============================================
+           HERO SECTION
+        ============================================ */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/categorias/cocina-6.jpg') center/cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: #a8b89a;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(124, 139, 111, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border: 1px solid rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--color-dark);
+            border-color: white;
+        }
+
+        /* ============================================
+           SECCIÓN CATEGORÍAS - OPTIMIZADA
+        ============================================ */
+        .categories-section {
+            padding: 100px 5%;
+            background-color: #f8f8f6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            text-align: center;
+            color: var(--color-dark);
+            margin-bottom: 60px;
+            font-weight: 400;
+        }
+
+        /* DESKTOP: 6 categorías en una línea */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+        }
+
+        /* Tarjeta de categoría */
+        .category-card {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            aspect-ratio: 3/4;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .category-image {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .category-card:hover .category-image img {
+            transform: scale(1.1);
+        }
+
+        .category-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to top,
+                rgba(0,0,0,0.8) 0%,
+                rgba(0,0,0,0.4) 40%,
+                rgba(0,0,0,0.1) 100%
+            );
+            transition: background 0.3s ease;
+        }
+
+        .category-card:hover .category-overlay {
+            background: linear-gradient(
+                to top,
+                rgba(0,0,0,0.9) 0%,
+                rgba(0,0,0,0.5) 50%,
+                rgba(0,0,0,0.2) 100%
+            );
+        }
+
+        .category-title {
+            position: absolute;
+            bottom: 20px;
+            left: 15px;
+            right: 15px;
+            color: white;
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 0;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            line-height: 1.3;
+        }
+
+        /* ============================================
+           CARRUSEL MOBILE
+        ============================================ */
+        @media (max-width: 768px) {
+            .categories-section {
+                padding: 70px 0;
+                overflow: hidden;
+            }
+
+            .section-title {
+                margin-bottom: 30px;
+                padding: 0 5%;
+            }
+
+            /* Contenedor del carrusel */
+            .categories-carousel-wrapper {
+                position: relative;
+                width: 100%;
+                padding: 0 5%;
+            }
+
+            .categories-grid {
+                display: flex;
+                gap: 15px;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                padding-bottom: 20px;
+            }
+
+            .categories-grid::-webkit-scrollbar {
+                display: none;
+            }
+
+            /* Cada slide muestra 2 categorías */
+            .category-card {
+                flex: 0 0 calc(50% - 7.5px);
+                scroll-snap-align: start;
+                aspect-ratio: 3/4;
+            }
+
+            .category-title {
+                font-size: 1rem;
+                bottom: 15px;
+                left: 12px;
+                right: 12px;
+            }
+
+            /* Indicadores del carrusel */
+            .carousel-dots {
+                display: flex;
+                justify-content: center;
+                gap: 8px;
+                margin-top: 20px;
+                padding: 0 5%;
+            }
+
+            .carousel-dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: #ccc;
+                cursor: pointer;
+                transition: all 0.3s;
+            }
+
+            .carousel-dot.active {
+                background: var(--color-primary);
+                width: 24px;
+                border-radius: 4px;
+            }
+
+            /* Botones de navegación */
+            .carousel-nav {
+                display: none;
+            }
+        }
+
+        /* Tablets: 3 columnas */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .categories-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+            
+            .category-card {
+                aspect-ratio: 4/3;
+            }
+            
+            .category-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Desktop grande: ajustes finos */
+        @media (min-width: 1200px) {
+            .category-title {
+                font-size: 1.2rem;
+                bottom: 25px;
+                left: 20px;
+                right: 20px;
+            }
+        }
+
+        /* ============================================
+           SECCIÓN CATÁLOGO DE MATERIALES - NUEVA
+        ============================================ */
+        .catalog-section {
+            padding: 100px 5%;
+            background-color: #ffffff;
+        }
+
+        .catalog-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .catalog-subtitle {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .catalog-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            border: 1px solid #ddd;
+            background: transparent;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 30px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--color-dark);
+            color: white;
+            border-color: var(--color-dark);
+        }
+
+        /* Grid de materiales - Desktop: 4 columnas */
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .material-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            background: white;
+        }
+
+        .material-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .material-image {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+        }
+
+        .material-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .material-card:hover .material-image img {
+            transform: scale(1.08);
+        }
+
+        .material-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--color-primary);
+            color: white;
+            padding: 5px 12px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 3px;
+            font-weight: 500;
+            z-index: 2;
+        }
+
+        .material-info {
+            padding: 20px;
+            background: white;
+        }
+
+        .material-name {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--color-dark);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .material-origin {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .material-specs {
+            display: flex;
+            gap: 15px;
+            font-size: 0.8rem;
+            color: #888;
+            border-top: 1px solid #eee;
+            padding-top: 12px;
+        }
+
+        .material-specs span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .material-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 26, 26, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .material-card:hover .material-overlay {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .material-btn {
+            background: white;
+            color: var(--color-dark);
+            padding: 12px 30px;
+            border: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+            cursor: pointer;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .material-card:hover .material-btn {
+            transform: translateY(0);
+        }
+
+        .material-btn:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        /* ============================================
+           CATÁLOGO - RESPONSIVE
+        ============================================ */
+        @media (max-width: 768px) {
+            .catalog-section {
+                padding: 70px 5%;
+            }
+
+            .catalog-filters {
+                gap: 10px;
+                margin-bottom: 30px;
+            }
+
+            .filter-btn {
+                padding: 8px 18px;
+                font-size: 0.75rem;
+            }
+
+            /* Mobile: Carrusel de 2 items visibles */
+            .materials-grid {
+                display: flex;
+                gap: 15px;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                padding-bottom: 20px;
+            }
+
+            .materials-grid::-webkit-scrollbar {
+                display: none;
+            }
+
+            .material-card {
+                flex: 0 0 calc(50% - 7.5px);
+                scroll-snap-align: start;
+            }
+
+            .material-image {
+                aspect-ratio: 1/1.2;
+            }
+
+            .material-info {
+                padding: 15px;
+            }
+
+            .material-name {
+                font-size: 1rem;
+            }
+
+            .material-specs {
+                display: none;
+            }
+        }
+
+        /* Tablets: 2 columnas */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .materials-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .material-image {
+                aspect-ratio: 1/1.1;
+            }
+        }
+
+        /* Desktop grande: 4 columnas perfectas */
+        @media (min-width: 1200px) {
+            .materials-grid {
+                gap: 30px;
+            }
+            
+            .material-info {
+                padding: 25px;
+            }
+            
+            .material-name {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* ============================================
+           FOOTER
+        ============================================ */
+        footer {
+            background: var(--color-dark);
+            color: white;
+            padding: 60px 5% 30px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--color-primary);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* ============================================
+           WHATSAPP FLOAT
+        ============================================ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            z-index: 999;
+            transition: transform 0.3s;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* ============================================
+           RESPONSIVE NAV
+        ============================================ */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="logo">PIETRA.</a>
+        <ul class="nav-links">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#categorias">Servicios</a></li>
+            <li><a href="#catalogo">Catálogo</a></li>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Proyectos</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="icon-btn">🔍</button>
+            <button class="btn-quote">Solicitar Cotización</button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Lujo en cada detalle de <em>granito</em></h1>
+            <p>Diseño y fabricación de cocinas, baños y mobiliario a medida con los materiales más exclusivos del mundo. Cada proyecto cuenta una historia de elegancia atemporal.</p>
+            <div class="hero-buttons">
+                <a href="#categorias" class="btn-primary">SOLICITAR COTIZACIÓN</a>
+                <a href="#" class="btn-secondary">Ver Proyectos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CATEGORÍAS - OPTIMIZADA -->
+    <section class="categories-section" id="categorias">
+        <div class="container">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            
+            <div class="categories-carousel-wrapper">
+                <div class="categories-grid" id="categoriesGrid">
+                    <!-- Categoría 1: Cocinas -->
+                    <div class="category-card">
+                        <div class="category-image">
+                            <img src="images/categorias/cocina-6.jpg" 
+                                 alt="Cocinas Premium en mármol y granito">
+                            <div class="category-overlay"></div>
+                        </div>
+                        <h3 class="category-title">Cocinas Premium</h3>
+                    </div>
+
+                    <!-- Categoría 2: Baños -->
+                    <div class="category-card">
+                        <div class="category-image">
+                            <img src="images/categorias/baño-3.jpg" 
+                                 alt="Baños de lujo en mármol">
+                            <div class="category-overlay"></div>
+                        </div>
+                        <h3 class="category-title">Baños de Lujo</h3>
+                    </div>
+
+                    <!-- Categoría 3: Closets -->
+                    <div class="category-card">
+                        <div class="category-image">
+                            <img src="images/categorias/closets.jpg" 
+                                 alt="Closets y muebles a medida">
+                            <div class="category-overlay"></div>
+                        </div>
+                        <h3 class="category-title">Mueble a medida</h3>
+                    </div>
+
+                    <!-- Categoría 4: Quinchos -->
+                    <div class="category-card">
+                        <div class="category-image">
+                            <img src="images/categorias/quincho.jpg" 
+                                 alt="Quinchos y espacios exteriores">
+                            <div class="category-overlay"></div>
+                        </div>
+                        <h3 class="category-title">Quinchos & Exteriores</h3>
+                    </div>
+
+                    <!-- Categoría 5: Granitos -->
+                    <div class="category-card">
+                        <div class="category-image">
+                            <img src="images/categorias/granito.jpg" 
+                                 alt="Granitos exclusivos">
+                            <div class="category-overlay"></div>
+                        </div>
+                        <h3 class="category-title">Granitos Exclusivos</h3>
+                    </div>
+
+                    <!-- Categoría 6: Mármoles -->
+                    <div class="category-card">
+                        <div class="category-image">
+                            <img src="images/categorias/marmol.jpg" 
+                                 alt="Mármoles importados">
+                            <div class="category-overlay"></div>
+                        </div>
+                        <h3 class="category-title">Mármoles Importados</h3>
+                    </div>
+                </div>
+                
+                <!-- Indicadores solo visible en mobile -->
+                <div class="carousel-dots" id="carouselDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CATÁLOGO DE MATERIALES - NUEVA -->
+    <section class="catalog-section" id="catalogo">
+        <div class="container">
+            <div class="catalog-header">
+                <p class="catalog-subtitle">Materiales Exclusivos</p>
+                <h2 class="section-title">Nuestro Catálogo</h2>
+            </div>
+
+            <div class="catalog-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="marmol">Mármoles</button>
+                <button class="filter-btn" data-filter="granito">Granitos</button>
+                <button class="filter-btn" data-filter="cuarzo">Cuarzos</button>
+            </div>
+
+            <div class="materials-grid" id="materialsGrid">
+                <!-- Material 1: Calacatta Gold -->
+                <div class="material-card" data-category="marmol">
+                    <div class="material-image">
+                        <img src="images/catalogo/calacatta-gold.jpg" alt="Calacatta Gold">
+                        <span class="material-badge">Mármol</span>
+                        <div class="material-overlay">
+                            <button class="material-btn">Ver Detalles</button>
+                        </div>
+                    </div>
+                    <div class="material-info">
+                        <h3 class="material-name">Calacatta Gold</h3>
+                        <p class="material-origin">📍 Italia</p>
+                        <div class="material-specs">
+                            <span>📏 2cm / 3cm</span>
+                            <span>✨ Alto brillo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Material 2: Negro Marquina -->
+                <div class="material-card" data-category="marmol">
+                    <div class="material-image">
+                        <img src="images/catalogo/negro-marquina.jpg" alt="Negro Marquina">
+                        <span class="material-badge">Mármol</span>
+                        <div class="material-overlay">
+                            <button class="material-btn">Ver Detalles</button>
+                        </div>
+                    </div>
+                    <div class="material-info">
+                        <h3 class="material-name">Negro Marquina</h3>
+                        <p class="material-origin">📍 España</p>
+                        <div class="material-specs">
+                            <span>📏 2cm / 3cm</span>
+                            <span>🖤 Textura única</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Material 3: Granito Negro Absoluto -->
+                <div class="material-card" data-category="granito">
+                    <div class="material-image">
+                        <img src="images/catalogo/negro-absoluto.jpg" alt="Negro Absoluto">
+                        <span class="material-badge">Granito</span>
+                        <div class="material-overlay">
+                            <button class="material-btn">Ver Detalles</button>
+                        </div>
+                    </div>
+                    <div class="material-info">
+                        <h3 class="material-name">Negro Absoluto</h3>
+                        <p class="material-origin">📍 India</p>
+                        <div class="material-specs">
+                            <span>📏 2cm / 3cm</span>
+                            <span>💎 Premium</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Material 4: Cuarzo Blanco Estelar -->
+                <div class="material-card" data-category="cuarzo">
+                    <div class="material-image">
+                        <img src="images/catalogo/cuarzo-blanco.jpg" alt="Blanco Estelar">
+                        <span class="material-badge">Cuarzo</span>
+                        <div class="material-overlay">
+                            <button class="material-btn">Ver Detalles</button>
+                        </div>
+                    </div>
+                    <div class="material-info">
+                        <h3 class="material-name">Blanco Estelar</h3>
+                        <p class="material-origin">📍 Ingeniería</p>
+                        <div class="material-specs">
+                            <span>📏 2cm / 3cm</span>
+                            <span>🛡️ Anti-manchas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Material 5: Emperador Dark -->
+                <div class="material-card" data-category="marmol">
+                    <div class="material-image">
+                        <img src="images/catalogo/emperador-dark.jpg" alt="Emperador Dark">
+                        <span class="material-badge">Mármol</span>
+                        <div class="material-overlay">
+                            <button class="material-btn">Ver Detalles</button>
+                        </div>
+                    </div>
+                    <div class="material-info">
+                        <h3 class="material-name">Emperador Dark</h3>
+                        <p class="material-origin">📍 Turquía</p>
+                        <div class="material-specs">
+                            <span>📏 2cm / 3cm</span>
+                            <span>🏛️ Clásico</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Material 6: Granito Santa Cecilia -->
+                <div class="material-card" data-category="granito">
+                    <div class="material-image">
+                        <img src="images/catalogo/santa-cecilia.jpg" alt="Santa Cecilia">
+                        <span class="material-badge">Granito</span>
+                        <div class="material-overlay">
+                            <button class="material-btn">Ver Detalles</button>
+                        </div>
+                    </div>
+                    <div class="material-info">
+                        <h3 class="material-name">Santa Cecilia</h3>
+                        <p class="material-origin">📍 Brasil</p>
+                        <div class="material-specs">
+                            <span>📏 2cm / 3cm</span>
+                            <span>🌟 Versátil</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Material 7: Cuarzo Gris Concrete -->
+                <div class="material-card" data-category="cuarzo">
+                    <div class="material-image">
+                        <img src="images/catalogo/cuarzo-concrete.jpg" alt="Gris Concrete">
+                        <span class="material-badge">Cuarzo</span>
+                        <div class="material-overlay">
+                            <button class="material-btn">Ver Detalles</button>
+                        </div>
+                    </div>
+                    <div class="material-info">
+                        <h3 class="material-name">Gris Concrete</h3>
+                        <p class="material-origin">📍 Ingeniería</p>
+                        <div class="material-specs">
+                            <span>📏 2cm / 3cm</span>
+                            <span>🏭 Industrial</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Material 8: Statuario Extra -->
+                <div class="material-card" data-category="marmol">
+                    <div class="material-image">
+                        <img src="images/catalogo/statuario.jpg" alt="Statuario Extra">
+                        <span class="material-badge">Mármol</span>
+                        <div class="material-overlay">
+                            <button class="material-btn">Ver Detalles</button>
+                        </div>
+                    </div>
+                    <div class="material-info">
+                        <h3 class="material-name">Statuario Extra</h3>
+                        <p class="material-origin">📍 Italia</p>
+                        <div class="material-specs">
+                            <span>📏 2cm / 3cm</span>
+                            <span>👑 Lujo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#categorias">Servicios</a></li>
+                    <li><a href="#catalogo">Catálogo</a></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <ul>
+                    <li>+595 984 756 158</li>
+                    <li>info@PIETRA.com</li>
+                    <li>Asunción Paraguay</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Síguenos</h4>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 PIETRA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP -->
+    <a href="https://wa.me/573001234567" class="whatsapp-float" target="_blank">
+        💬
+    </a>
+
+    <script>
+        // Efecto scroll navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Carrusel mobile functionality para Categorías
+        const isMobile = () => window.innerWidth <= 768;
+        const grid = document.getElementById('categoriesGrid');
+        const dotsContainer = document.getElementById('carouselDots');
+        let currentSlide = 0;
+
+        function initCarousel() {
+            if (!isMobile()) {
+                dotsContainer.style.display = 'none';
+                return;
+            }
+
+            dotsContainer.style.display = 'flex';
+            dotsContainer.innerHTML = '';
+            
+            // Crear 3 dots (6 categorías / 2 por slide = 3 slides)
+            for (let i = 0; i < 3; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+
+            // Actualizar dot activo en scroll
+            grid.addEventListener('scroll', updateActiveDot);
+        }
+
+        function goToSlide(index) {
+            const cardWidth = grid.querySelector('.category-card').offsetWidth;
+            const gap = 15;
+            grid.scrollTo({
+                left: index * (cardWidth * 2 + gap),
+                behavior: 'smooth'
+            });
+        }
+
+        function updateActiveDot() {
+            const cardWidth = grid.querySelector('.category-card').offsetWidth;
+            const gap = 15;
+            const scrollLeft = grid.scrollLeft;
+            const slideWidth = cardWidth * 2 + gap;
+            const newSlide = Math.round(scrollLeft / slideWidth);
+            
+            if (newSlide !== currentSlide && newSlide >= 0 && newSlide < 3) {
+                currentSlide = newSlide;
+                document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
+        }
+
+        // Touch swipe support para Categorías
+        let startX = 0;
+        let scrollLeft = 0;
+
+        grid.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].pageX - grid.offsetLeft;
+            scrollLeft = grid.scrollLeft;
+        });
+
+        grid.addEventListener('touchmove', (e) => {
+            if (!startX) return;
+            const x = e.touches[0].pageX - grid.offsetLeft;
+            const walk = (x - startX) * 2;
+            grid.scrollLeft = scrollLeft - walk;
+        });
+
+        // ============================================
+        // FUNCIONALIDAD CATÁLOGO - NUEVA
+        // ============================================
+        
+        // Filtrado de materiales
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const materialCards = document.querySelectorAll('.material-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remover active de todos
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                materialCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Inicializar y actualizar en resize
+        initCarousel();
+        window.addEventListener('resize', initCarousel);
+    </script>
+
+</body>
+</html>
