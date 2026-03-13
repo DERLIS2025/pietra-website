@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MORMELERIA PIETRA. - Mármol, Granito</title>
+    <title>MORMELERIA PIETRA. - Mármol, Granito y Diseño de Interiores</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -457,7 +457,7 @@
         }
 
         /* ============================================
-           SECCIÓN CATÁLOGO DE MATERIALES - NUEVO DISEÑO ELEGANTE
+           SECCIÓN CATÁLOGO DE MATERIALES - DISEÑO EXPANDIBLE TIPO SSANCHEZ
         ============================================ */
         .catalog-section {
             padding: 100px 5%;
@@ -513,41 +513,58 @@
         .materials-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
+            gap: 25px;
         }
 
+        /* Tarjeta con efecto expandible tipo ssanchez */
         .material-card {
             position: relative;
             overflow: hidden;
             background: white;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             cursor: pointer;
             border: 1px solid #f0f0f0;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .material-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            z-index: 10;
+            transform: scale(1.03);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
             border-color: transparent;
         }
 
-        .material-image {
+        .material-image-wrapper {
             position: relative;
             width: 100%;
-            aspect-ratio: 1/1;
+            aspect-ratio: 1/1.2;
             overflow: hidden;
-            background: #f5f5f5;
         }
 
-        .material-image img {
+        .material-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.8s ease;
         }
 
-        .material-card:hover .material-image img {
-            transform: scale(1.05);
+        .material-card:hover .material-image {
+            transform: scale(1.1);
+        }
+
+        /* Overlay expandible en hover */
+        .material-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(26,26,26,0.95) 0%, rgba(26,26,26,0.8) 60%, transparent 100%);
+            padding: 60px 25px 25px;
+            transform: translateY(60%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .material-card:hover .material-overlay {
+            transform: translateY(0);
         }
 
         .material-badge {
@@ -561,48 +578,39 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 600;
-            z-index: 2;
+            z-index: 3;
             backdrop-filter: blur(10px);
+            transition: opacity 0.3s;
         }
 
-        .material-info {
-            padding: 28px;
-            background: white;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .material-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 4px;
+        .material-card:hover .material-badge {
+            opacity: 0;
         }
 
         .material-name {
             font-family: var(--font-serif);
             font-size: 1.4rem;
-            color: var(--color-dark);
-            margin: 0;
+            color: white;
+            margin: 0 0 12px 0;
             font-weight: 400;
             letter-spacing: -0.5px;
         }
 
-        .material-origin {
-            font-size: 0.8rem;
-            color: #999;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 500;
-            margin-top: 4px;
-        }
-
         .material-description {
             font-size: 0.9rem;
-            color: #666;
+            color: rgba(255,255,255,0.85);
             line-height: 1.6;
-            margin: 8px 0;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        /* Descripción mobile (oculta en desktop) */
+        .material-description-mobile {
+            display: none;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.5;
+            margin-bottom: 15px;
             font-weight: 300;
         }
 
@@ -610,32 +618,18 @@
             display: flex;
             gap: 20px;
             font-size: 0.75rem;
-            color: #999;
+            color: rgba(255,255,255,0.7);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 8px;
-            padding-top: 16px;
-            border-top: 1px solid #f0f0f0;
+            margin-bottom: 20px;
         }
 
-        .material-features span {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .material-cta {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #f0f0f0;
-        }
-
-        .btn-cotizacion {
+        .btn-cotizacion-overlay {
             width: 100%;
-            padding: 14px 24px;
+            padding: 12px 24px;
             background: transparent;
-            border: 1px solid #ddd;
-            color: var(--color-dark);
+            border: 1px solid rgba(255,255,255,0.4);
+            color: white;
             font-family: var(--font-sans);
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -648,10 +642,26 @@
             text-align: center;
         }
 
-        .btn-cotizacion:hover {
-            background: var(--color-primary);
-            border-color: var(--color-primary);
-            color: white;
+        .btn-cotizacion-overlay:hover {
+            background: white;
+            border-color: white;
+            color: var(--color-dark);
+        }
+
+        /* Info visible siempre (nombre abajo) */
+        .material-info-static {
+            padding: 20px;
+            background: white;
+            text-align: center;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .material-name-static {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--color-dark);
+            margin: 0;
+            font-weight: 400;
         }
 
         /* ============================================
@@ -675,57 +685,49 @@
 
             /* Mobile: Grid 2x2 */
             .materials-grid {
-                display: grid;
                 grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-                overflow-x: visible;
-                scroll-snap-type: none;
+                gap: 12px;
             }
 
-            .material-card {
-                scroll-snap-align: none;
+            .material-image-wrapper {
+                aspect-ratio: 1/1.1;
             }
 
-            .material-image {
-                aspect-ratio: 1/1;
+            /* En mobile mostrar descripción corta, ocultar la larga */
+            .material-description {
+                display: none;
             }
 
-            .material-info {
-                padding: 16px;
-                gap: 8px;
+            .material-description-mobile {
+                display: block;
+            }
+
+            .material-overlay {
+                padding: 40px 15px 15px;
+                transform: translateY(50%);
             }
 
             .material-name {
                 font-size: 1.1rem;
-            }
-
-            .material-origin {
-                font-size: 0.7rem;
-            }
-
-            .material-description {
-                font-size: 0.8rem;
-                line-height: 1.5;
-                margin: 4px 0;
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
+                margin-bottom: 8px;
             }
 
             .material-features {
                 display: none;
             }
 
-            .material-cta {
-                margin-top: 12px;
-                padding-top: 12px;
-            }
-
-            .btn-cotizacion {
+            .btn-cotizacion-overlay {
                 padding: 10px 16px;
                 font-size: 0.65rem;
                 letter-spacing: 1.5px;
+            }
+
+            .material-info-static {
+                padding: 12px;
+            }
+
+            .material-name-static {
+                font-size: 0.95rem;
             }
 
             .material-badge {
@@ -740,30 +742,157 @@
         @media (min-width: 769px) and (max-width: 1024px) {
             .materials-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 25px;
+                gap: 20px;
             }
             
-            .material-image {
-                aspect-ratio: 1/1;
+            .material-image-wrapper {
+                aspect-ratio: 1/1.1;
             }
 
-            .material-info {
-                padding: 22px;
+            .material-overlay {
+                padding: 50px 20px 20px;
             }
         }
 
         /* Desktop grande: 4 columnas perfectas */
         @media (min-width: 1200px) {
             .materials-grid {
-                gap: 35px;
+                gap: 30px;
             }
             
-            .material-info {
-                padding: 32px;
+            .material-overlay {
+                padding: 70px 30px 30px;
             }
             
             .material-name {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
+            }
+
+            .material-description {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* ============================================
+           CARRUSEL DE PROYECTOS
+        ============================================ */
+        .projects-section {
+            padding: 80px 0;
+            background: white;
+            overflow: hidden;
+        }
+
+        .projects-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 5%;
+        }
+
+        .projects-subtitle {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--color-primary);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .projects-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--color-dark);
+            font-weight: 400;
+        }
+
+        .projects-carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .projects-carousel {
+            display: flex;
+            gap: 20px;
+            animation: scroll 40s linear infinite;
+            width: max-content;
+            padding: 20px 0;
+        }
+
+        .projects-carousel:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .project-item {
+            flex: 0 0 auto;
+            width: 350px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .project-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 30px 20px 20px;
+            color: white;
+        }
+
+        .project-name {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            margin: 0;
+            font-weight: 400;
+        }
+
+        .project-type {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive Projects */
+        @media (max-width: 768px) {
+            .projects-section {
+                padding: 60px 0;
+            }
+
+            .project-item {
+                width: 280px;
+            }
+
+            .project-item img {
+                height: 200px;
+            }
+
+            .project-name {
+                font-size: 1rem;
             }
         }
 
@@ -985,7 +1114,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN CATÁLOGO DE MATERIALES - NUEVO DISEÑO -->
+    <!-- SECCIÓN CATÁLOGO DE MATERIALES - DISEÑO EXPANDIBLE -->
     <section class="catalog-section" id="catalogo">
         <div class="container">
             <div class="catalog-header">
@@ -998,198 +1127,336 @@
                 <button class="filter-btn" data-filter="marmol">Mármoles</button>
                 <button class="filter-btn" data-filter="granito">Granitos</button>
                 <button class="filter-btn" data-filter="cuarzo">Cuarzos</button>
+                <button class="filter-btn" data-filter="cuarcita">Cuarcitas</button>
             </div>
 
             <div class="materials-grid" id="materialsGrid">
                 <!-- Material 1: Calacatta Gold -->
                 <div class="material-card" data-category="marmol">
-                    <div class="material-image">
-                        <img src="images/catalogo/calacatta-gold.jpg" alt="Calacatta Gold Mármol Italiano de Lujo">
+                    <div class="material-image-wrapper">
+                        <img class="material-image" src="images/catalogo/calacatta-gold.jpg" alt="Calacatta Gold Mármol Italiano de Lujo">
                         <span class="material-badge">Mármol</span>
-                    </div>
-                    <div class="material-info">
-                        <div class="material-header">
-                            <div>
-                                <h3 class="material-name">Calacatta Gold</h3>
-                                <p class="material-origin">Italia</p>
+                        <div class="material-overlay">
+                            <h3 class="material-name">Calacatta Gold</h3>
+                            <p class="material-description">Elegancia atemporal con vetas doradas que transforman cualquier espacio en una obra maestra. Ideal para cocinas de lujo y baños principales que buscan distinguirse.</p>
+                            <p class="material-description-mobile">Elegancia atemporal con vetas doradas únicas.</p>
+                            <div class="material-features">
+                                <span>2cm / 3cm</span>
+                                <span>Alto brillo</span>
                             </div>
+                            <button class="btn-cotizacion-overlay">Solicitar Cotización</button>
                         </div>
-                        <p class="material-description">Elegancia atemporal con vetas doradas que transforman cualquier espacio en una obra maestra. Ideal para cocinas de lujo.</p>
-                        <div class="material-features">
-                            <span>2cm / 3cm</span>
-                            <span>Alto brillo</span>
-                        </div>
-                        <div class="material-cta">
-                            <button class="btn-cotizacion">Solicitar Cotización</button>
-                        </div>
+                    </div>
+                    <div class="material-info-static">
+                        <h4 class="material-name-static">Calacatta Gold</h4>
                     </div>
                 </div>
 
                 <!-- Material 2: Negro Marquina -->
                 <div class="material-card" data-category="marmol">
-                    <div class="material-image">
-                        <img src="images/catalogo/negro-marquina.jpg" alt="Negro Marquina Mármol Español">
+                    <div class="material-image-wrapper">
+                        <img class="material-image" src="images/catalogo/negro-marquina.jpg" alt="Negro Marquina Mármol Español">
                         <span class="material-badge">Mármol</span>
-                    </div>
-                    <div class="material-info">
-                        <div class="material-header">
-                            <div>
-                                <h3 class="material-name">Negro Marquina</h3>
-                                <p class="material-origin">España</p>
+                        <div class="material-overlay">
+                            <h3 class="material-name">Negro Marquina</h3>
+                            <p class="material-description">Sofisticación absoluta en negro intenso con delicadas vetas blancas. Perfecto para baños de diseño y mesadas statement que capturan todas las miradas.</p>
+                            <p class="material-description-mobile">Sofisticación absoluta en negro intenso.</p>
+                            <div class="material-features">
+                                <span>2cm / 3cm</span>
+                                <span>Textura única</span>
                             </div>
+                            <button class="btn-cotizacion-overlay">Solicitar Cotización</button>
                         </div>
-                        <p class="material-description">Sofisticación absoluta en negro intenso con delicadas vetas blancas. Perfecto para baños de diseño y mesadas statement.</p>
-                        <div class="material-features">
-                            <span>2cm / 3cm</span>
-                            <span>Textura única</span>
-                        </div>
-                        <div class="material-cta">
-                            <button class="btn-cotizacion">Solicitar Cotización</button>
-                        </div>
+                    </div>
+                    <div class="material-info-static">
+                        <h4 class="material-name-static">Negro Marquina</h4>
                     </div>
                 </div>
 
                 <!-- Material 3: Negro Absoluto -->
                 <div class="material-card" data-category="granito">
-                    <div class="material-image">
-                        <img src="images/catalogo/negro-absoluto.jpg" alt="Negro Absoluto Granito Indio Premium">
+                    <div class="material-image-wrapper">
+                        <img class="material-image" src="images/catalogo/negro-absoluto.jpg" alt="Negro Absoluto Granito Indio Premium">
                         <span class="material-badge">Granito</span>
-                    </div>
-                    <div class="material-info">
-                        <div class="material-header">
-                            <div>
-                                <h3 class="material-name">Negro Absoluto</h3>
-                                <p class="material-origin">India</p>
+                        <div class="material-overlay">
+                            <h3 class="material-name">Negro Absoluto</h3>
+                            <p class="material-description">Pureza mineral en su máxima expresión. Durabilidad incomparable y estética atemporal para proyectos que perduran generaciones sin perder su esplendor.</p>
+                            <p class="material-description-mobile">Pureza mineral de máxima durabilidad.</p>
+                            <div class="material-features">
+                                <span>2cm / 3cm</span>
+                                <span>Premium</span>
                             </div>
+                            <button class="btn-cotizacion-overlay">Solicitar Cotización</button>
                         </div>
-                        <p class="material-description">Pureza mineral en su máxima expresión. Durabilidad incomparable y estética atemporal para proyectos que perduran generaciones.</p>
-                        <div class="material-features">
-                            <span>2cm / 3cm</span>
-                            <span>Premium</span>
-                        </div>
-                        <div class="material-cta">
-                            <button class="btn-cotizacion">Solicitar Cotización</button>
-                        </div>
+                    </div>
+                    <div class="material-info-static">
+                        <h4 class="material-name-static">Negro Absoluto</h4>
                     </div>
                 </div>
 
                 <!-- Material 4: Blanco Estelar -->
                 <div class="material-card" data-category="cuarzo">
-                    <div class="material-image">
-                        <img src="images/catalogo/cuarzo-blanco.jpg" alt="Blanco Estelar Cuarzo Ingeniería">
+                    <div class="material-image-wrapper">
+                        <img class="material-image" src="images/catalogo/cuarzo-blanco.jpg" alt="Blanco Estelar Cuarzo Ingeniería">
                         <span class="material-badge">Cuarzo</span>
-                    </div>
-                    <div class="material-info">
-                        <div class="material-header">
-                            <div>
-                                <h3 class="material-name">Blanco Estelar</h3>
-                                <p class="material-origin">Ingeniería</p>
+                        <div class="material-overlay">
+                            <h3 class="material-name">Blanco Estelar</h3>
+                            <p class="material-description">Tecnología y belleza fusionadas. Superficie impenetrable que resiste el paso del tiempo sin perder su brillo estelar ni mancharse.</p>
+                            <p class="material-description-mobile">Tecnología y belleza fusionadas sin manchas.</p>
+                            <div class="material-features">
+                                <span>2cm / 3cm</span>
+                                <span>Anti-manchas</span>
                             </div>
+                            <button class="btn-cotizacion-overlay">Solicitar Cotización</button>
                         </div>
-                        <p class="material-description">Tecnología y belleza fusionadas. Superficie impenetrable que resiste el paso del tiempo sin perder su brillo estelar.</p>
-                        <div class="material-features">
-                            <span>2cm / 3cm</span>
-                            <span>Anti-manchas</span>
-                        </div>
-                        <div class="material-cta">
-                            <button class="btn-cotizacion">Solicitar Cotización</button>
-                        </div>
+                    </div>
+                    <div class="material-info-static">
+                        <h4 class="material-name-static">Blanco Estelar</h4>
                     </div>
                 </div>
 
                 <!-- Material 5: Emperador Dark -->
                 <div class="material-card" data-category="marmol">
-                    <div class="material-image">
-                        <img src="images/catalogo/emperador-dark.jpg" alt="Emperador Dark Mármol Turco Clásico">
+                    <div class="material-image-wrapper">
+                        <img class="material-image" src="images/catalogo/emperador-dark.jpg" alt="Emperador Dark Mármol Turco Clásico">
                         <span class="material-badge">Mármol</span>
-                    </div>
-                    <div class="material-info">
-                        <div class="material-header">
-                            <div>
-                                <h3 class="material-name">Emperador Dark</h3>
-                                <p class="material-origin">Turquía</p>
+                        <div class="material-overlay">
+                            <h3 class="material-name">Emperador Dark</h3>
+                            <p class="material-description">Majestuosidad clásica con tonos chocolate y vetas dramáticas. El favorito de interioristas para crear ambientes regios y sofisticados.</p>
+                            <p class="material-description-mobile">Majestuosidad clásica en tonos chocolate.</p>
+                            <div class="material-features">
+                                <span>2cm / 3cm</span>
+                                <span>Clásico</span>
                             </div>
+                            <button class="btn-cotizacion-overlay">Solicitar Cotización</button>
                         </div>
-                        <p class="material-description">Majestuosidad clásica con tonos chocolate y vetas dramáticas. El favorito de interioristas para crear ambientes regios.</p>
-                        <div class="material-features">
-                            <span>2cm / 3cm</span>
-                            <span>Clásico</span>
-                        </div>
-                        <div class="material-cta">
-                            <button class="btn-cotizacion">Solicitar Cotización</button>
-                        </div>
+                    </div>
+                    <div class="material-info-static">
+                        <h4 class="material-name-static">Emperador Dark</h4>
                     </div>
                 </div>
 
                 <!-- Material 6: Santa Cecilia -->
                 <div class="material-card" data-category="granito">
-                    <div class="material-image">
-                        <img src="images/catalogo/santa-cecilia.jpg" alt="Santa Cecilia Granito Brasileño Versátil">
+                    <div class="material-image-wrapper">
+                        <img class="material-image" src="images/catalogo/santa-cecilia.jpg" alt="Santa Cecilia Granito Brasileño Versátil">
                         <span class="material-badge">Granito</span>
-                    </div>
-                    <div class="material-info">
-                        <div class="material-header">
-                            <div>
-                                <h3 class="material-name">Santa Cecilia</h3>
-                                <p class="material-origin">Brasil</p>
+                        <div class="material-overlay">
+                            <h3 class="material-name">Santa Cecilia</h3>
+                            <p class="material-description">Calidez natural en tonos dorados y marrones. La elección perfecta para quienes buscan versatilidad con carácter propio y durabilidad.</p>
+                            <p class="material-description-mobile">Calidez natural en tonos dorados.</p>
+                            <div class="material-features">
+                                <span>2cm / 3cm</span>
+                                <span>Versátil</span>
                             </div>
+                            <button class="btn-cotizacion-overlay">Solicitar Cotización</button>
                         </div>
-                        <p class="material-description">Calidez natural en tonos dorados y marrones. La elección perfecta para quienes buscan versatilidad con carácter propio.</p>
-                        <div class="material-features">
-                            <span>2cm / 3cm</span>
-                            <span>Versátil</span>
-                        </div>
-                        <div class="material-cta">
-                            <button class="btn-cotizacion">Solicitar Cotización</button>
-                        </div>
+                    </div>
+                    <div class="material-info-static">
+                        <h4 class="material-name-static">Santa Cecilia</h4>
                     </div>
                 </div>
 
                 <!-- Material 7: Gris Concrete -->
                 <div class="material-card" data-category="cuarzo">
-                    <div class="material-image">
-                        <img src="images/catalogo/cuarzo-concrete.jpg" alt="Gris Concrete Cuarzo Estilo Industrial">
+                    <div class="material-image-wrapper">
+                        <img class="material-image" src="images/catalogo/cuarzo-concrete.jpg" alt="Gris Concrete Cuarzo Estilo Industrial">
                         <span class="material-badge">Cuarzo</span>
-                    </div>
-                    <div class="material-info">
-                        <div class="material-header">
-                            <div>
-                                <h3 class="material-name">Gris Concrete</h3>
-                                <p class="material-origin">Ingeniería</p>
+                        <div class="material-overlay">
+                            <h3 class="material-name">Gris Concrete</h3>
+                            <p class="material-description">Estética industrial refinada que captura la esencia del cemento con la resistencia superior del cuarzo. Diseño urbano elevado a su máxima expresión.</p>
+                            <p class="material-description-mobile">Estética industrial refinada y resistente.</p>
+                            <div class="material-features">
+                                <span>2cm / 3cm</span>
+                                <span>Industrial</span>
                             </div>
+                            <button class="btn-cotizacion-overlay">Solicitar Cotización</button>
                         </div>
-                        <p class="material-description">Estética industrial refinada que captura la esencia del cemento con la resistencia superior del cuarzo. Diseño urbano elevado.</p>
-                        <div class="material-features">
-                            <span>2cm / 3cm</span>
-                            <span>Industrial</span>
-                        </div>
-                        <div class="material-cta">
-                            <button class="btn-cotizacion">Solicitar Cotización</button>
-                        </div>
+                    </div>
+                    <div class="material-info-static">
+                        <h4 class="material-name-static">Gris Concrete</h4>
                     </div>
                 </div>
 
                 <!-- Material 8: Statuario Extra -->
                 <div class="material-card" data-category="marmol">
-                    <div class="material-image">
-                        <img src="images/catalogo/statuario.jpg" alt="Statuario Extra Mármol Italiano de Lujo">
+                    <div class="material-image-wrapper">
+                        <img class="material-image" src="images/catalogo/statuario.jpg" alt="Statuario Extra Mármol Italiano de Lujo">
                         <span class="material-badge">Mármol</span>
-                    </div>
-                    <div class="material-info">
-                        <div class="material-header">
-                            <div>
-                                <h3 class="material-name">Statuario Extra</h3>
-                                <p class="material-origin">Italia</p>
+                        <div class="material-overlay">
+                            <h3 class="material-name">Statuario Extra</h3>
+                            <p class="material-description">La cúspide del lujo en mármol blanco. Vetas grises dramáticas que convierten cada superficie en una escultura única e irrepetible.</p>
+                            <p class="material-description-mobile">La cúspide del lujo en mármol blanco.</p>
+                            <div class="material-features">
+                                <span>2cm / 3cm</span>
+                                <span>Lujo</span>
                             </div>
+                            <button class="btn-cotizacion-overlay">Solicitar Cotización</button>
                         </div>
-                        <p class="material-description">La cúspide del lujo en mármol blanco. Vetas grises dramáticas que convierten cada superficie en una escultura única.</p>
-                        <div class="material-features">
-                            <span>2cm / 3cm</span>
-                            <span>Lujo</span>
+                    </div>
+                    <div class="material-info-static">
+                        <h4 class="material-name-static">Statuario Extra</h4>
+                    </div>
+                </div>
+
+                <!-- NUEVOS MATERIALES -->
+
+                <!-- Material 9: Amarillo Victoria -->
+                <div class="material-card" data-category="granito">
+                    <div class="material-image-wrapper">
+                        <img class="material-image" src="images/catalogo/amarillo-victoria.jpg" alt="Amarillo Victoria Granito Exótico">
+                        <span class="material-badge">Granito</span>
+                        <div class="material-overlay">
+                            <h3 class="material-name">Amarillo Victoria</h3>
+                            <p class="material-description">Vitalidad y energía en tonos amarillos dorados con vetas oscuras. Aporta luz y calidez a espacios contemporáneos que buscan diferenciarse.</p>
+                            <p class="material-description-mobile">Vitalidad dorada con vetas oscuras únicas.</p>
+                            <div class="material-features">
+                                <span>2cm / 3cm</span>
+                                <span>Exótico</span>
+                            </div>
+                            <button class="btn-cotizacion-overlay">Solicitar Cotización</button>
                         </div>
-                        <div class="material-cta">
-                            <button class="btn-cotizacion">Solicitar Cotización</button>
+                    </div>
+                    <div class="material-info-static">
+                        <h4 class="material-name-static">Amarillo Victoria</h4>
+                    </div>
+                </div>
+
+                <!-- Material 10: Blanco Dallas -->
+                <div class="material-card" data-category="granito">
+                    <div class="material-image-wrapper">
+                        <img class="material-image" src="images/catalogo/blanco-dallas.jpg" alt="Blanco Dallas Granito Claro">
+                        <span class="material-badge">Granito</span>
+                        <div class="material-overlay">
+                            <h3 class="material-name">Blanco Dallas</h3>
+                            <p class="material-description">Serenidad y amplitud visual en tonos blancos perlados con delicados granos grises. Ideal para ambientes luminosos y minimalistas que buscan sofisticación discreta.</p>
+                            <p class="material-description-mobile">Serenidad blanca con delicados granos grises.</p>
+                            <div class="material-features">
+                                <span>2cm / 3cm</span>
+                                <span>Luminoso</span>
+                            </div>
+                            <button class="btn-cotizacion-overlay">Solicitar Cotización</button>
                         </div>
+                    </div>
+                    <div class="material-info-static">
+                        <h4 class="material-name-static">Blanco Dallas</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN PROYECTOS - CARRUSEL INFINITO -->
+    <section class="projects-section" id="proyectos">
+        <div class="projects-header">
+            <p class="projects-subtitle">Nuestros Trabajos</p>
+            <h2 class="projects-title">Proyectos</h2>
+        </div>
+        
+        <div class="projects-carousel-container">
+            <div class="projects-carousel" id="projectsCarousel">
+                <!-- Proyecto 1 -->
+                <div class="project-item">
+                    <img src="images/proyectos/proyecto-1.jpg" alt="Cocina Moderna Calacatta">
+                    <div class="project-overlay">
+                        <h3 class="project-name">Residencia Los Laureles</h3>
+                        <p class="project-type">Cocina Premium</p>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 2 -->
+                <div class="project-item">
+                    <img src="images/proyectos/proyecto-2.jpg" alt="Baño Lujo Negro Marquina">
+                    <div class="project-overlay">
+                        <h3 class="project-name">Penthouse Centro</h3>
+                        <p class="project-type">Baño de Lujo</p>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 3 -->
+                <div class="project-item">
+                    <img src="images/proyectos/proyecto-3.jpg" alt="Quincho Exterior Granito">
+                    <div class="project-overlay">
+                        <h3 class="project-name">Casa de Campo</h3>
+                        <p class="project-type">Quincho & Exterior</p>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 4 -->
+                <div class="project-item">
+                    <img src="images/proyectos/proyecto-4.jpg" alt="Closet Vestidor Mármol">
+                    <div class="project-overlay">
+                        <h3 class="project-name">Suite Principal</h3>
+                        <p class="project-type">Vestidor Custom</p>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 5 -->
+                <div class="project-item">
+                    <img src="images/proyectos/proyecto-5.jpg" alt="Isla Cocina Negro Absoluto">
+                    <div class="project-overlay">
+                        <h3 class="project-name">Ático Panorámico</h3>
+                        <p class="project-type">Isla Central</p>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 6 -->
+                <div class="project-item">
+                    <img src="images/proyectos/proyecto-6.jpg" alt="Baño Social Cuarzo">
+                    <div class="project-overlay">
+                        <h3 class="project-name">Villa del Lago</h3>
+                        <p class="project-type">Baño Social</p>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 7 -->
+                <div class="project-item">
+                    <img src="images/proyectos/proyecto-7.jpg" alt="Oficina Ejecutiva">
+                    <div class="project-overlay">
+                        <h3 class="project-name">Torre Empresarial</h3>
+                        <p class="project-type">Recepción Ejecutiva</p>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 8 -->
+                <div class="project-item">
+                    <img src="images/proyectos/proyecto-8.jpg" alt="Barra Bar Residencial">
+                    <div class="project-overlay">
+                        <h3 class="project-name">Residencia Privada</h3>
+                        <p class="project-type">Barra de Bar</p>
+                    </div>
+                </div>
+
+                <!-- Duplicados para loop infinito -->
+                <div class="project-item">
+                    <img src="images/proyectos/proyecto-1.jpg" alt="Cocina Moderna Calacatta">
+                    <div class="project-overlay">
+                        <h3 class="project-name">Residencia Los Laureles</h3>
+                        <p class="project-type">Cocina Premium</p>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <img src="images/proyectos/proyecto-2.jpg" alt="Baño Lujo Negro Marquina">
+                    <div class="project-overlay">
+                        <h3 class="project-name">Penthouse Centro</h3>
+                        <p class="project-type">Baño de Lujo</p>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <img src="images/proyectos/proyecto-3.jpg" alt="Quincho Exterior Granito">
+                    <div class="project-overlay">
+                        <h3 class="project-name">Casa de Campo</h3>
+                        <p class="project-type">Quincho & Exterior</p>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <img src="images/proyectos/proyecto-4.jpg" alt="Closet Vestidor Mármol">
+                    <div class="project-overlay">
+                        <h3 class="project-name">Suite Principal</h3>
+                        <p class="project-type">Vestidor Custom</p>
                     </div>
                 </div>
             </div>
@@ -1349,6 +1616,37 @@
         // Inicializar y actualizar en resize
         initCarousel();
         window.addEventListener('resize', initCarousel);
+
+        // ============================================
+        // CARRUSEL DE PROYECTOS - VELOCIDAD LENTA
+        // ============================================
+        
+        const projectsCarousel = document.getElementById('projectsCarousel');
+        let isPaused = false;
+
+        // Pausar al hover
+        projectsCarousel.addEventListener('mouseenter', () => {
+            isPaused = true;
+            projectsCarousel.style.animationPlayState = 'paused';
+        });
+
+        projectsCarousel.addEventListener('mouseleave', () => {
+            isPaused = false;
+            projectsCarousel.style.animationPlayState = 'running';
+        });
+
+        // Pausar al tocar en mobile
+        projectsCarousel.addEventListener('touchstart', () => {
+            isPaused = true;
+            projectsCarousel.style.animationPlayState = 'paused';
+        });
+
+        projectsCarousel.addEventListener('touchend', () => {
+            setTimeout(() => {
+                isPaused = false;
+                projectsCarousel.style.animationPlayState = 'running';
+            }, 2000);
+        });
     </script>
 
 </body>
