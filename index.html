@@ -15,8 +15,9 @@
         }
 
         :root {
-            --color-primary: #7c8b6f;
-            --color-primary-dark: #5a6b4f;
+            --color-primary: #5a7c6c;
+            --color-primary-dark: #4a6356;
+            --color-secondary: #c4b5a0;
             --color-dark: #1a1a1a;
             --color-light: #f5f5f0;
             --font-serif: 'Playfair Display', serif;
@@ -115,6 +116,8 @@
             letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .btn-quote:hover {
@@ -223,7 +226,7 @@
         .btn-primary:hover {
             background: var(--color-primary-dark);
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(124, 139, 111, 0.3);
+            box-shadow: 0 10px 30px rgba(90, 124, 108, 0.3);
         }
 
         .btn-secondary {
@@ -605,14 +608,16 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border-radius: 6px;
-            box-shadow: 0 4px 10px rgba(124, 139, 111, 0.3);
+            box-shadow: 0 4px 10px rgba(90, 124, 108, 0.3);
+            text-decoration: none;
+            display: inline-block;
         }
 
         .btn-cotizar:hover {
             background: var(--color-primary-dark);
             border-color: var(--color-primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(124, 139, 111, 0.4);
+            box-shadow: 0 6px 15px rgba(90, 124, 108, 0.4);
         }
 
         /* ============================================
@@ -697,6 +702,240 @@
             .btn-cotizar {
                 padding: 16px 24px;
                 font-size: 0.85rem;
+            }
+        }
+
+        /* ============================================
+           SECCIÓN PRODUCTO DESTACADO - NUEVA
+        ============================================ */
+        .featured-section {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, #f5f5f0 0%, #e8e8e0 100%);
+            overflow: hidden;
+        }
+
+        .featured-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .featured-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .featured-subtitle {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .featured-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--color-dark);
+            font-weight: 400;
+        }
+
+        .featured-content {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .featured-text {
+            padding-right: 20px;
+        }
+
+        .featured-text h3 {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            color: var(--color-dark);
+            margin-bottom: 20px;
+            font-weight: 400;
+            line-height: 1.3;
+        }
+
+        .featured-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .featured-benefits {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .featured-benefits li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #444;
+            font-size: 1rem;
+        }
+
+        .featured-benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .featured-carousel-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .featured-carousel {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .featured-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .featured-slide.active {
+            opacity: 1;
+        }
+
+        .featured-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--color-dark);
+            transition: all 0.3s;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .featured-nav:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .featured-nav.prev {
+            left: 20px;
+        }
+
+        .featured-nav.next {
+            right: 20px;
+        }
+
+        .featured-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .featured-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .featured-dot.active {
+            background: var(--color-primary);
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        /* Responsive Featured Section */
+        @media (max-width: 968px) {
+            .featured-section {
+                padding: 70px 5%;
+            }
+
+            .featured-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .featured-text {
+                padding-right: 0;
+                text-align: center;
+                order: 2;
+            }
+
+            .featured-benefits {
+                display: inline-block;
+                text-align: left;
+            }
+
+            .featured-carousel-wrapper {
+                order: 1;
+            }
+
+            .featured-carousel {
+                height: 350px;
+            }
+
+            .featured-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .featured-nav.prev {
+                left: 10px;
+            }
+
+            .featured-nav.next {
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .featured-carousel {
+                height: 280px;
+            }
+
+            .featured-text h3 {
+                font-size: 1.5rem;
+            }
+
+            .featured-text p {
+                font-size: 1rem;
             }
         }
 
@@ -848,6 +1087,11 @@
             color: var(--color-primary);
         }
 
+        .footer-section p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
         .footer-section ul {
             list-style: none;
         }
@@ -902,6 +1146,11 @@
             transform: scale(1.1);
         }
 
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+        }
+
         /* ============================================
            RESPONSIVE NAV
         ============================================ */
@@ -931,6 +1180,11 @@
                 bottom: 20px;
                 right: 20px;
             }
+
+            .whatsapp-float svg {
+                width: 24px;
+                height: 24px;
+            }
         }
     </style>
 </head>
@@ -943,13 +1197,12 @@
             <li><a href="#">Inicio</a></li>
             <li><a href="#categorias">Servicios</a></li>
             <li><a href="#catalogo">Catálogo</a></li>
-            <li><a href="#">Nosotros</a></li>
-            <li><a href="#">Proyectos</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="#destacado">Destacado</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
         </ul>
         <div class="nav-actions">
-            <button class="icon-btn"></button>
-            <button class="btn-quote">Solicitar Cotización</button>
+            <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20gustaría%20solicitar%20una%20cotización" class="btn-quote" target="_blank">Solicitar Cotización</a>
         </div>
     </nav>
 
@@ -961,8 +1214,8 @@
             <h1>Lujo en cada detalle de <em>granito</em></h1>
             <p>Diseño y fabricación de cocinas, baños y mobiliario a medida con los materiales más exclusivos del mercado. Cada proyecto cuenta una historia de elegancia atemporal.</p>
             <div class="hero-buttons">
-                <a href="#categorias" class="btn-primary">SOLICITAR COTIZACIÓN</a>
-                <a href="#" class="btn-secondary">Ver Proyectos</a>
+                <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20gustaría%20solicitar%20una%20cotización" class="btn-primary" target="_blank">SOLICITAR COTIZACIÓN</a>
+                <a href="#proyectos" class="btn-secondary">Ver Proyectos</a>
             </div>
         </div>
     </section>
@@ -1066,7 +1319,7 @@
                     </div>
                     <div class="material-info">
                         <h4 class="material-name">Calacatta Gold</h4>
-                        <button class="btn-cotizar">Cotizar</button>
+                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Calacatta%20Gold" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
 
@@ -1078,7 +1331,7 @@
                     </div>
                     <div class="material-info">
                         <h4 class="material-name">Negro Marquina</h4>
-                        <button class="btn-cotizar">Cotizar</button>
+                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Negro%20Marquina" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
 
@@ -1090,7 +1343,7 @@
                     </div>
                     <div class="material-info">
                         <h4 class="material-name">Blanco Estelar</h4>
-                        <button class="btn-cotizar">Cotizar</button>
+                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Blanco%20Estelar" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
 
@@ -1102,7 +1355,7 @@
                     </div>
                     <div class="material-info">
                         <h4 class="material-name">Negro Absoluto</h4>
-                        <button class="btn-cotizar">Cotizar</button>
+                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Negro%20Absoluto" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
 
@@ -1114,7 +1367,7 @@
                     </div>
                     <div class="material-info">
                         <h4 class="material-name">Emperador Dark</h4>
-                        <button class="btn-cotizar">Cotizar</button>
+                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Emperador%20Dark" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
 
@@ -1126,7 +1379,7 @@
                     </div>
                     <div class="material-info">
                         <h4 class="material-name">Santa Cecilia</h4>
-                        <button class="btn-cotizar">Cotizar</button>
+                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Santa%20Cecilia" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
 
@@ -1138,7 +1391,7 @@
                     </div>
                     <div class="material-info">
                         <h4 class="material-name">Gris Concrete</h4>
-                        <button class="btn-cotizar">Cotizar</button>
+                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Gris%20Concrete" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
 
@@ -1150,7 +1403,7 @@
                     </div>
                     <div class="material-info">
                         <h4 class="material-name">Statuario Extra</h4>
-                        <button class="btn-cotizar">Cotizar</button>
+                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Statuario%20Extra" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
 
@@ -1162,7 +1415,7 @@
                     </div>
                     <div class="material-info">
                         <h4 class="material-name">Amarillo Victoria</h4>
-                        <button class="btn-cotizar">Cotizar</button>
+                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Amarillo%20Victoria" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
 
@@ -1174,7 +1427,7 @@
                     </div>
                     <div class="material-info">
                         <h4 class="material-name">Blanco Dallas</h4>
-                        <button class="btn-cotizar">Cotizar</button>
+                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Blanco%20Dallas" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
 
@@ -1199,6 +1452,58 @@
                     <div class="material-info">
                         <h4 class="material-name">Próximamente</h4>
                         <button class="btn-cotizar" style="opacity: 0.5; cursor: not-allowed;">Próximamente</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN PRODUCTO DESTACADO - NUEVA -->
+    <section class="featured-section" id="destacado">
+        <div class="featured-container">
+            <div class="featured-header">
+                <p class="featured-subtitle">Especial de la Casa</p>
+                <h2 class="featured-title">Trabajos Personalizados y a Medida</h2>
+            </div>
+            
+            <div class="featured-content">
+                <div class="featured-text">
+                    <h3>Isla de Cocina con Desayunador Integrado</h3>
+                    <p>Ponemos todo nuestro empeño para que cada trabajo realizado se convierta en una creación única. Realizamos obras atendiendo a sus requisitos, asesorando con todo lo que sea necesario y en estrecha comunicación con usted.</p>
+                    <ul class="featured-benefits">
+                        <li>Diseño 100% personalizado a tus necesidades</li>
+                        <li>Materiales de primera calidad importados</li>
+                        <li>Acabados profesionales garantizados</li>
+                        <li>Asesoramiento técnico especializado</li>
+                        <li>Instalación y logística incluida</li>
+                    </ul>
+                    <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20el%20producto%20destacado%20-%20Isla%20de%20Cocina%20con%20Desayunador" class="btn-primary" target="_blank">Consultar por este Proyecto</a>
+                </div>
+                
+                <div class="featured-carousel-wrapper">
+                    <div class="featured-carousel" id="featuredCarousel">
+                        <div class="featured-slide active">
+                            <img src="images/categorias/cocina-6.jpg" alt="Isla de cocina vista 1">
+                        </div>
+                        <div class="featured-slide">
+                            <img src="images/categorias/cocina-6.jpg" alt="Isla de cocina vista 2">
+                        </div>
+                        <div class="featured-slide">
+                            <img src="images/categorias/cocina-6.jpg" alt="Isla de cocina vista 3">
+                        </div>
+                        <div class="featured-slide">
+                            <img src="images/categorias/cocina-6.jpg" alt="Isla de cocina vista 4">
+                        </div>
+                        
+                        <button class="featured-nav prev" onclick="changeFeaturedSlide(-1)">‹</button>
+                        <button class="featured-nav next" onclick="changeFeaturedSlide(1)">›</button>
+                    </div>
+                    
+                    <div class="featured-dots" id="featuredDots">
+                        <button class="featured-dot active" onclick="goToFeaturedSlide(0)"></button>
+                        <button class="featured-dot" onclick="goToFeaturedSlide(1)"></button>
+                        <button class="featured-dot" onclick="goToFeaturedSlide(2)"></button>
+                        <button class="featured-dot" onclick="goToFeaturedSlide(3)"></button>
                     </div>
                 </div>
             </div>
@@ -1287,20 +1592,20 @@
     </section>
 
     <!-- FOOTER -->
-    <footer>
+    <footer id="contacto">
         <div class="footer-content">
             <div class="footer-section">
                 <h4>PIETRA.</h4>
-                <p style="color: #aaa; line-height: 1.6;">Especialistas en mármol, granito y cuarzo. Diseñando espacios únicos desde 1995.</p>
+                <p>Especialistas en mármol, granito y cuarzo. Diseñando espacios únicos desde 1995.</p>
             </div>
             
             <div class="footer-section">
                 <h4>Servicios</h4>
                 <ul>
-                    <li><a href="#">Cocinas</a></li>
-                    <li><a href="#">Baños</a></li>
-                    <li><a href="#">Closets</a></li>
-                    <li><a href="#">Quinchos</a></li>
+                    <li><a href="#categorias">Cocinas</a></li>
+                    <li><a href="#categorias">Baños</a></li>
+                    <li><a href="#categorias">Closets</a></li>
+                    <li><a href="#categorias">Quinchos</a></li>
                 </ul>
             </div>
             
@@ -1308,30 +1613,28 @@
                 <h4>Contacto</h4>
                 <ul>
                     <li><a href="mailto:info@pietra.com">info@pietra.com</a></li>
-                    <li><a href="tel:+123456789">+1 234 567 89</a></li>
-                    <li><a href="#">Av. Principal 1234</a></li>
+                    <li><a href="https://wa.me/595984756158" target="_blank">+595 984 756 158</a></li>
+                    <li><a href="#">Asunción, Paraguay</a></li>
                 </ul>
             </div>
             
             <div class="footer-section">
                 <h4>Redes</h4>
                 <ul>
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="https://instagram.com/marmoleria_pietra" target="_blank">Instagram</a></li>
                 </ul>
             </div>
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2024 Marmolería Pietra. Todos los derechos reservados.</p>
+            <p>&copy; 2026 Marmolería Pietra. Todos los derechos reservados.</p>
         </div>
     </footer>
 
     <!-- WHATSAPP FLOAT -->
-    <a href="https://wa.me/123456789" class="whatsapp-float" target="_blank">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+    <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20gustaría%20recibir%20más%20información" class="whatsapp-float" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
         </svg>
     </a>
 
@@ -1408,15 +1711,37 @@
             });
         });
 
-        // Botones cotizar - alert temporal
-        document.querySelectorAll('.btn-cotizar').forEach(btn => {
-            btn.addEventListener('click', function() {
-                if (!this.disabled && !this.textContent.includes('Próximamente')) {
-                    const material = this.closest('.material-card').querySelector('.material-name').textContent;
-                    alert(`Solicitud de cotización para: ${material}\n\nPronto nos contactaremos contigo.`);
-                }
+        // Carrusel de Producto Destacado
+        let currentFeaturedSlide = 0;
+        const featuredSlides = document.querySelectorAll('.featured-slide');
+        const featuredDots = document.querySelectorAll('.featured-dot');
+        const totalFeaturedSlides = featuredSlides.length;
+
+        function showFeaturedSlide(index) {
+            featuredSlides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
             });
-        });
+            featuredDots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            currentFeaturedSlide = index;
+        }
+
+        function changeFeaturedSlide(direction) {
+            let newIndex = currentFeaturedSlide + direction;
+            if (newIndex >= totalFeaturedSlides) newIndex = 0;
+            if (newIndex < 0) newIndex = totalFeaturedSlides - 1;
+            showFeaturedSlide(newIndex);
+        }
+
+        function goToFeaturedSlide(index) {
+            showFeaturedSlide(index);
+        }
+
+        // Auto-play del carrusel destacado
+        setInterval(() => {
+            changeFeaturedSlide(1);
+        }, 5000);
     </script>
 
 </body>
