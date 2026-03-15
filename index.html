@@ -457,7 +457,7 @@
         }
 
         /* ============================================
-           SECCIÓN CATÁLOGO DE MATERIALES - DISEÑO LIMPIO
+           SECCIÓN CATÁLOGO DE MATERIALES - DISEÑO LIMPIO CON BOTÓN VERDE
            ============================================ */
         .catalog-section {
             padding: 100px 5%;
@@ -509,34 +509,37 @@
             border-color: var(--color-dark);
         }
 
-        /* Grid de materiales - Desktop: 4 columnas */
+        /* Grid de materiales - SIEMPRE 4 columnas en desktop */
         .materials-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
+            gap: 25px;
         }
 
-        /* Tarjeta limpia sin overlay expandible */
+        /* Tarjeta limpia */
         .material-card {
             position: relative;
             background: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             transition: all 0.4s ease;
-            border: 1px solid #f0f0f0;
+            border: 1px solid #e8e8e8;
+            display: flex;
+            flex-direction: column;
         }
 
         .material-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
         }
 
         .material-image-wrapper {
             position: relative;
             width: 100%;
-            aspect-ratio: 1/1.1;
+            aspect-ratio: 1/1;
             overflow: hidden;
+            background: #f5f5f5;
         }
 
         .material-image {
@@ -544,6 +547,7 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.6s ease;
+            display: block;
         }
 
         .material-card:hover .material-image {
@@ -552,73 +556,63 @@
 
         .material-badge {
             position: absolute;
-            top: 15px;
-            left: 15px;
-            background: rgba(255, 255, 255, 0.95);
-            color: var(--color-dark);
-            padding: 6px 14px;
+            top: 12px;
+            left: 12px;
+            background: var(--color-dark);
+            color: white;
+            padding: 6px 12px;
             font-size: 0.65rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             font-weight: 600;
-            backdrop-filter: blur(10px);
             border-radius: 4px;
+            z-index: 2;
         }
 
-        /* Info debajo de la imagen */
+        /* Info debajo de la imagen - FONDO GRIS para destacar botón */
         .material-info {
-            padding: 25px;
+            padding: 20px;
             text-align: center;
-            background: white;
+            background: #f0f0f0;
+            border-top: 1px solid #e0e0e0;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .material-name {
             font-family: var(--font-serif);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--color-dark);
-            margin: 0 0 18px 0;
+            margin: 0 0 15px 0;
             font-weight: 400;
             letter-spacing: -0.5px;
         }
 
-        /* Botón de cotización elegante */
+        /* Botón de cotización VERDE - NO se pierde */
         .btn-cotizar {
             width: 100%;
-            padding: 14px 24px;
-            background: transparent;
-            color: var(--color-dark);
-            border: 1.5px solid var(--color-dark);
+            padding: 14px 20px;
+            background: var(--color-primary);
+            color: white;
+            border: 2px solid var(--color-primary);
             font-family: var(--font-sans);
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 500;
+            letter-spacing: 1.5px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            border-radius: 4px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-cotizar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--color-dark);
-            transition: left 0.3s ease;
-            z-index: -1;
+            border-radius: 6px;
+            box-shadow: 0 4px 10px rgba(124, 139, 111, 0.3);
         }
 
         .btn-cotizar:hover {
-            color: white;
-            border-color: var(--color-dark);
-        }
-
-        .btn-cotizar:hover::before {
-            left: 0;
+            background: var(--color-primary-dark);
+            border-color: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(124, 139, 111, 0.4);
         }
 
         /* ============================================
@@ -643,7 +637,7 @@
             /* Mobile: Grid 2 columnas */
             .materials-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
+                gap: 12px;
             }
 
             .material-image-wrapper {
@@ -651,15 +645,15 @@
             }
 
             .material-badge {
-                top: 10px;
-                left: 10px;
-                padding: 4px 10px;
-                font-size: 0.6rem;
+                top: 8px;
+                left: 8px;
+                padding: 4px 8px;
+                font-size: 0.55rem;
                 letter-spacing: 1px;
             }
 
             .material-info {
-                padding: 18px 15px;
+                padding: 15px 12px;
             }
 
             .material-name {
@@ -669,12 +663,12 @@
 
             .btn-cotizar {
                 padding: 12px 16px;
-                font-size: 0.65rem;
-                letter-spacing: 1.5px;
+                font-size: 0.7rem;
+                letter-spacing: 1px;
             }
         }
 
-        /* Tablets: 2-3 columnas */
+        /* Tablets: 3 columnas */
         @media (min-width: 769px) and (max-width: 1024px) {
             .materials-grid {
                 grid-template-columns: repeat(3, 1fr);
@@ -682,7 +676,7 @@
             }
             
             .material-image-wrapper {
-                aspect-ratio: 1/1.1;
+                aspect-ratio: 1/1;
             }
 
             .material-name {
@@ -693,16 +687,16 @@
         /* Desktop grande: 4 columnas */
         @media (min-width: 1200px) {
             .materials-grid {
-                gap: 35px;
+                gap: 30px;
             }
             
             .material-name {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
             }
             
             .btn-cotizar {
-                padding: 16px 28px;
-                font-size: 0.8rem;
+                padding: 16px 24px;
+                font-size: 0.85rem;
             }
         }
 
@@ -1047,7 +1041,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN CATÁLOGO DE MATERIALES - DISEÑO LIMPIO -->
+    <!-- SECCIÓN CATÁLOGO DE MATERIALES - 12 ELEMENTOS CON BOTÓN VERDE -->
     <section class="catalog-section" id="catalogo">
         <div class="container">
             <div class="catalog-header">
@@ -1067,120 +1061,144 @@
                 <!-- Material 1: Calacatta Gold -->
                 <div class="material-card" data-category="marmol">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/1-calacatta-gold.jpg" alt="Calacatta Gold Mármol Italiano de Lujo">
+                        <img class="material-image" src="images/catalogo/1-calacatta-gold.jpg" alt="Calacatta Gold">
                         <span class="material-badge">Mármol</span>
                     </div>
                     <div class="material-info">
                         <h4 class="material-name">Calacatta Gold</h4>
-                        <button class="btn-cotizar">Solicitar Cotización</button>
+                        <button class="btn-cotizar">Cotizar</button>
                     </div>
                 </div>
 
                 <!-- Material 2: Negro Marquina -->
                 <div class="material-card" data-category="marmol">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/2-negro-marquina.jpg" alt="Negro Marquina Mármol Español">
+                        <img class="material-image" src="images/catalogo/2-negro-marquina.jpg" alt="Negro Marquina">
                         <span class="material-badge">Mármol</span>
                     </div>
                     <div class="material-info">
                         <h4 class="material-name">Negro Marquina</h4>
-                        <button class="btn-cotizar">Solicitar Cotización</button>
+                        <button class="btn-cotizar">Cotizar</button>
                     </div>
                 </div>
 
-                <!-- Material 3: Negro Absoluto -->
-                <div class="material-card" data-category="granito">
-                    <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/negro-absoluto.jpg" alt="Negro Absoluto Granito Indio Premium">
-                        <span class="material-badge">Granito</span>
-                    </div>
-                    <div class="material-info">
-                        <h4 class="material-name">Negro Absoluto</h4>
-                        <button class="btn-cotizar">Solicitar Cotización</button>
-                    </div>
-                </div>
-
-                <!-- Material 4: Blanco Estelar -->
+                <!-- Material 3: Blanco Estelar -->
                 <div class="material-card" data-category="cuarzo">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/4-blanco-estelar.jpg" alt="Blanco Estelar Cuarzo Ingeniería">
+                        <img class="material-image" src="images/catalogo/4-blanco-estelar.jpg" alt="Blanco Estelar">
                         <span class="material-badge">Cuarzo</span>
                     </div>
                     <div class="material-info">
                         <h4 class="material-name">Blanco Estelar</h4>
-                        <button class="btn-cotizar">Solicitar Cotización</button>
+                        <button class="btn-cotizar">Cotizar</button>
+                    </div>
+                </div>
+
+                <!-- Material 4: Negro Absoluto -->
+                <div class="material-card" data-category="granito">
+                    <div class="material-image-wrapper">
+                        <img class="material-image" src="images/catalogo/negro-absoluto.jpg" alt="Negro Absoluto">
+                        <span class="material-badge">Granito</span>
+                    </div>
+                    <div class="material-info">
+                        <h4 class="material-name">Negro Absoluto</h4>
+                        <button class="btn-cotizar">Cotizar</button>
                     </div>
                 </div>
 
                 <!-- Material 5: Emperador Dark -->
                 <div class="material-card" data-category="marmol">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/6-emperador-dark.jpg" alt="Emperador Dark Mármol Turco Clásico">
+                        <img class="material-image" src="images/catalogo/6-emperador-dark.jpg" alt="Emperador Dark">
                         <span class="material-badge">Mármol</span>
                     </div>
                     <div class="material-info">
                         <h4 class="material-name">Emperador Dark</h4>
-                        <button class="btn-cotizar">Solicitar Cotización</button>
+                        <button class="btn-cotizar">Cotizar</button>
                     </div>
                 </div>
 
                 <!-- Material 6: Santa Cecilia -->
                 <div class="material-card" data-category="granito">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/8-santa-cecilia.jpg" alt="Santa Cecilia Granito Brasileño Versátil">
+                        <img class="material-image" src="images/catalogo/8-santa-cecilia.jpg" alt="Santa Cecilia">
                         <span class="material-badge">Granito</span>
                     </div>
                     <div class="material-info">
                         <h4 class="material-name">Santa Cecilia</h4>
-                        <button class="btn-cotizar">Solicitar Cotización</button>
+                        <button class="btn-cotizar">Cotizar</button>
                     </div>
                 </div>
 
                 <!-- Material 7: Gris Concrete -->
                 <div class="material-card" data-category="cuarzo">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/9-gris-concrete.jpg" alt="Gris Concrete Cuarzo Estilo Industrial">
+                        <img class="material-image" src="images/catalogo/9-gris-concrete.jpg" alt="Gris Concrete">
                         <span class="material-badge">Cuarzo</span>
                     </div>
                     <div class="material-info">
                         <h4 class="material-name">Gris Concrete</h4>
-                        <button class="btn-cotizar">Solicitar Cotización</button>
+                        <button class="btn-cotizar">Cotizar</button>
                     </div>
                 </div>
 
                 <!-- Material 8: Statuario Extra -->
                 <div class="material-card" data-category="marmol">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/11-statuario-extra.jpg" alt="Statuario Extra Mármol Italiano de Lujo">
+                        <img class="material-image" src="images/catalogo/11-statuario-extra.jpg" alt="Statuario Extra">
                         <span class="material-badge">Mármol</span>
                     </div>
                     <div class="material-info">
                         <h4 class="material-name">Statuario Extra</h4>
-                        <button class="btn-cotizar">Solicitar Cotización</button>
+                        <button class="btn-cotizar">Cotizar</button>
                     </div>
                 </div>
 
                 <!-- Material 9: Amarillo Victoria -->
                 <div class="material-card" data-category="granito">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/12-amarillo-victoria.jpg" alt="Amarillo Victoria Granito Exótico">
+                        <img class="material-image" src="images/catalogo/12-amarillo-victoria.jpg" alt="Amarillo Victoria">
                         <span class="material-badge">Granito</span>
                     </div>
                     <div class="material-info">
                         <h4 class="material-name">Amarillo Victoria</h4>
-                        <button class="btn-cotizar">Solicitar Cotización</button>
+                        <button class="btn-cotizar">Cotizar</button>
                     </div>
                 </div>
 
                 <!-- Material 10: Blanco Dallas -->
                 <div class="material-card" data-category="granito">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/13-blanco-dallas.jpg" alt="Blanco Dallas Granito Claro">
+                        <img class="material-image" src="images/catalogo/13-blanco-dallas.jpg" alt="Blanco Dallas">
                         <span class="material-badge">Granito</span>
                     </div>
                     <div class="material-info">
                         <h4 class="material-name">Blanco Dallas</h4>
-                        <button class="btn-cotizar">Solicitar Cotización</button>
+                        <button class="btn-cotizar">Cotizar</button>
+                    </div>
+                </div>
+
+                <!-- Material 11: Emperador Clásico -->
+                <div class="material-card" data-category="marmol">
+                    <div class="material-image-wrapper">
+                        <img class="material-image" src="images/catalogo/7-emperador-dark.jpg" alt="Emperador Clásico">
+                        <span class="material-badge">Mármol</span>
+                    </div>
+                    <div class="material-info">
+                        <h4 class="material-name">Emperador Clásico</h4>
+                        <button class="btn-cotizar">Cotizar</button>
+                    </div>
+                </div>
+
+                <!-- Material 12: Próximamente -->
+                <div class="material-card" data-category="cuarcita">
+                    <div class="material-image-wrapper">
+                        <img class="material-image" src="images/catalogo/1-calacatta-gold.jpg" alt="Próximamente" style="opacity: 0.3;">
+                        <span class="material-badge">Cuarcita</span>
+                    </div>
+                    <div class="material-info">
+                        <h4 class="material-name">Próximamente</h4>
+                        <button class="btn-cotizar" style="opacity: 0.5; cursor: not-allowed;">Próximamente</button>
                     </div>
                 </div>
             </div>
