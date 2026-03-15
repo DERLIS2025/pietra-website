@@ -457,8 +457,8 @@
         }
 
         /* ============================================
-           SECCIÓN CATÁLOGO DE MATERIALES - DISEÑO EXPANDIBLE TIPO SSANCHEZ
-        ============================================ */
+           SECCIÓN CATÁLOGO DE MATERIALES - DISEÑO LIMPIO
+           ============================================ */
         .catalog-section {
             padding: 100px 5%;
             background-color: #fafaf9;
@@ -513,30 +513,29 @@
         .materials-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
+            gap: 30px;
         }
 
-        /* Tarjeta con efecto expandible tipo ssanchez */
+        /* Tarjeta limpia sin overlay expandible */
         .material-card {
             position: relative;
-            overflow: hidden;
             background: white;
-            cursor: pointer;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
             border: 1px solid #f0f0f0;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .material-card:hover {
-            z-index: 10;
-            transform: scale(1.03);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            border-color: transparent;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
         }
 
         .material-image-wrapper {
             position: relative;
             width: 100%;
-            aspect-ratio: 1/1.2;
+            aspect-ratio: 1/1.1;
             overflow: hidden;
         }
 
@@ -544,33 +543,17 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s ease;
+            transition: transform 0.6s ease;
         }
 
         .material-card:hover .material-image {
-            transform: scale(1.1);
-        }
-
-        /* Overlay expandible en hover */
-        .material-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(26,26,26,0.95) 0%, rgba(26,26,26,0.8) 60%, transparent 100%);
-            padding: 60px 25px 25px;
-            transform: translateY(60%);
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .material-card:hover .material-overlay {
-            transform: translateY(0);
+            transform: scale(1.05);
         }
 
         .material-badge {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 15px;
+            left: 15px;
             background: rgba(255, 255, 255, 0.95);
             color: var(--color-dark);
             padding: 6px 14px;
@@ -578,58 +561,33 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 600;
-            z-index: 3;
             backdrop-filter: blur(10px);
-            transition: opacity 0.3s;
+            border-radius: 4px;
         }
 
-        .material-card:hover .material-badge {
-            opacity: 0;
+        /* Info debajo de la imagen */
+        .material-info {
+            padding: 25px;
+            text-align: center;
+            background: white;
         }
 
         .material-name {
             font-family: var(--font-serif);
-            font-size: 1.4rem;
-            color: white;
-            margin: 0 0 12px 0;
+            font-size: 1.3rem;
+            color: var(--color-dark);
+            margin: 0 0 18px 0;
             font-weight: 400;
             letter-spacing: -0.5px;
         }
 
-        .material-description {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.85);
-            line-height: 1.6;
-            margin-bottom: 20px;
-            font-weight: 300;
-        }
-
-        /* Descripción mobile (oculta en desktop) */
-        .material-description-mobile {
-            display: none;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.9);
-            line-height: 1.5;
-            margin-bottom: 15px;
-            font-weight: 300;
-        }
-
-        .material-features {
-            display: flex;
-            gap: 20px;
-            font-size: 0.75rem;
-            color: rgba(255,255,255,0.7);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-        }
-
-        .btn-cotizacion-overlay {
+        /* Botón de cotización elegante */
+        .btn-cotizar {
             width: 100%;
-            padding: 12px 24px;
+            padding: 14px 24px;
             background: transparent;
-            border: 1px solid rgba(255,255,255,0.4);
-            color: white;
+            color: var(--color-dark);
+            border: 1.5px solid var(--color-dark);
             font-family: var(--font-sans);
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -637,36 +595,35 @@
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .btn-cotizacion-overlay:hover {
-            background: white;
-            border-color: white;
-            color: var(--color-dark);
+        .btn-cotizar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--color-dark);
+            transition: left 0.3s ease;
+            z-index: -1;
         }
 
-        /* Info visible siempre (nombre abajo) */
-        .material-info-static {
-            padding: 20px;
-            background: white;
-            text-align: center;
-            border-top: 1px solid #f0f0f0;
+        .btn-cotizar:hover {
+            color: white;
+            border-color: var(--color-dark);
         }
 
-        .material-name-static {
-            font-family: var(--font-serif);
-            font-size: 1.1rem;
-            color: var(--color-dark);
-            margin: 0;
-            font-weight: 400;
+        .btn-cotizar:hover::before {
+            left: 0;
         }
 
         /* ============================================
            CATÁLOGO - RESPONSIVE
-        ============================================ */
+           ============================================ */
         @media (max-width: 768px) {
             .catalog-section {
                 padding: 60px 5%;
@@ -683,51 +640,14 @@
                 letter-spacing: 1px;
             }
 
-            /* Mobile: Grid 2x2 */
+            /* Mobile: Grid 2 columnas */
             .materials-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
+                gap: 15px;
             }
 
             .material-image-wrapper {
-                aspect-ratio: 1/1.1;
-            }
-
-            /* En mobile mostrar descripción corta, ocultar la larga */
-            .material-description {
-                display: none;
-            }
-
-            .material-description-mobile {
-                display: block;
-            }
-
-            .material-overlay {
-                padding: 40px 15px 15px;
-                transform: translateY(50%);
-            }
-
-            .material-name {
-                font-size: 1.1rem;
-                margin-bottom: 8px;
-            }
-
-            .material-features {
-                display: none;
-            }
-
-            .btn-cotizacion-overlay {
-                padding: 10px 16px;
-                font-size: 0.65rem;
-                letter-spacing: 1.5px;
-            }
-
-            .material-info-static {
-                padding: 12px;
-            }
-
-            .material-name-static {
-                font-size: 0.95rem;
+                aspect-ratio: 1/1;
             }
 
             .material-badge {
@@ -735,13 +655,29 @@
                 left: 10px;
                 padding: 4px 10px;
                 font-size: 0.6rem;
+                letter-spacing: 1px;
+            }
+
+            .material-info {
+                padding: 18px 15px;
+            }
+
+            .material-name {
+                font-size: 1rem;
+                margin-bottom: 12px;
+            }
+
+            .btn-cotizar {
+                padding: 12px 16px;
+                font-size: 0.65rem;
+                letter-spacing: 1.5px;
             }
         }
 
-        /* Tablets: 2 columnas */
+        /* Tablets: 2-3 columnas */
         @media (min-width: 769px) and (max-width: 1024px) {
             .materials-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
                 gap: 20px;
             }
             
@@ -749,27 +685,24 @@
                 aspect-ratio: 1/1.1;
             }
 
-            .material-overlay {
-                padding: 50px 20px 20px;
+            .material-name {
+                font-size: 1.1rem;
             }
         }
 
-        /* Desktop grande: 4 columnas perfectas */
+        /* Desktop grande: 4 columnas */
         @media (min-width: 1200px) {
             .materials-grid {
-                gap: 30px;
-            }
-            
-            .material-overlay {
-                padding: 70px 30px 30px;
+                gap: 35px;
             }
             
             .material-name {
-                font-size: 1.6rem;
+                font-size: 1.4rem;
             }
-
-            .material-description {
-                font-size: 0.95rem;
+            
+            .btn-cotizar {
+                padding: 16px 28px;
+                font-size: 0.8rem;
             }
         }
 
@@ -1114,7 +1047,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN CATÁLOGO DE MATERIALES - DISEÑO EXPANDIBLE -->
+    <!-- SECCIÓN CATÁLOGO DE MATERIALES - DISEÑO LIMPIO -->
     <section class="catalog-section" id="catalogo">
         <div class="container">
             <div class="catalog-header">
@@ -1134,42 +1067,24 @@
                 <!-- Material 1: Calacatta Gold -->
                 <div class="material-card" data-category="marmol">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/1-calacatta-gold.jpg"ujo">
+                        <img class="material-image" src="images/catalogo/1-calacatta-gold.jpg" alt="Calacatta Gold Mármol Italiano de Lujo">
                         <span class="material-badge">Mármol</span>
-                        <div class="material-overlay">
-                            <h3 class="material-name">Calacatta Gold</h3>
-                            <p class="material-description">Elegancia atemporal con vetas doradas que transforman cualquier espacio en una obra maestra. Ideal para cocinas de lujo y baños principales que buscan distinguirse.</p>
-                            <p class="material-description-mobile">Elegancia atemporal con vetas doradas únicas.</p>
-                            <div class="material-features">
-                                <span>2cm / 3cm</span>
-                                <span>Alto brillo</span>
-                            </div>
-                            <button class="btn-cotizacion-overlay">Solicitar Cotización</button>
-                        </div>
                     </div>
-                    <div class="material-info-static">
-                        <h4 class="material-name-static">Calacatta Gold</h4>
+                    <div class="material-info">
+                        <h4 class="material-name">Calacatta Gold</h4>
+                        <button class="btn-cotizar">Solicitar Cotización</button>
                     </div>
                 </div>
 
                 <!-- Material 2: Negro Marquina -->
                 <div class="material-card" data-category="marmol">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/negro-marquina.jpg" alt="Negro Marquina Mármol Español">
+                        <img class="material-image" src="images/catalogo/2-negro-marquina.jpg" alt="Negro Marquina Mármol Español">
                         <span class="material-badge">Mármol</span>
-                        <div class="material-overlay">
-                            <h3 class="material-name">Negro Marquina</h3>
-                            <p class="material-description">Sofisticación absoluta en negro intenso con delicadas vetas blancas. Perfecto para baños de diseño y mesadas statement que capturan todas las miradas.</p>
-                            <p class="material-description-mobile">Sofisticación absoluta en negro intenso.</p>
-                            <div class="material-features">
-                                <span>2cm / 3cm</span>
-                                <span>Textura única</span>
-                            </div>
-                            <button class="btn-cotizacion-overlay">Solicitar Cotización</button>
-                        </div>
                     </div>
-                    <div class="material-info-static">
-                        <h4 class="material-name-static">Negro Marquina</h4>
+                    <div class="material-info">
+                        <h4 class="material-name">Negro Marquina</h4>
+                        <button class="btn-cotizar">Solicitar Cotización</button>
                     </div>
                 </div>
 
@@ -1178,168 +1093,94 @@
                     <div class="material-image-wrapper">
                         <img class="material-image" src="images/catalogo/negro-absoluto.jpg" alt="Negro Absoluto Granito Indio Premium">
                         <span class="material-badge">Granito</span>
-                        <div class="material-overlay">
-                            <h3 class="material-name">Negro Absoluto</h3>
-                            <p class="material-description">Pureza mineral en su máxima expresión. Durabilidad incomparable y estética atemporal para proyectos que perduran generaciones sin perder su esplendor.</p>
-                            <p class="material-description-mobile">Pureza mineral de máxima durabilidad.</p>
-                            <div class="material-features">
-                                <span>2cm / 3cm</span>
-                                <span>Premium</span>
-                            </div>
-                            <button class="btn-cotizacion-overlay">Solicitar Cotización</button>
-                        </div>
                     </div>
-                    <div class="material-info-static">
-                        <h4 class="material-name-static">Negro Absoluto</h4>
+                    <div class="material-info">
+                        <h4 class="material-name">Negro Absoluto</h4>
+                        <button class="btn-cotizar">Solicitar Cotización</button>
                     </div>
                 </div>
 
                 <!-- Material 4: Blanco Estelar -->
                 <div class="material-card" data-category="cuarzo">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/cuarzo-blanco.jpg" alt="Blanco Estelar Cuarzo Ingeniería">
+                        <img class="material-image" src="images/catalogo/4-blanco-estelar.jpg" alt="Blanco Estelar Cuarzo Ingeniería">
                         <span class="material-badge">Cuarzo</span>
-                        <div class="material-overlay">
-                            <h3 class="material-name">Blanco Estelar</h3>
-                            <p class="material-description">Tecnología y belleza fusionadas. Superficie impenetrable que resiste el paso del tiempo sin perder su brillo estelar ni mancharse.</p>
-                            <p class="material-description-mobile">Tecnología y belleza fusionadas sin manchas.</p>
-                            <div class="material-features">
-                                <span>2cm / 3cm</span>
-                                <span>Anti-manchas</span>
-                            </div>
-                            <button class="btn-cotizacion-overlay">Solicitar Cotización</button>
-                        </div>
                     </div>
-                    <div class="material-info-static">
-                        <h4 class="material-name-static">Blanco Estelar</h4>
+                    <div class="material-info">
+                        <h4 class="material-name">Blanco Estelar</h4>
+                        <button class="btn-cotizar">Solicitar Cotización</button>
                     </div>
                 </div>
 
                 <!-- Material 5: Emperador Dark -->
                 <div class="material-card" data-category="marmol">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/emperador-dark.jpg" alt="Emperador Dark Mármol Turco Clásico">
+                        <img class="material-image" src="images/catalogo/6-emperador-dark.jpg" alt="Emperador Dark Mármol Turco Clásico">
                         <span class="material-badge">Mármol</span>
-                        <div class="material-overlay">
-                            <h3 class="material-name">Emperador Dark</h3>
-                            <p class="material-description">Majestuosidad clásica con tonos chocolate y vetas dramáticas. El favorito de interioristas para crear ambientes regios y sofisticados.</p>
-                            <p class="material-description-mobile">Majestuosidad clásica en tonos chocolate.</p>
-                            <div class="material-features">
-                                <span>2cm / 3cm</span>
-                                <span>Clásico</span>
-                            </div>
-                            <button class="btn-cotizacion-overlay">Solicitar Cotización</button>
-                        </div>
                     </div>
-                    <div class="material-info-static">
-                        <h4 class="material-name-static">Emperador Dark</h4>
+                    <div class="material-info">
+                        <h4 class="material-name">Emperador Dark</h4>
+                        <button class="btn-cotizar">Solicitar Cotización</button>
                     </div>
                 </div>
 
                 <!-- Material 6: Santa Cecilia -->
                 <div class="material-card" data-category="granito">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/santa-cecilia.jpg" alt="Santa Cecilia Granito Brasileño Versátil">
+                        <img class="material-image" src="images/catalogo/8-santa-cecilia.jpg" alt="Santa Cecilia Granito Brasileño Versátil">
                         <span class="material-badge">Granito</span>
-                        <div class="material-overlay">
-                            <h3 class="material-name">Santa Cecilia</h3>
-                            <p class="material-description">Calidez natural en tonos dorados y marrones. La elección perfecta para quienes buscan versatilidad con carácter propio y durabilidad.</p>
-                            <p class="material-description-mobile">Calidez natural en tonos dorados.</p>
-                            <div class="material-features">
-                                <span>2cm / 3cm</span>
-                                <span>Versátil</span>
-                            </div>
-                            <button class="btn-cotizacion-overlay">Solicitar Cotización</button>
-                        </div>
                     </div>
-                    <div class="material-info-static">
-                        <h4 class="material-name-static">Santa Cecilia</h4>
+                    <div class="material-info">
+                        <h4 class="material-name">Santa Cecilia</h4>
+                        <button class="btn-cotizar">Solicitar Cotización</button>
                     </div>
                 </div>
 
                 <!-- Material 7: Gris Concrete -->
                 <div class="material-card" data-category="cuarzo">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/cuarzo-concrete.jpg" alt="Gris Concrete Cuarzo Estilo Industrial">
+                        <img class="material-image" src="images/catalogo/9-gris-concrete.jpg" alt="Gris Concrete Cuarzo Estilo Industrial">
                         <span class="material-badge">Cuarzo</span>
-                        <div class="material-overlay">
-                            <h3 class="material-name">Gris Concrete</h3>
-                            <p class="material-description">Estética industrial refinada que captura la esencia del cemento con la resistencia superior del cuarzo. Diseño urbano elevado a su máxima expresión.</p>
-                            <p class="material-description-mobile">Estética industrial refinada y resistente.</p>
-                            <div class="material-features">
-                                <span>2cm / 3cm</span>
-                                <span>Industrial</span>
-                            </div>
-                            <button class="btn-cotizacion-overlay">Solicitar Cotización</button>
-                        </div>
                     </div>
-                    <div class="material-info-static">
-                        <h4 class="material-name-static">Gris Concrete</h4>
+                    <div class="material-info">
+                        <h4 class="material-name">Gris Concrete</h4>
+                        <button class="btn-cotizar">Solicitar Cotización</button>
                     </div>
                 </div>
 
                 <!-- Material 8: Statuario Extra -->
                 <div class="material-card" data-category="marmol">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/statuario.jpg" alt="Statuario Extra Mármol Italiano de Lujo">
+                        <img class="material-image" src="images/catalogo/11-statuario-extra.jpg" alt="Statuario Extra Mármol Italiano de Lujo">
                         <span class="material-badge">Mármol</span>
-                        <div class="material-overlay">
-                            <h3 class="material-name">Statuario Extra</h3>
-                            <p class="material-description">La cúspide del lujo en mármol blanco. Vetas grises dramáticas que convierten cada superficie en una escultura única e irrepetible.</p>
-                            <p class="material-description-mobile">La cúspide del lujo en mármol blanco.</p>
-                            <div class="material-features">
-                                <span>2cm / 3cm</span>
-                                <span>Lujo</span>
-                            </div>
-                            <button class="btn-cotizacion-overlay">Solicitar Cotización</button>
-                        </div>
                     </div>
-                    <div class="material-info-static">
-                        <h4 class="material-name-static">Statuario Extra</h4>
+                    <div class="material-info">
+                        <h4 class="material-name">Statuario Extra</h4>
+                        <button class="btn-cotizar">Solicitar Cotización</button>
                     </div>
                 </div>
-
-                <!-- NUEVOS MATERIALES -->
 
                 <!-- Material 9: Amarillo Victoria -->
                 <div class="material-card" data-category="granito">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/12-amarillo victoria.jpgco">
+                        <img class="material-image" src="images/catalogo/12-amarillo-victoria.jpg" alt="Amarillo Victoria Granito Exótico">
                         <span class="material-badge">Granito</span>
-                        <div class="material-overlay">
-                            <h3 class="material-name">Amarillo Victoria</h3>
-                            <p class="material-description">Vitalidad y energía en tonos amarillos dorados con vetas oscuras. Aporta luz y calidez a espacios contemporáneos que buscan diferenciarse.</p>
-                            <p class="material-description-mobile">Vitalidad dorada con vetas oscuras únicas.</p>
-                            <div class="material-features">
-                                <span>2cm / 3cm</span>
-                                <span>Exótico</span>
-                            </div>
-                            <button class="btn-cotizacion-overlay">Solicitar Cotización</button>
-                        </div>
                     </div>
-                    <div class="material-info-static">
-                        <h4 class="material-name-static">Amarillo Victoria</h4>
+                    <div class="material-info">
+                        <h4 class="material-name">Amarillo Victoria</h4>
+                        <button class="btn-cotizar">Solicitar Cotización</button>
                     </div>
                 </div>
 
                 <!-- Material 10: Blanco Dallas -->
                 <div class="material-card" data-category="granito">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/blanco-dallas.jpg" alt="Blanco Dallas Granito Claro">
+                        <img class="material-image" src="images/catalogo/13-blanco-dallas.jpg" alt="Blanco Dallas Granito Claro">
                         <span class="material-badge">Granito</span>
-                        <div class="material-overlay">
-                            <h3 class="material-name">Blanco Dallas</h3>
-                            <p class="material-description">Serenidad y amplitud visual en tonos blancos perlados con delicados granos grises. Ideal para ambientes luminosos y minimalistas que buscan sofisticación discreta.</p>
-                            <p class="material-description-mobile">Serenidad blanca con delicados granos grises.</p>
-                            <div class="material-features">
-                                <span>2cm / 3cm</span>
-                                <span>Luminoso</span>
-                            </div>
-                            <button class="btn-cotizacion-overlay">Solicitar Cotización</button>
-                        </div>
                     </div>
-                    <div class="material-info-static">
-                        <h4 class="material-name-static">Blanco Dallas</h4>
+                    <div class="material-info">
+                        <h4 class="material-name">Blanco Dallas</h4>
+                        <button class="btn-cotizar">Solicitar Cotización</button>
                     </div>
                 </div>
             </div>
