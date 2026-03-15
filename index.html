@@ -8,12 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --color-primary: #5a7c6c;
             --color-primary-dark: #4a6356;
@@ -23,1170 +18,325 @@
             --font-serif: 'Playfair Display', serif;
             --font-sans: 'Inter', sans-serif;
         }
+        body { font-family: var(--font-sans); color: var(--color-dark); overflow-x: hidden; }
 
-        body {
-            font-family: var(--font-sans);
-            color: var(--color-dark);
-            overflow-x: hidden;
-        }
-
-        /* ============================================
-           NAVEGACIÓN
-        ============================================ */
+        /* NAVEGACIÓN */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 1.5rem 4%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 1.5rem 4%; display: flex; justify-content: space-between; align-items: center;
             transition: all 0.4s ease;
         }
-
         .navbar.scrolled {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 4%;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            padding: 1rem 4%; box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
-
-        .navbar.scrolled .nav-links a,
-        .navbar.scrolled .logo {
-            color: var(--color-dark);
-        }
-
+        .navbar.scrolled .nav-links a, .navbar.scrolled .logo { color: var(--color-dark); }
         .logo {
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: white;
-            text-decoration: none;
-            letter-spacing: 2px;
+            font-family: var(--font-serif); font-size: 1.8rem; font-weight: 600;
+            color: white; text-decoration: none; letter-spacing: 2px;
         }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
         .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: opacity 0.3s;
-            position: relative;
+            color: white; text-decoration: none; font-size: 0.85rem; font-weight: 500;
+            text-transform: uppercase; letter-spacing: 1.5px; transition: opacity 0.3s; position: relative;
         }
-
         .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: currentColor;
-            transition: width 0.3s;
+            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px;
+            background: currentColor; transition: width 0.3s;
         }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-actions {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
+        .nav-links a:hover::after { width: 100%; }
+        .nav-actions { display: flex; gap: 1.5rem; align-items: center; }
         .btn-quote {
-            background: var(--color-primary);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border: none;
-            font-size: 0.8rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
+            background: var(--color-primary); color: white; padding: 0.8rem 1.5rem; border: none;
+            font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;
+            cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-block;
         }
+        .btn-quote:hover { background: var(--color-primary-dark); transform: translateY(-2px); }
 
-        .btn-quote:hover {
-            background: var(--color-primary-dark);
-            transform: translateY(-2px);
-        }
-
-        .icon-btn {
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-
-        .navbar.scrolled .icon-btn {
-            color: var(--color-dark);
-        }
-
-        /* ============================================
-           HERO SECTION
-        ============================================ */
+        /* HERO */
         .hero {
-            height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
             overflow: hidden;
         }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('images/categorias/cocina-6.jpg') center/cover;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: white;
-            max-width: 900px;
-            padding: 0 2rem;
-        }
-
-        .hero h1 {
-            font-family: var(--font-serif);
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 400;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-
-        .hero h1 em {
-            font-style: italic;
-            color: #a8b89a;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            font-weight: 300;
-            line-height: 1.8;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('images/categorias/cocina-6.jpg') center/cover; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%); }
+        .hero-content { position: relative; z-index: 2; text-align: center; color: white; max-width: 900px; padding: 0 2rem; }
+        .hero h1 { font-family: var(--font-serif); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 400; line-height: 1.2; margin-bottom: 1.5rem; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .hero h1 em { font-style: italic; color: #a8b89a; }
+        .hero p { font-size: 1.1rem; font-weight: 300; line-height: 1.8; margin-bottom: 2.5rem; opacity: 0.95; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
         .btn-primary {
-            background: var(--color-primary);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
+            background: var(--color-primary); color: white; padding: 1rem 2rem; border: none;
+            font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px;
+            cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-block;
         }
-
-        .btn-primary:hover {
-            background: var(--color-primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(90, 124, 108, 0.3);
-        }
-
+        .btn-primary:hover { background: var(--color-primary-dark); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(90, 124, 108, 0.3); }
         .btn-secondary {
-            background: transparent;
-            color: white;
-            padding: 1rem 2rem;
-            border: 1px solid rgba(255,255,255,0.5);
-            font-size: 0.85rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
+            background: transparent; color: white; padding: 1rem 2rem; border: 1px solid rgba(255,255,255,0.5);
+            font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px;
+            cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-block;
         }
+        .btn-secondary:hover { background: white; color: var(--color-dark); border-color: white; }
 
-        .btn-secondary:hover {
-            background: white;
-            color: var(--color-dark);
-            border-color: white;
-        }
+        /* CATEGORÍAS */
+        .categories-section { padding: 100px 5%; background-color: #f8f8f6; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .section-title { font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 2.8rem); text-align: center; color: var(--color-dark); margin-bottom: 60px; font-weight: 400; }
+        .categories-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
+        .category-card { position: relative; cursor: pointer; overflow: hidden; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; aspect-ratio: 3/4; }
+        .category-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
+        .category-image { position: relative; width: 100%; height: 100%; overflow: hidden; }
+        .category-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .category-card:hover .category-image img { transform: scale(1.1); }
+        .category-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.1) 100%); transition: background 0.3s ease; }
+        .category-card:hover .category-overlay { background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.2) 100%); }
+        .category-title { position: absolute; bottom: 20px; left: 15px; right: 15px; color: white; font-family: var(--font-serif); font-size: 1.1rem; font-weight: 500; margin: 0; z-index: 2; text-shadow: 0 2px 4px rgba(0,0,0,0.5); line-height: 1.3; }
 
-        /* ============================================
-           SECCIÓN CATEGORÍAS - OPTIMIZADA
-        ============================================ */
-        .categories-section {
-            padding: 100px 5%;
-            background-color: #f8f8f6;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-family: var(--font-serif);
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            text-align: center;
-            color: var(--color-dark);
-            margin-bottom: 60px;
-            font-weight: 400;
-        }
-
-        /* DESKTOP: 6 categorías en una línea */
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 20px;
-        }
-
-        /* Tarjeta de categoría */
-        .category-card {
-            position: relative;
-            cursor: pointer;
-            overflow: hidden;
-            border-radius: 4px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            aspect-ratio: 3/4;
-        }
-
-        .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-        }
-
-        .category-image {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .category-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .category-card:hover .category-image img {
-            transform: scale(1.1);
-        }
-
-        .category-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                to top,
-                rgba(0,0,0,0.8) 0%,
-                rgba(0,0,0,0.4) 40%,
-                rgba(0,0,0,0.1) 100%
-            );
-            transition: background 0.3s ease;
-        }
-
-        .category-card:hover .category-overlay {
-            background: linear-gradient(
-                to top,
-                rgba(0,0,0,0.9) 0%,
-                rgba(0,0,0,0.5) 50%,
-                rgba(0,0,0,0.2) 100%
-            );
-        }
-
-        .category-title {
-            position: absolute;
-            bottom: 20px;
-            left: 15px;
-            right: 15px;
-            color: white;
-            font-family: var(--font-serif);
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin: 0;
-            z-index: 2;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-            line-height: 1.3;
-        }
-
-        /* ============================================
-           CARRUSEL MOBILE
-        ============================================ */
         @media (max-width: 768px) {
-            .categories-section {
-                padding: 70px 0;
-                overflow: hidden;
-            }
-
-            .section-title {
-                margin-bottom: 30px;
-                padding: 0 5%;
-            }
-
-            /* Contenedor del carrusel */
-            .categories-carousel-wrapper {
-                position: relative;
-                width: 100%;
-                padding: 0 5%;
-            }
-
-            .categories-grid {
-                display: flex;
-                gap: 15px;
-                overflow-x: auto;
-                scroll-snap-type: x mandatory;
-                scroll-behavior: smooth;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-                padding-bottom: 20px;
-            }
-
-            .categories-grid::-webkit-scrollbar {
-                display: none;
-            }
-
-            /* Cada slide muestra 2 categorías */
-            .category-card {
-                flex: 0 0 calc(50% - 7.5px);
-                scroll-snap-align: start;
-                aspect-ratio: 3/4;
-            }
-
-            .category-title {
-                font-size: 1rem;
-                bottom: 15px;
-                left: 12px;
-                right: 12px;
-            }
-
-            /* Indicadores del carrusel */
-            .carousel-dots {
-                display: flex;
-                justify-content: center;
-                gap: 8px;
-                margin-top: 20px;
-                padding: 0 5%;
-            }
-
-            .carousel-dot {
-                width: 8px;
-                height: 8px;
-                border-radius: 50%;
-                background: #ccc;
-                cursor: pointer;
-                transition: all 0.3s;
-            }
-
-            .carousel-dot.active {
-                background: var(--color-primary);
-                width: 24px;
-                border-radius: 4px;
-            }
-
-            /* Botones de navegación */
-            .carousel-nav {
-                display: none;
-            }
+            .categories-section { padding: 70px 0; overflow: hidden; }
+            .section-title { margin-bottom: 30px; padding: 0 5%; }
+            .categories-carousel-wrapper { position: relative; width: 100%; padding: 0 5%; }
+            .categories-grid { display: flex; gap: 15px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 20px; }
+            .categories-grid::-webkit-scrollbar { display: none; }
+            .category-card { flex: 0 0 calc(50% - 7.5px); scroll-snap-align: start; aspect-ratio: 3/4; }
+            .category-title { font-size: 1rem; bottom: 15px; left: 12px; right: 12px; }
+            .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 20px; padding: 0 5%; }
+            .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: #ccc; cursor: pointer; transition: all 0.3s; }
+            .carousel-dot.active { background: var(--color-primary); width: 24px; border-radius: 4px; }
+            .carousel-nav { display: none; }
         }
-
-        /* Tablets: 3 columnas */
         @media (min-width: 769px) and (max-width: 1024px) {
-            .categories-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
-            }
-            
-            .category-card {
-                aspect-ratio: 4/3;
-            }
-            
-            .category-title {
-                font-size: 1.2rem;
-            }
+            .categories-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+            .category-card { aspect-ratio: 4/3; }
+            .category-title { font-size: 1.2rem; }
         }
-
-        /* Desktop grande: ajustes finos */
         @media (min-width: 1200px) {
-            .category-title {
-                font-size: 1.2rem;
-                bottom: 25px;
-                left: 20px;
-                right: 20px;
-            }
+            .category-title { font-size: 1.2rem; bottom: 25px; left: 20px; right: 20px; }
         }
 
-        /* ============================================
-           SECCIÓN CATÁLOGO DE MATERIALES - DISEÑO LIMPIO CON BOTÓN VERDE
-           ============================================ */
-        .catalog-section {
-            padding: 100px 5%;
-            background-color: #fafaf9;
-        }
+        /* CATÁLOGO */
+        .catalog-section { padding: 100px 5%; background-color: #fafaf9; }
+        .catalog-header { text-align: center; margin-bottom: 50px; }
+        .catalog-subtitle { font-family: var(--font-sans); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 4px; color: var(--color-primary); margin-bottom: 15px; font-weight: 500; }
+        .catalog-filters { display: flex; justify-content: center; gap: 12px; margin-bottom: 50px; flex-wrap: wrap; }
+        .filter-btn { padding: 10px 28px; border: 1px solid #e0e0e0; background: white; font-family: var(--font-sans); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; cursor: pointer; transition: all 0.3s ease; border-radius: 0; color: #666; font-weight: 400; }
+        .filter-btn:hover, .filter-btn.active { background: var(--color-dark); color: white; border-color: var(--color-dark); }
+        .materials-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
+        .material-card { position: relative; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: all 0.4s ease; border: 1px solid #e8e8e8; display: flex; flex-direction: column; }
+        .material-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.12); }
+        .material-image-wrapper { position: relative; width: 100%; aspect-ratio: 1/1; overflow: hidden; background: #f5f5f5; }
+        .material-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; display: block; }
+        .material-card:hover .material-image { transform: scale(1.05); }
+        .material-badge { position: absolute; top: 12px; left: 12px; background: var(--color-dark); color: white; padding: 6px 12px; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; border-radius: 4px; z-index: 2; }
+        .material-info { padding: 20px; text-align: center; background: #f0f0f0; border-top: 1px solid #e0e0e0; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .material-name { font-family: var(--font-serif); font-size: 1.2rem; color: var(--color-dark); margin: 0 0 15px 0; font-weight: 400; letter-spacing: -0.5px; }
+        .btn-cotizar { width: 100%; padding: 14px 20px; background: var(--color-primary); color: white; border: 2px solid var(--color-primary); font-family: var(--font-sans); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; border-radius: 6px; box-shadow: 0 4px 10px rgba(90, 124, 108, 0.3); text-decoration: none; display: inline-block; }
+        .btn-cotizar:hover { background: var(--color-primary-dark); border-color: var(--color-primary-dark); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(90, 124, 108, 0.4); }
 
-        .catalog-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .catalog-subtitle {
-            font-family: var(--font-sans);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--color-primary);
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-
-        .catalog-filters {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 50px;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 10px 28px;
-            border: 1px solid #e0e0e0;
-            background: white;
-            font-family: var(--font-sans);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 0;
-            color: #666;
-            font-weight: 400;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--color-dark);
-            color: white;
-            border-color: var(--color-dark);
-        }
-
-        /* Grid de materiales - SIEMPRE 4 columnas en desktop */
-        .materials-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-        }
-
-        /* Tarjeta limpia */
-        .material-card {
-            position: relative;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: all 0.4s ease;
-            border: 1px solid #e8e8e8;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .material-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-        }
-
-        .material-image-wrapper {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 1/1;
-            overflow: hidden;
-            background: #f5f5f5;
-        }
-
-        .material-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-            display: block;
-        }
-
-        .material-card:hover .material-image {
-            transform: scale(1.05);
-        }
-
-        .material-badge {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            background: var(--color-dark);
-            color: white;
-            padding: 6px 12px;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 600;
-            border-radius: 4px;
-            z-index: 2;
-        }
-
-        /* Info debajo de la imagen - FONDO GRIS para destacar botón */
-        .material-info {
-            padding: 20px;
-            text-align: center;
-            background: #f0f0f0;
-            border-top: 1px solid #e0e0e0;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .material-name {
-            font-family: var(--font-serif);
-            font-size: 1.2rem;
-            color: var(--color-dark);
-            margin: 0 0 15px 0;
-            font-weight: 400;
-            letter-spacing: -0.5px;
-        }
-
-        /* Botón de cotización VERDE - NO se pierde */
-        .btn-cotizar {
-            width: 100%;
-            padding: 14px 20px;
-            background: var(--color-primary);
-            color: white;
-            border: 2px solid var(--color-primary);
-            font-family: var(--font-sans);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 6px;
-            box-shadow: 0 4px 10px rgba(90, 124, 108, 0.3);
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-cotizar:hover {
-            background: var(--color-primary-dark);
-            border-color: var(--color-primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(90, 124, 108, 0.4);
-        }
-
-        /* ============================================
-           CATÁLOGO - RESPONSIVE
-           ============================================ */
         @media (max-width: 768px) {
-            .catalog-section {
-                padding: 60px 5%;
-            }
-
-            .catalog-filters {
-                gap: 8px;
-                margin-bottom: 30px;
-            }
-
-            .filter-btn {
-                padding: 8px 16px;
-                font-size: 0.7rem;
-                letter-spacing: 1px;
-            }
-
-            /* Mobile: Grid 2 columnas */
-            .materials-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-
-            .material-image-wrapper {
-                aspect-ratio: 1/1;
-            }
-
-            .material-badge {
-                top: 8px;
-                left: 8px;
-                padding: 4px 8px;
-                font-size: 0.55rem;
-                letter-spacing: 1px;
-            }
-
-            .material-info {
-                padding: 15px 12px;
-            }
-
-            .material-name {
-                font-size: 1rem;
-                margin-bottom: 12px;
-            }
-
-            .btn-cotizar {
-                padding: 12px 16px;
-                font-size: 0.7rem;
-                letter-spacing: 1px;
-            }
+            .catalog-section { padding: 60px 5%; }
+            .catalog-filters { gap: 8px; margin-bottom: 30px; }
+            .filter-btn { padding: 8px 16px; font-size: 0.7rem; letter-spacing: 1px; }
+            .materials-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .material-image-wrapper { aspect-ratio: 1/1; }
+            .material-badge { top: 8px; left: 8px; padding: 4px 8px; font-size: 0.55rem; letter-spacing: 1px; }
+            .material-info { padding: 15px 12px; }
+            .material-name { font-size: 1rem; margin-bottom: 12px; }
+            .btn-cotizar { padding: 12px 16px; font-size: 0.7rem; letter-spacing: 1px; }
         }
-
-        /* Tablets: 3 columnas */
         @media (min-width: 769px) and (max-width: 1024px) {
-            .materials-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
-            }
-            
-            .material-image-wrapper {
-                aspect-ratio: 1/1;
-            }
-
-            .material-name {
-                font-size: 1.1rem;
-            }
+            .materials-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+            .material-image-wrapper { aspect-ratio: 1/1; }
+            .material-name { font-size: 1.1rem; }
         }
-
-        /* Desktop grande: 4 columnas */
         @media (min-width: 1200px) {
-            .materials-grid {
-                gap: 30px;
-            }
-            
-            .material-name {
-                font-size: 1.3rem;
-            }
-            
-            .btn-cotizar {
-                padding: 16px 24px;
-                font-size: 0.85rem;
-            }
+            .materials-grid { gap: 30px; }
+            .material-name { font-size: 1.3rem; }
+            .btn-cotizar { padding: 16px 24px; font-size: 0.85rem; }
         }
 
-        /* ============================================
-           SECCIÓN PRODUCTO DESTACADO - NUEVA
-        ============================================ */
-        .featured-section {
-            padding: 100px 5%;
-            background: linear-gradient(135deg, #f5f5f0 0%, #e8e8e0 100%);
-            overflow: hidden;
-        }
+        /* DESTACADO */
+        .featured-section { padding: 100px 5%; background: linear-gradient(135deg, #f5f5f0 0%, #e8e8e0 100%); overflow: hidden; }
+        .featured-container { max-width: 1400px; margin: 0 auto; }
+        .featured-header { text-align: center; margin-bottom: 50px; }
+        .featured-subtitle { font-family: var(--font-sans); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 4px; color: var(--color-primary); margin-bottom: 15px; font-weight: 500; }
+        .featured-title { font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 2.8rem); color: var(--color-dark); font-weight: 400; }
+        .featured-content { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
+        .featured-text { padding-right: 20px; }
+        .featured-text h3 { font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--color-dark); margin-bottom: 20px; font-weight: 400; line-height: 1.3; }
+        .featured-text p { font-size: 1.1rem; line-height: 1.8; color: #555; margin-bottom: 30px; }
+        .featured-benefits { list-style: none; margin-bottom: 30px; }
+        .featured-benefits li { padding: 10px 0; padding-left: 30px; position: relative; color: #444; font-size: 1rem; }
+        .featured-benefits li::before { content: '✓'; position: absolute; left: 0; color: var(--color-primary); font-weight: bold; font-size: 1.2rem; }
+        .featured-carousel-wrapper { position: relative; width: 100%; }
+        .featured-carousel { position: relative; width: 100%; height: 500px; overflow: hidden; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+        .featured-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.6s ease; }
+        .featured-slide.active { opacity: 1; }
+        .featured-slide img { width: 100%; height: 100%; object-fit: cover; }
+        .featured-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--color-dark); transition: all 0.3s; z-index: 10; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .featured-nav:hover { background: white; transform: translateY(-50%) scale(1.1); }
+        .featured-nav.prev { left: 20px; }
+        .featured-nav.next { right: 20px; }
+        .featured-dots { display: flex; justify-content: center; gap: 10px; margin-top: 25px; }
+        .featured-dot { width: 10px; height: 10px; border-radius: 50%; background: #ccc; cursor: pointer; transition: all 0.3s; border: none; }
+        .featured-dot.active { background: var(--color-primary); width: 30px; border-radius: 5px; }
 
-        .featured-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .featured-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .featured-subtitle {
-            font-family: var(--font-sans);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--color-primary);
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-
-        .featured-title {
-            font-family: var(--font-serif);
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            color: var(--color-dark);
-            font-weight: 400;
-        }
-
-        .featured-content {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .featured-text {
-            padding-right: 20px;
-        }
-
-        .featured-text h3 {
-            font-family: var(--font-serif);
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
-            color: var(--color-dark);
-            margin-bottom: 20px;
-            font-weight: 400;
-            line-height: 1.3;
-        }
-
-        .featured-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 30px;
-        }
-
-        .featured-benefits {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-
-        .featured-benefits li {
-            padding: 10px 0;
-            padding-left: 30px;
-            position: relative;
-            color: #444;
-            font-size: 1rem;
-        }
-
-        .featured-benefits li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--color-primary);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .featured-carousel-wrapper {
-            position: relative;
-            width: 100%;
-        }
-
-        .featured-carousel {
-            position: relative;
-            width: 100%;
-            height: 500px;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-        }
-
-        .featured-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.6s ease;
-        }
-
-        .featured-slide.active {
-            opacity: 1;
-        }
-
-        .featured-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .featured-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255,255,255,0.9);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--color-dark);
-            transition: all 0.3s;
-            z-index: 10;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .featured-nav:hover {
-            background: white;
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .featured-nav.prev {
-            left: 20px;
-        }
-
-        .featured-nav.next {
-            right: 20px;
-        }
-
-        .featured-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 25px;
-        }
-
-        .featured-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #ccc;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
-        }
-
-        .featured-dot.active {
-            background: var(--color-primary);
-            width: 30px;
-            border-radius: 5px;
-        }
-
-        /* Responsive Featured Section */
         @media (max-width: 968px) {
-            .featured-section {
-                padding: 70px 5%;
-            }
-
-            .featured-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .featured-text {
-                padding-right: 0;
-                text-align: center;
-                order: 2;
-            }
-
-            .featured-benefits {
-                display: inline-block;
-                text-align: left;
-            }
-
-            .featured-carousel-wrapper {
-                order: 1;
-            }
-
-            .featured-carousel {
-                height: 350px;
-            }
-
-            .featured-nav {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-
-            .featured-nav.prev {
-                left: 10px;
-            }
-
-            .featured-nav.next {
-                right: 10px;
-            }
+            .featured-section { padding: 70px 5%; }
+            .featured-content { grid-template-columns: 1fr; gap: 40px; }
+            .featured-text { padding-right: 0; text-align: center; order: 2; }
+            .featured-benefits { display: inline-block; text-align: left; }
+            .featured-carousel-wrapper { order: 1; }
+            .featured-carousel { height: 350px; }
+            .featured-nav { width: 40px; height: 40px; font-size: 1.2rem; }
+            .featured-nav.prev { left: 10px; }
+            .featured-nav.next { right: 10px; }
         }
-
         @media (max-width: 480px) {
-            .featured-carousel {
-                height: 280px;
-            }
-
-            .featured-text h3 {
-                font-size: 1.5rem;
-            }
-
-            .featured-text p {
-                font-size: 1rem;
-            }
+            .featured-carousel { height: 280px; }
+            .featured-text h3 { font-size: 1.5rem; }
+            .featured-text p { font-size: 1rem; }
         }
 
-        /* ============================================
-           CARRUSEL DE PROYECTOS
-        ============================================ */
-        .projects-section {
-            padding: 80px 0;
-            background: white;
-            overflow: hidden;
-        }
+        /* NUESTROS TRABAJOS - MASONRY */
+        .works-section { padding: 100px 5%; background-color: #f8f8f6; }
+        .works-header { text-align: center; margin-bottom: 50px; }
+        .works-subtitle { font-family: var(--font-sans); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 4px; color: var(--color-primary); margin-bottom: 15px; font-weight: 500; }
+        .works-title { font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 2.8rem); color: var(--color-dark); font-weight: 400; margin-bottom: 40px; }
 
-        .projects-header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 0 5%;
+        .works-filters {
+            display: flex; justify-content: center; gap: 12px; margin-bottom: 50px; flex-wrap: wrap;
+            position: sticky; top: 80px; z-index: 100; padding: 15px 0;
+            background: rgba(248, 248, 246, 0.95); backdrop-filter: blur(10px);
         }
-
-        .projects-subtitle {
-            font-family: var(--font-sans);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--color-primary);
-            margin-bottom: 10px;
-            font-weight: 500;
+        .works-filter-btn {
+            padding: 12px 30px; border: 2px solid var(--color-dark); background: transparent;
+            font-family: var(--font-sans); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px;
+            cursor: pointer; transition: all 0.3s ease; color: var(--color-dark); font-weight: 500;
         }
+        .works-filter-btn:hover, .works-filter-btn.active { background: var(--color-dark); color: white; }
 
-        .projects-title {
-            font-family: var(--font-serif);
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            color: var(--color-dark);
-            font-weight: 400;
+        .works-grid { column-count: 4; column-gap: 20px; }
+        .work-item {
+            break-inside: avoid; margin-bottom: 20px; position: relative; overflow: hidden;
+            border-radius: 8px; cursor: pointer; background: #ddd;
         }
-
-        .projects-carousel-container {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
+        .work-item img { width: 100%; height: auto; display: block; transition: transform 0.5s ease; }
+        .work-item:hover img { transform: scale(1.05); }
+        .work-overlay {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(90, 124, 108, 0.9); display: flex; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s ease;
         }
-
-        .projects-carousel {
-            display: flex;
-            gap: 20px;
-            animation: scroll 40s linear infinite;
-            width: max-content;
-            padding: 20px 0;
+        .work-item:hover .work-overlay { opacity: 1; }
+        .work-view-btn {
+            color: white; font-family: var(--font-sans); font-size: 0.85rem; text-transform: uppercase;
+            letter-spacing: 2px; border: 2px solid white; padding: 12px 24px; background: transparent;
+            cursor: pointer; transition: all 0.3s;
         }
+        .work-view-btn:hover { background: white; color: var(--color-primary); }
 
-        .projects-carousel:hover {
-            animation-play-state: paused;
-        }
-
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        .project-item {
-            flex: 0 0 auto;
-            width: 350px;
-            position: relative;
-            overflow: hidden;
-            border-radius: 4px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .project-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .project-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .project-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            padding: 30px 20px 20px;
-            color: white;
-        }
-
-        .project-name {
-            font-family: var(--font-serif);
-            font-size: 1.2rem;
-            margin: 0;
-            font-weight: 400;
-        }
-
-        .project-type {
-            font-size: 0.8rem;
-            opacity: 0.8;
-            margin-top: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Responsive Projects */
+        @media (max-width: 1200px) { .works-grid { column-count: 3; } }
         @media (max-width: 768px) {
-            .projects-section {
-                padding: 60px 0;
-            }
-
-            .project-item {
-                width: 280px;
-            }
-
-            .project-item img {
-                height: 200px;
-            }
-
-            .project-name {
-                font-size: 1rem;
-            }
+            .works-section { padding: 70px 5%; }
+            .works-filters { top: 70px; gap: 8px; padding: 10px 0; }
+            .works-filter-btn { padding: 10px 20px; font-size: 0.75rem; }
+            .works-grid { column-count: 2; column-gap: 12px; }
+            .work-item { margin-bottom: 12px; border-radius: 6px; }
+        }
+        @media (max-width: 480px) {
+            .works-grid { column-count: 2; column-gap: 10px; }
+            .work-item { margin-bottom: 10px; }
         }
 
-        /* ============================================
-           FOOTER
-        ============================================ */
-        footer {
-            background: var(--color-dark);
-            color: white;
-            padding: 60px 5% 30px;
+        /* LIGHTBOX */
+        .lightbox {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(26, 26, 26, 0.95); z-index: 2000; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s ease;
         }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+        .lightbox.active { display: flex; opacity: 1; }
+        .lightbox-content { position: relative; max-width: 90vw; max-height: 90vh; display: flex; flex-direction: column; align-items: center; }
+        .lightbox-image-container { position: relative; display: flex; align-items: center; justify-content: center; }
+        .lightbox-img { max-width: 85vw; max-height: 80vh; object-fit: contain; border-radius: 4px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+        .lightbox-close {
+            position: absolute; top: -50px; right: 0; background: none; border: none; color: white;
+            font-size: 2.5rem; cursor: pointer; width: 50px; height: 50px; display: flex; align-items: center;
+            justify-content: center; transition: transform 0.3s; z-index: 2001;
         }
-
-        .footer-section h4 {
-            font-family: var(--font-serif);
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: var(--color-primary);
+        .lightbox-close:hover { transform: rotate(90deg); }
+        .lightbox-nav {
+            position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3); width: 60px; height: 60px; border-radius: 50%;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.8rem;
+            color: white; transition: all 0.3s; backdrop-filter: blur(10px);
         }
+        .lightbox-nav:hover { background: rgba(255,255,255,0.2); border-color: white; transform: translateY(-50%) scale(1.1); }
+        .lightbox-nav.prev { left: -100px; }
+        .lightbox-nav.next { right: -100px; }
+        .lightbox-counter { color: white; font-family: var(--font-sans); font-size: 1rem; margin-top: 20px; letter-spacing: 2px; text-transform: uppercase; }
+        .lightbox-counter span { color: var(--color-primary); font-weight: 600; }
 
-        .footer-section p {
-            color: #aaa;
-            line-height: 1.6;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 12px;
-        }
-
-        .footer-section a {
-            color: #aaa;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-size: 0.95rem;
-        }
-
-        .footer-section a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #333;
-            padding-top: 30px;
-            text-align: center;
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        /* ============================================
-           WHATSAPP FLOAT
-        ============================================ */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: #25d366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 28px;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            cursor: pointer;
-            z-index: 999;
-            transition: transform 0.3s;
-            text-decoration: none;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
-
-        .whatsapp-float svg {
-            width: 28px;
-            height: 28px;
-        }
-
-        /* ============================================
-           RESPONSIVE NAV
-        ============================================ */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn-primary, .btn-secondary {
-                width: 100%;
-                max-width: 300px;
-            }
+            .lightbox-nav { width: 45px; height: 45px; font-size: 1.3rem; }
+            .lightbox-nav.prev { left: 10px; }
+            .lightbox-nav.next { right: 10px; }
+            .lightbox-close { top: 20px; right: 20px; font-size: 2rem; }
+            .lightbox-img { max-width: 95vw; max-height: 70vh; }
+            .lightbox-counter { font-size: 0.9rem; }
+        }
 
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                font-size: 24px;
-                bottom: 20px;
-                right: 20px;
-            }
+        /* CARRUSEL PROYECTOS */
+        .projects-section { padding: 80px 0; background: white; overflow: hidden; }
+        .projects-header { text-align: center; margin-bottom: 40px; padding: 0 5%; }
+        .projects-subtitle { font-family: var(--font-sans); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 4px; color: var(--color-primary); margin-bottom: 10px; font-weight: 500; }
+        .projects-title { font-family: var(--font-serif); font-size: clamp(1.8rem, 4vw, 2.5rem); color: var(--color-dark); font-weight: 400; }
+        .projects-carousel-container { position: relative; width: 100%; overflow: hidden; }
+        .projects-carousel { display: flex; gap: 20px; animation: scroll 40s linear infinite; width: max-content; padding: 20px 0; }
+        .projects-carousel:hover { animation-play-state: paused; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .project-item { flex: 0 0 auto; width: 350px; position: relative; overflow: hidden; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .project-item img { width: 100%; height: 250px; object-fit: cover; transition: transform 0.5s ease; }
+        .project-item:hover img { transform: scale(1.05); }
+        .project-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 30px 20px 20px; color: white; }
+        .project-name { font-family: var(--font-serif); font-size: 1.2rem; margin: 0; font-weight: 400; }
+        .project-type { font-size: 0.8rem; opacity: 0.8; margin-top: 5px; text-transform: uppercase; letter-spacing: 1px; }
 
-            .whatsapp-float svg {
-                width: 24px;
-                height: 24px;
-            }
+        @media (max-width: 768px) {
+            .projects-section { padding: 60px 0; }
+            .project-item { width: 280px; }
+            .project-item img { height: 200px; }
+            .project-name { font-size: 1rem; }
+        }
+
+        /* FOOTER */
+        footer { background: var(--color-dark); color: white; padding: 60px 5% 30px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-section h4 { font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 20px; color: var(--color-primary); }
+        .footer-section p { color: #aaa; line-height: 1.6; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 12px; }
+        .footer-section a { color: #aaa; text-decoration: none; transition: color 0.3s; font-size: 0.95rem; }
+        .footer-section a:hover { color: white; }
+        .footer-bottom { border-top: 1px solid #333; padding-top: 30px; text-align: center; color: #666; font-size: 0.9rem; }
+        .footer-bottom a { color: var(--color-primary); text-decoration: none; transition: color 0.3s; }
+        .footer-bottom a:hover { color: white; }
+
+        /* WHATSAPP */
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 28px; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); cursor: pointer; z-index: 999; transition: transform 0.3s; text-decoration: none; }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        .whatsapp-float svg { width: 28px; height: 28px; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn-primary, .btn-secondary { width: 100%; max-width: 300px; }
+            .whatsapp-float { width: 50px; height: 50px; font-size: 24px; bottom: 20px; right: 20px; }
+            .whatsapp-float svg { width: 24px; height: 24px; }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -1198,7 +348,7 @@
             <li><a href="#categorias">Servicios</a></li>
             <li><a href="#catalogo">Catálogo</a></li>
             <li><a href="#destacado">Destacado</a></li>
-            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#trabajos">Trabajos</a></li>
             <li><a href="#contacto">Contacto</a></li>
         </ul>
         <div class="nav-actions">
@@ -1206,102 +356,81 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
+    <!-- HERO -->
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Lujo en cada detalle de <em>granito</em></h1>
-            <p>Diseño y fabricación de cocinas, baños y mobiliario a medida con los materiales más exclusivos del mercado. Cada proyecto cuenta una historia de elegancia atemporal.</p>
+            <p>Diseño y fabricación de cocinas, baños y mobiliario a medida con los materiales más exclusivos del mercado.</p>
             <div class="hero-buttons">
                 <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20gustaría%20solicitar%20una%20cotización" class="btn-primary" target="_blank">SOLICITAR COTIZACIÓN</a>
-                <a href="#proyectos" class="btn-secondary">Ver Proyectos</a>
+                <a href="#trabajos" class="btn-secondary">Ver Trabajos</a>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN CATEGORÍAS - OPTIMIZADA -->
+    <!-- CATEGORÍAS -->
     <section class="categories-section" id="categorias">
         <div class="container">
             <h2 class="section-title">Nuestros Servicios</h2>
-            
             <div class="categories-carousel-wrapper">
                 <div class="categories-grid" id="categoriesGrid">
-                    <!-- Categoría 1: Cocinas -->
                     <div class="category-card">
                         <div class="category-image">
-                            <img src="images/categorias/cocina-6.jpg" 
-                                 alt="Cocinas Premium en mármol y granito">
+                            <img src="images/categorias/cocina-6.jpg" alt="Cocinas Premium">
                             <div class="category-overlay"></div>
                         </div>
                         <h3 class="category-title">Cocinas Premium</h3>
                     </div>
-
-                    <!-- Categoría 2: Baños -->
                     <div class="category-card">
                         <div class="category-image">
-                            <img src="images/categorias/baño-3.jpg" 
-                                 alt="Baños de lujo en mármol">
+                            <img src="images/categorias/baño-3.jpg" alt="Baños de Lujo">
                             <div class="category-overlay"></div>
                         </div>
                         <h3 class="category-title">Baños de Lujo</h3>
                     </div>
-
-                    <!-- Categoría 3: Closets -->
                     <div class="category-card">
                         <div class="category-image">
-                            <img src="images/categorias/closets.jpg" 
-                                 alt="Closets y muebles a medida">
+                            <img src="images/categorias/closets.jpg" alt="Muebles a medida">
                             <div class="category-overlay"></div>
                         </div>
                         <h3 class="category-title">Mueble a medida</h3>
                     </div>
-
-                    <!-- Categoría 4: Quinchos -->
                     <div class="category-card">
                         <div class="category-image">
-                            <img src="images/categorias/quincho.jpg" 
-                                 alt="Quinchos y espacios exteriores">
+                            <img src="images/categorias/quincho.jpg" alt="Quinchos">
                             <div class="category-overlay"></div>
                         </div>
                         <h3 class="category-title">Quinchos & Exteriores</h3>
                     </div>
-
-                    <!-- Categoría 5: Granitos -->
                     <div class="category-card">
                         <div class="category-image">
-                            <img src="images/categorias/granito.jpg" 
-                                 alt="Granitos exclusivos">
+                            <img src="images/categorias/granito.jpg" alt="Granitos">
                             <div class="category-overlay"></div>
                         </div>
                         <h3 class="category-title">Granitos Exclusivos</h3>
                     </div>
-
-                    <!-- Categoría 6: Mármoles -->
                     <div class="category-card">
                         <div class="category-image">
-                            <img src="images/categorias/marmol.jpg" 
-                                 alt="Mármoles importados">
+                            <img src="images/categorias/marmol.jpg" alt="Mármoles">
                             <div class="category-overlay"></div>
                         </div>
                         <h3 class="category-title">Mármoles Importados</h3>
                     </div>
                 </div>
-                
-                <!-- Indicadores solo visible en mobile -->
                 <div class="carousel-dots" id="carouselDots"></div>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN CATÁLOGO DE MATERIALES - AGREGADA -->
+    <!-- CATÁLOGO -->
     <section class="catalog-section" id="catalogo">
         <div class="container">
             <div class="catalog-header">
                 <p class="catalog-subtitle">Materiales Exclusivos</p>
                 <h2 class="section-title">Nuestro Catálogo</h2>
             </div>
-
             <div class="catalog-filters">
                 <button class="filter-btn active" data-filter="all">Todos</button>
                 <button class="filter-btn" data-filter="marmol">Mármoles</button>
@@ -1309,9 +438,7 @@
                 <button class="filter-btn" data-filter="cuarzo">Cuarzos</button>
                 <button class="filter-btn" data-filter="cuarcita">Cuarcitas</button>
             </div>
-
             <div class="materials-grid" id="materialsGrid">
-                <!-- Material 1: Calacatta Gold -->
                 <div class="material-card" data-category="marmol">
                     <div class="material-image-wrapper">
                         <img class="material-image" src="images/catalogo/1-calacatta-gold.jpg" alt="Calacatta Gold">
@@ -1322,8 +449,6 @@
                         <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Calacatta%20Gold" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
-
-                <!-- Material 2: Negro Marquina -->
                 <div class="material-card" data-category="marmol">
                     <div class="material-image-wrapper">
                         <img class="material-image" src="images/catalogo/2-negro-marquina.jpg" alt="Negro Marquina">
@@ -1334,8 +459,6 @@
                         <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Negro%20Marquina" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
-
-                <!-- Material 3: Blanco Estelar -->
                 <div class="material-card" data-category="cuarzo">
                     <div class="material-image-wrapper">
                         <img class="material-image" src="images/catalogo/4-blanco-estelar.jpg" alt="Blanco Estelar">
@@ -1346,8 +469,6 @@
                         <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Blanco%20Estelar" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
-
-                <!-- Material 4: Negro Absoluto -->
                 <div class="material-card" data-category="granito">
                     <div class="material-image-wrapper">
                         <img class="material-image" src="images/catalogo/14-negro-absoluto.jpg" alt="Negro Absoluto">
@@ -1358,8 +479,6 @@
                         <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Negro%20Absoluto" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
-
-                <!-- Material 5: Emperador Dark -->
                 <div class="material-card" data-category="marmol">
                     <div class="material-image-wrapper">
                         <img class="material-image" src="images/catalogo/7-emperador-dark.jpg" alt="Emperador Dark">
@@ -1370,8 +489,6 @@
                         <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Emperador%20Dark" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
-
-                <!-- Material 6: Santa Cecilia -->
                 <div class="material-card" data-category="granito">
                     <div class="material-image-wrapper">
                         <img class="material-image" src="images/catalogo/8-santa-cecilia.jpg" alt="Santa Cecilia">
@@ -1382,8 +499,6 @@
                         <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Santa%20Cecilia" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
-
-                <!-- Material 7: Gris Concrete -->
                 <div class="material-card" data-category="cuarzo">
                     <div class="material-image-wrapper">
                         <img class="material-image" src="images/catalogo/9-gris-concrete.jpg" alt="Gris Concrete">
@@ -1394,8 +509,6 @@
                         <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Gris%20Concrete" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
-
-                <!-- Material 8: Statuario Extra -->
                 <div class="material-card" data-category="marmol">
                     <div class="material-image-wrapper">
                         <img class="material-image" src="images/catalogo/11-statuario-extra.jpg" alt="Statuario Extra">
@@ -1406,8 +519,6 @@
                         <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Statuario%20Extra" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
-
-                <!-- Material 9: Amarillo Victoria -->
                 <div class="material-card" data-category="granito">
                     <div class="material-image-wrapper">
                         <img class="material-image" src="images/catalogo/12-amarillo-victoria.jpg" alt="Amarillo Victoria">
@@ -1418,8 +529,6 @@
                         <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Amarillo%20Victoria" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
-
-                <!-- Material 10: Blanco Dallas -->
                 <div class="material-card" data-category="granito">
                     <div class="material-image-wrapper">
                         <img class="material-image" src="images/catalogo/13-blanco-dallas.jpg" alt="Blanco Dallas">
@@ -1430,8 +539,6 @@
                         <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Blanco%20Dallas" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
-
-                <!-- Material 11: Próximamente -->
                 <div class="material-card" data-category="cuarcita">
                     <div class="material-image-wrapper">
                         <img class="material-image" src="images/catalogo/1-calacatta-gold.jpg" alt="Próximamente" style="opacity: 0.3;">
@@ -1442,8 +549,6 @@
                         <button class="btn-cotizar" style="opacity: 0.5; cursor: not-allowed;">Próximamente</button>
                     </div>
                 </div>
-
-                <!-- Material 12: Próximamente -->
                 <div class="material-card" data-category="cuarcita">
                     <div class="material-image-wrapper">
                         <img class="material-image" src="images/catalogo/1-calacatta-gold.jpg" alt="Próximamente" style="opacity: 0.3;">
@@ -1458,18 +563,17 @@
         </div>
     </section>
 
-    <!-- SECCIÓN PRODUCTO DESTACADO - NUEVA -->
+    <!-- DESTACADO -->
     <section class="featured-section" id="destacado">
         <div class="featured-container">
             <div class="featured-header">
                 <p class="featured-subtitle">Especial de la Casa</p>
                 <h2 class="featured-title">Trabajos Personalizados y a Medida</h2>
             </div>
-            
             <div class="featured-content">
                 <div class="featured-text">
                     <h3>Isla de Cocina con Desayunador Integrado</h3>
-                    <p>Ponemos todo nuestro empeño para que cada trabajo realizado se convierta en una creación única. Realizamos obras atendiendo a sus requisitos, asesorando con todo lo que sea necesario y en estrecha comunicación con usted.</p>
+                    <p>Ponemos todo nuestro empeño para que cada trabajo realizado se convierta en una creación única.</p>
                     <ul class="featured-benefits">
                         <li>Diseño 100% personalizado a tus necesidades</li>
                         <li>Materiales de primera calidad importados</li>
@@ -1477,28 +581,17 @@
                         <li>Asesoramiento técnico especializado</li>
                         <li>Instalación y logística incluida</li>
                     </ul>
-                    <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20el%20producto%20destacado%20-%20Isla%20de%20Cocina%20con%20Desayunador" class="btn-primary" target="_blank">Consultar por este Proyecto</a>
+                    <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20el%20producto%20destacado" class="btn-primary" target="_blank">Consultar por este Proyecto</a>
                 </div>
-                
                 <div class="featured-carousel-wrapper">
                     <div class="featured-carousel" id="featuredCarousel">
-                        <div class="featured-slide active">
-                            <img src="images/categorias/cocina-6.jpg" alt="Isla de cocina vista 1">
-                        </div>
-                        <div class="featured-slide">
-                            <img src="images/categorias/cocina-6.jpg" alt="Isla de cocina vista 2">
-                        </div>
-                        <div class="featured-slide">
-                            <img src="images/categorias/cocina-6.jpg" alt="Isla de cocina vista 3">
-                        </div>
-                        <div class="featured-slide">
-                            <img src="images/categorias/cocina-6.jpg" alt="Isla de cocina vista 4">
-                        </div>
-                        
+                        <div class="featured-slide active"><img src="images/categorias/cocina-6.jpg" alt="Vista 1"></div>
+                        <div class="featured-slide"><img src="images/categorias/cocina-6.jpg" alt="Vista 2"></div>
+                        <div class="featured-slide"><img src="images/categorias/cocina-6.jpg" alt="Vista 3"></div>
+                        <div class="featured-slide"><img src="images/categorias/cocina-6.jpg" alt="Vista 4"></div>
                         <button class="featured-nav prev" onclick="changeFeaturedSlide(-1)">‹</button>
                         <button class="featured-nav next" onclick="changeFeaturedSlide(1)">›</button>
                     </div>
-                    
                     <div class="featured-dots" id="featuredDots">
                         <button class="featured-dot active" onclick="goToFeaturedSlide(0)"></button>
                         <button class="featured-dot" onclick="goToFeaturedSlide(1)"></button>
@@ -1510,87 +603,161 @@
         </div>
     </section>
 
-    <!-- SECCIÓN PROYECTOS (CARRUSEL) -->
-    <section class="projects-section" id="proyectos">
-        <div class="projects-header">
-            <p class="projects-subtitle">Proyectos Realizados</p>
-            <h2 class="projects-title">Nuestros Trabajos</h2>
-        </div>
-        
-        <div class="projects-carousel-container">
-            <div class="projects-carousel">
-                <!-- Proyecto 1 -->
-                <div class="project-item">
-                    <img src="images/categorias/cocina-6.jpg" alt="Proyecto Cocina Moderna">
-                    <div class="project-overlay">
-                        <h3 class="project-name">Cocina Moderna</h3>
-                        <p class="project-type">Mármol Calacatta</p>
-                    </div>
+    <!-- NUESTROS TRABAJOS - SECCIÓN NUEVA -->
+    <section class="works-section" id="trabajos">
+        <div class="container">
+            <div class="works-header">
+                <p class="works-subtitle">Galería de Proyectos</p>
+                <h2 class="works-title">Nuestros Trabajos</h2>
+            </div>
+
+            <div class="works-filters">
+                <button class="works-filter-btn active" data-filter="all">Todos</button>
+                <button class="works-filter-btn" data-filter="cocina">Cocinas</button>
+                <button class="works-filter-btn" data-filter="bano">Baños</button>
+                <button class="works-filter-btn" data-filter="quincho">Quinchos</button>
+            </div>
+
+            <div class="works-grid" id="worksGrid">
+                <!-- Cocinas (11) -->
+                <div class="work-item" data-category="cocina" onclick="openLightbox(0)">
+                    <img src="trabajos/cocina/1-trabajo-cocina.jpg" alt="Cocina 1" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
                 </div>
-                
-                <!-- Proyecto 2 -->
-                <div class="project-item">
-                    <img src="images/categorias/baño-3.jpg" alt="Proyecto Baño Principal">
-                    <div class="project-overlay">
-                        <h3 class="project-name">Baño Principal</h3>
-                        <p class="project-type">Mármol Negro Marquina</p>
-                    </div>
+                <div class="work-item" data-category="cocina" onclick="openLightbox(1)">
+                    <img src="trabajos/cocina/2-trabajo-cocina.jpg" alt="Cocina 2" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
                 </div>
-                
-                <!-- Proyecto 3 -->
-                <div class="project-item">
-                    <img src="images/categorias/closets.jpg" alt="Proyecto Vestidor">
-                    <div class="project-overlay">
-                        <h3 class="project-name">Vestidor Custom</h3>
-                        <p class="project-type">Diseño a Medida</p>
-                    </div>
+                <div class="work-item" data-category="cocina" onclick="openLightbox(2)">
+                    <img src="trabajos/cocina/3-trabajo-cocina.jpg" alt="Cocina 3" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
                 </div>
-                
-                <!-- Proyecto 4 -->
-                <div class="project-item">
-                    <img src="images/categorias/quincho.jpg" alt="Proyecto Quincho">
-                    <div class="project-overlay">
-                        <h3 class="project-name">Quincho Exterior</h3>
-                        <p class="project-type">Granito Negro Absoluto</p>
-                    </div>
+                <div class="work-item" data-category="cocina" onclick="openLightbox(3)">
+                    <img src="trabajos/cocina/4-trabajo-cocina.jpg" alt="Cocina 4" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
                 </div>
-                
-                <!-- Duplicados para loop infinito -->
-                <div class="project-item">
-                    <img src="images/categorias/cocina-6.jpg" alt="Proyecto Cocina Moderna">
-                    <div class="project-overlay">
-                        <h3 class="project-name">Cocina Moderna</h3>
-                        <p class="project-type">Mármol Calacatta</p>
-                    </div>
+                <div class="work-item" data-category="cocina" onclick="openLightbox(4)">
+                    <img src="trabajos/cocina/5-trabajo-cocina.jpg" alt="Cocina 5" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
                 </div>
-                
-                <div class="project-item">
-                    <img src="images/categorias/baño-3.jpg" alt="Proyecto Baño Principal">
-                    <div class="project-overlay">
-                        <h3 class="project-name">Baño Principal</h3>
-                        <p class="project-type">Mármol Negro Marquina</p>
-                    </div>
+                <div class="work-item" data-category="cocina" onclick="openLightbox(5)">
+                    <img src="trabajos/cocina/6-trabajo-cocina.jpg" alt="Cocina 6" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
                 </div>
-                
-                <div class="project-item">
-                    <img src="images/categorias/closets.jpg" alt="Proyecto Vestidor">
-                    <div class="project-overlay">
-                        <h3 class="project-name">Vestidor Custom</h3>
-                        <p class="project-type">Diseño a Medida</p>
-                    </div>
+                <div class="work-item" data-category="cocina" onclick="openLightbox(6)">
+                    <img src="trabajos/cocina/7-trabajo-cocina.jpg" alt="Cocina 7" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
                 </div>
-                
-                <div class="project-item">
-                    <img src="images/categorias/quincho.jpg" alt="Proyecto Quincho">
-                    <div class="project-overlay">
-                        <h3 class="project-name">Quincho Exterior</h3>
-                        <p class="project-type">Granito Negro Absoluto</p>
-                    </div>
+                <div class="work-item" data-category="cocina" onclick="openLightbox(7)">
+                    <img src="trabajos/cocina/8-trabajo-cocina.jpg" alt="Cocina 8" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
+                </div>
+                <div class="work-item" data-category="cocina" onclick="openLightbox(8)">
+                    <img src="trabajos/cocina/9-trabajo-cocina.jpg" alt="Cocina 9" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
+                </div>
+                <div class="work-item" data-category="cocina" onclick="openLightbox(9)">
+                    <img src="trabajos/cocina/10-trabajo-cocina.jpg" alt="Cocina 10" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
+                </div>
+                <div class="work-item" data-category="cocina" onclick="openLightbox(10)">
+                    <img src="trabajos/cocina/11-trabajo-cocina.jpg" alt="Cocina 11" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
+                </div>
+
+                <!-- Baños (12) -->
+                <div class="work-item" data-category="bano" onclick="openLightbox(11)">
+                    <img src="trabajos/baños/1-trabajo-baño.jpg" alt="Baño 1" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
+                </div>
+                <div class="work-item" data-category="bano" onclick="openLightbox(12)">
+                    <img src="trabajos/baños/2-trabajo-baño.jpg" alt="Baño 2" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
+                </div>
+                <div class="work-item" data-category="bano" onclick="openLightbox(13)">
+                    <img src="trabajos/baños/3-trabajo-baño.jpg" alt="Baño 3" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
+                </div>
+                <div class="work-item" data-category="bano" onclick="openLightbox(14)">
+                    <img src="trabajos/baños/4-trabajo-baño.jpg" alt="Baño 4" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
+                </div>
+                <div class="work-item" data-category="bano" onclick="openLightbox(15)">
+                    <img src="trabajos/baños/5-trabajo-baño.jpg" alt="Baño 5" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
+                </div>
+                <div class="work-item" data-category="bano" onclick="openLightbox(16)">
+                    <img src="trabajos/baños/6-trabajo-baño.jpg" alt="Baño 6" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
+                </div>
+                <div class="work-item" data-category="bano" onclick="openLightbox(17)">
+                    <img src="trabajos/baños/7-trabajo-baño.jpg" alt="Baño 7" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
+                </div>
+                <div class="work-item" data-category="bano" onclick="openLightbox(18)">
+                    <img src="trabajos/baños/8-trabajo-baño.jpg" alt="Baño 8" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
+                </div>
+                <div class="work-item" data-category="bano" onclick="openLightbox(19)">
+                    <img src="trabajos/baños/9-trabajo-baño.jpg" alt="Baño 9" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
+                </div>
+                <div class="work-item" data-category="bano" onclick="openLightbox(20)">
+                    <img src="trabajos/baños/10-trabajo-baño.jpg" alt="Baño 10" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
+                </div>
+                <div class="work-item" data-category="bano" onclick="openLightbox(21)">
+                    <img src="trabajos/baños/11-trabajo-baño.jpg" alt="Baño 11" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
+                </div>
+                <div class="work-item" data-category="bano" onclick="openLightbox(22)">
+                    <img src="trabajos/baños/12-trabajo-baño.jpg" alt="Baño 12" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
+                </div>
+
+                <!-- Quinchos (6) -->
+                <div class="work-item" data-category="quincho" onclick="openLightbox(23)">
+                    <img src="trabajos/quinchos/IMG-20260224-WA0014.jpg" alt="Quincho 1" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
+                </div>
+                <div class="work-item" data-category="quincho" onclick="openLightbox(24)">
+                    <img src="trabajos/quinchos/IMG-20260224-WA0055.jpg" alt="Quincho 2" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
+                </div>
+                <div class="work-item" data-category="quincho" onclick="openLightbox(25)">
+                    <img src="trabajos/quinchos/IMG-20260224-WA0056.jpg" alt="Quincho 3" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
+                </div>
+                <div class="work-item" data-category="quincho" onclick="openLightbox(26)">
+                    <img src="trabajos/quinchos/IMG-20260224-WA0088 - copia.jpg" alt="Quincho 4" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
+                </div>
+                <div class="work-item" data-category="quincho" onclick="openLightbox(27)">
+                    <img src="trabajos/quinchos/IMG-20260224-WA0089.jpg" alt="Quincho 5" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
+                </div>
+                <div class="work-item" data-category="quincho" onclick="openLightbox(28)">
+                    <img src="trabajos/quinchos/IMG-20260224-WA0090.jpg" alt="Quincho 6" loading="lazy">
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+            <div class="lightbox-image-container">
+                <button class="lightbox-nav prev" onclick="changeLightboxSlide(-1)">‹</button>
+                <img class="lightbox-img" id="lightboxImg" src="" alt="Trabajo">
+                <button class="lightbox-nav next" onclick="changeLightboxSlide(1)">›</button>
+            </div>
+            <div class="lightbox-counter"><span id="currentSlide">1</span> / <span id="totalSlides">29</span></div>
+        </div>
+    </div>
+
+    <!-- CARRUSEL PROYECTOS -->
     <!-- FOOTER -->
     <footer id="contacto">
         <div class="footer-content">
@@ -1598,7 +765,6 @@
                 <h4>PIETRA.</h4>
                 <p>Especialistas en mármol, granito y cuarzo. Diseñando espacios únicos desde 1995.</p>
             </div>
-            
             <div class="footer-section">
                 <h4>Servicios</h4>
                 <ul>
@@ -1608,7 +774,6 @@
                     <li><a href="#categorias">Quinchos</a></li>
                 </ul>
             </div>
-            
             <div class="footer-section">
                 <h4>Contacto</h4>
                 <ul>
@@ -1617,7 +782,6 @@
                     <li><a href="#">Asunción, Paraguay</a></li>
                 </ul>
             </div>
-            
             <div class="footer-section">
                 <h4>Redes</h4>
                 <ul>
@@ -1625,124 +789,216 @@
                 </ul>
             </div>
         </div>
-        
         <div class="footer-bottom">
-            <p>&copy; 2026 Marmolería Pietra. Todos los derechos reservados.</p>
+            <p>Desarrollado por <a href="#" target="_blank">eQuantum</a> | &copy; 2026 Marmolería Pietra. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <!-- WHATSAPP FLOAT -->
+    <!-- WHATSAPP -->
     <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20gustaría%20recibir%20más%20información" class="whatsapp-float" target="_blank">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
     </a>
 
-    <!-- JAVASCRIPT -->
     <script>
-        // Navbar scroll effect
+        // Navbar scroll
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
         });
 
-        // Carrusel de categorías - dots
+        // Carrusel categorías mobile
         const grid = document.getElementById('categoriesGrid');
         const dotsContainer = document.getElementById('carouselDots');
-        
         if (window.innerWidth <= 768 && grid && dotsContainer) {
             const cards = grid.querySelectorAll('.category-card');
             const totalSlides = Math.ceil(cards.length / 2);
-            
             for (let i = 0; i < totalSlides; i++) {
                 const dot = document.createElement('div');
                 dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
                 dot.addEventListener('click', () => {
-                    grid.scrollTo({
-                        left: i * grid.offsetWidth,
-                        behavior: 'smooth'
-                    });
+                    grid.scrollTo({ left: i * grid.offsetWidth, behavior: 'smooth' });
                 });
                 dotsContainer.appendChild(dot);
             }
-            
             grid.addEventListener('scroll', () => {
                 const scrollLeft = grid.scrollLeft;
                 const slideWidth = grid.offsetWidth;
                 const currentSlide = Math.round(scrollLeft / slideWidth);
-                
                 dotsContainer.querySelectorAll('.carousel-dot').forEach((dot, index) => {
                     dot.classList.toggle('active', index === currentSlide);
                 });
             });
         }
 
-        // Filtros del catálogo
+        // Filtros catálogo
         const filterBtns = document.querySelectorAll('.filter-btn');
         const materialCards = document.querySelectorAll('.material-card');
-
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Remover active de todos
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                
                 const filter = btn.getAttribute('data-filter');
-                
                 materialCards.forEach(card => {
                     if (filter === 'all' || card.getAttribute('data-category') === filter) {
                         card.style.display = 'flex';
-                        setTimeout(() => {
-                            card.style.opacity = '1';
-                            card.style.transform = 'scale(1)';
-                        }, 10);
+                        setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'scale(1)'; }, 10);
                     } else {
                         card.style.opacity = '0';
                         card.style.transform = 'scale(0.8)';
-                        setTimeout(() => {
-                            card.style.display = 'none';
-                        }, 300);
+                        setTimeout(() => { card.style.display = 'none'; }, 300);
                     }
                 });
             });
         });
 
-        // Carrusel de Producto Destacado
+        // Carrusel destacado
         let currentFeaturedSlide = 0;
         const featuredSlides = document.querySelectorAll('.featured-slide');
         const featuredDots = document.querySelectorAll('.featured-dot');
         const totalFeaturedSlides = featuredSlides.length;
 
         function showFeaturedSlide(index) {
-            featuredSlides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
-            featuredDots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
+            featuredSlides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+            featuredDots.forEach((dot, i) => dot.classList.toggle('active', i === index));
             currentFeaturedSlide = index;
         }
-
         function changeFeaturedSlide(direction) {
             let newIndex = currentFeaturedSlide + direction;
             if (newIndex >= totalFeaturedSlides) newIndex = 0;
             if (newIndex < 0) newIndex = totalFeaturedSlides - 1;
             showFeaturedSlide(newIndex);
         }
+        function goToFeaturedSlide(index) { showFeaturedSlide(index); }
+        setInterval(() => { changeFeaturedSlide(1); }, 5000);
 
-        function goToFeaturedSlide(index) {
-            showFeaturedSlide(index);
+        // ===== NUEVO: TRABAJOS =====
+        const worksData = [
+            // Cocinas (0-10)
+            { src: 'trabajos/cocina/1-trabajo-cocina.jpg', category: 'cocina' },
+            { src: 'trabajos/cocina/2-trabajo-cocina.jpg', category: 'cocina' },
+            { src: 'trabajos/cocina/3-trabajo-cocina.jpg', category: 'cocina' },
+            { src: 'trabajos/cocina/4-trabajo-cocina.jpg', category: 'cocina' },
+            { src: 'trabajos/cocina/5-trabajo-cocina.jpg', category: 'cocina' },
+            { src: 'trabajos/cocina/6-trabajo-cocina.jpg', category: 'cocina' },
+            { src: 'trabajos/cocina/7-trabajo-cocina.jpg', category: 'cocina' },
+            { src: 'trabajos/cocina/8-trabajo-cocina.jpg', category: 'cocina' },
+            { src: 'trabajos/cocina/9-trabajo-cocina.jpg', category: 'cocina' },
+            { src: 'trabajos/cocina/10-trabajo-cocina.jpg', category: 'cocina' },
+            { src: 'trabajos/cocina/11-trabajo-cocina.jpg', category: 'cocina' },
+            // Baños (11-22)
+            { src: 'trabajos/baños/1-trabajo-baño.jpg', category: 'bano' },
+            { src: 'trabajos/baños/2-trabajo-baño.jpg', category: 'bano' },
+            { src: 'trabajos/baños/3-trabajo-baño.jpg', category: 'bano' },
+            { src: 'trabajos/baños/4-trabajo-baño.jpg', category: 'bano' },
+            { src: 'trabajos/baños/5-trabajo-baño.jpg', category: 'bano' },
+            { src: 'trabajos/baños/6-trabajo-baño.jpg', category: 'bano' },
+            { src: 'trabajos/baños/7-trabajo-baño.jpg', category: 'bano' },
+            { src: 'trabajos/baños/8-trabajo-baño.jpg', category: 'bano' },
+            { src: 'trabajos/baños/9-trabajo-baño.jpg', category: 'bano' },
+            { src: 'trabajos/baños/10-trabajo-baño.jpg', category: 'bano' },
+            { src: 'trabajos/baños/11-trabajo-baño.jpg', category: 'bano' },
+            { src: 'trabajos/baños/12-trabajo-baño.jpg', category: 'bano' },
+            // Quinchos (23-28)
+            { src: 'trabajos/quinchos/IMG-20260224-WA0014.jpg', category: 'quincho' },
+            { src: 'trabajos/quinchos/IMG-20260224-WA0055.jpg', category: 'quincho' },
+            { src: 'trabajos/quinchos/IMG-20260224-WA0056.jpg', category: 'quincho' },
+            { src: 'trabajos/quinchos/IMG-20260224-WA0088 - copia.jpg', category: 'quincho' },
+            { src: 'trabajos/quinchos/IMG-20260224-WA0089.jpg', category: 'quincho' },
+            { src: 'trabajos/quinchos/IMG-20260224-WA0090.jpg', category: 'quincho' }
+        ];
+
+        let currentLightboxIndex = 0;
+        let currentFilter = 'all';
+        let filteredWorks = [...worksData];
+
+        // Filtros trabajos
+        const worksFilterBtns = document.querySelectorAll('.works-filter-btn');
+        const workItems = document.querySelectorAll('.work-item');
+
+        worksFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                worksFilterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.getAttribute('data-filter');
+
+                if (currentFilter === 'all') {
+                    filteredWorks = [...worksData];
+                    workItems.forEach(item => item.style.display = 'block');
+                } else {
+                    filteredWorks = worksData.filter(w => w.category === currentFilter);
+                    workItems.forEach(item => {
+                        const itemCategory = item.getAttribute('data-category');
+                        if (itemCategory === currentFilter) {
+                            item.style.display = 'block';
+                            setTimeout(() => { item.style.opacity = '1'; }, 10);
+                        } else {
+                            item.style.opacity = '0';
+                            setTimeout(() => { item.style.display = 'none'; }, 300);
+                        }
+                    });
+                }
+            });
+        });
+
+        // Lightbox
+        function openLightbox(index) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightboxImg');
+            const currentSpan = document.getElementById('currentSlide');
+            const totalSpan = document.getElementById('totalSlides');
+
+            // Ajustar índice según filtro actual
+            if (currentFilter !== 'all') {
+                const visibleItems = Array.from(workItems).filter(item => 
+                    item.getAttribute('data-category') === currentFilter
+                );
+                const clickedItem = workItems[index];
+                currentLightboxIndex = visibleItems.indexOf(clickedItem);
+                filteredWorks = worksData.filter(w => w.category === currentFilter);
+            } else {
+                currentLightboxIndex = index;
+                filteredWorks = [...worksData];
+            }
+
+            img.src = filteredWorks[currentLightboxIndex].src;
+            currentSpan.textContent = currentLightboxIndex + 1;
+            totalSpan.textContent = filteredWorks.length;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
-        // Auto-play del carrusel destacado
-        setInterval(() => {
-            changeFeaturedSlide(1);
-        }, 5000);
-    </script>
+        function closeLightbox(event) {
+            if (!event || event.target.id === 'lightbox' || event.target.classList.contains('lightbox-close')) {
+                document.getElementById('lightbox').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
 
+        function changeLightboxSlide(direction) {
+            const img = document.getElementById('lightboxImg');
+            const currentSpan = document.getElementById('currentSlide');
+
+            currentLightboxIndex += direction;
+            if (currentLightboxIndex >= filteredWorks.length) currentLightboxIndex = 0;
+            if (currentLightboxIndex < 0) currentLightboxIndex = filteredWorks.length - 1;
+
+            img.style.opacity = '0';
+            setTimeout(() => {
+                img.src = filteredWorks[currentLightboxIndex].src;
+                img.style.opacity = '1';
+                currentSpan.textContent = currentLightboxIndex + 1;
+            }, 200);
+        }
+
+        // Teclado lightbox
+        document.addEventListener('keydown', (e) => {
+            if (document.getElementById('lightbox').classList.contains('active')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') changeLightboxSlide(-1);
+                if (e.key === 'ArrowRight') changeLightboxSlide(1);
+            }
+        });
+    </script>
 </body>
 </html>
