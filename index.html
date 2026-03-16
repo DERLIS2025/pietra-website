@@ -30,11 +30,48 @@
             background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
             padding: 1rem 4%; box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
-        .navbar.scrolled .nav-links a, .navbar.scrolled .logo { color: var(--color-dark); }
+        .navbar.scrolled .nav-links a { color: var(--color-dark); }
+        
+        /* LOGO - SOLO IMAGEN, SIN TEXTO */
         .logo {
-            font-family: var(--font-serif); font-size: 1.8rem; font-weight: 600;
-            color: white; text-decoration: none; letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            height: 45px;
         }
+        .logo-img {
+            height: 100%;
+            width: auto;
+            max-width: 160px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+            transition: filter 0.3s ease, transform 0.3s ease;
+        }
+        .logo:hover .logo-img {
+            transform: scale(1.05);
+        }
+        .navbar.scrolled .logo-img {
+            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15));
+        }
+        /* Desktop - Logo más grande */
+        @media (min-width: 769px) {
+            .logo {
+                height: 55px;
+            }
+            .logo-img {
+                max-width: 200px;
+            }
+        }
+        /* Mobile pequeño - Logo compacto */
+        @media (max-width: 480px) {
+            .logo {
+                height: 40px;
+            }
+            .logo-img {
+                max-width: 140px;
+            }
+        }
+
         .nav-links { display: flex; gap: 2.5rem; list-style: none; }
         .nav-links a {
             color: white; text-decoration: none; font-size: 0.85rem; font-weight: 500;
@@ -345,9 +382,8 @@
     <!-- NAVEGACIÓN -->
     <nav class="navbar" id="navbar">
         <a href="#" class="logo">
-    <img src="images/Logo/logo%20blanco.jpeg" alt="Marmoleria Pietra" class="logo-img logo-light">
-    <img src="images/Logo/logo%20negro.jpeg" alt="Marmoleria Pietra" class="logo-img logo-dark">
-</a>
+            <img src="images/Logo/logo%20blanco.jpeg" alt="Marmoleria Pietra" class="logo-img">
+        </a>
         <ul class="nav-links">
             <li><a href="#">Inicio</a></li>
             <li><a href="#categorias">Servicios</a></li>
