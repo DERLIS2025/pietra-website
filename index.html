@@ -23,7 +23,7 @@
         /* NAVEGACIÓN */
         .navbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            padding: 0.8rem 4%; display: flex; justify-content: space-between; align-items: center;
+            padding: 0.7rem 4%; display: flex; justify-content: space-between; align-items: center;
             transition: all 0.4s ease;
         }
         .navbar.scrolled {
@@ -336,14 +336,17 @@
             .whatsapp-float svg { width: 24px; height: 24px; }
         }
     </style>
-    <link rel="icon" type="image/jpeg" href="images/Logo/Logo.jpeg">
+    <link rel="icon" type="image/jpeg" href="images/Logo/logo%20blanco.jpeg">
 <base target="_blank">
 </head>
 <body>
 
     <!-- NAVEGACIÓN -->
     <nav class="navbar" id="navbar">
-        <a href="#" class="logo"><img src="images/Logo/Logo.jpeg" alt="Marmoleria Pietra" style="height: 50px; width: auto; display: block;"></a>
+        <a href="#" class="logo">
+    <img src="images/Logo/logo%20blanco.jpeg" alt="Marmoleria Pietra" class="logo-img logo-light">
+    <img src="images/Logo/logo%20negro.jpeg" alt="Marmoleria Pietra" class="logo-img logo-dark" style="display: none;">
+</a>
         <ul class="nav-links">
             <li><a href="#">Inicio</a></li>
             <li><a href="#categorias">Servicios</a></li>
