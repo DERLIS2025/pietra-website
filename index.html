@@ -139,7 +139,7 @@
                 font-size: 1rem;
             }
             .logo-text {
-                display: none; /* En móvil muy pequeño, solo mostramos el ícono MP */
+                display: none;
             }
         }
 
@@ -542,7 +542,7 @@
         </div>
     </section>
 
-    <!-- CATÁLOGO -->
+    <!-- CATÁLOGO ACTUALIZADO CON MATERIALES DEL PDF -->
     <section class="catalog-section" id="catalogo">
         <div class="container">
             <div class="catalog-header">
@@ -551,132 +551,162 @@
             </div>
             <div class="catalog-filters">
                 <button class="filter-btn active" data-filter="all">Todos</button>
-                <button class="filter-btn" data-filter="marmol">Mármoles</button>
                 <button class="filter-btn" data-filter="granito">Granitos</button>
+                <button class="filter-btn" data-filter="sinterizado">Sinterizado</button>
                 <button class="filter-btn" data-filter="cuarzo">Cuarzos</button>
-                <button class="filter-btn" data-filter="cuarcita">Cuarcitas</button>
+                <button class="filter-btn" data-filter="marmol">Mármoles</button>
+                <button class="filter-btn" data-filter="especial">Especiales</button>
             </div>
             <div class="materials-grid" id="materialsGrid">
-                <div class="material-card" data-category="marmol">
+                
+                <!-- GRANITOS -->
+                <div class="material-card" data-category="granito">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/1-calacatta-gold.jpg" alt="Calacatta Gold">
-                        <span class="material-badge">Mármol</span>
+                        <img class="material-image" src="images/catalogo/granito-verde-ubatuba.jpg" alt="Granito Verde Ubatuba">
+                        <span class="material-badge">Granito</span>
                     </div>
                     <div class="material-info">
-                        <h4 class="material-name">Calacatta Gold</h4>
-                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Calacatta%20Gold" class="btn-cotizar" target="_blank">Cotizar</a>
+                        <h4 class="material-name">Granito Verde Ubatuba</h4>
+                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Granito%20Verde%20Ubatuba" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
-                <div class="material-card" data-category="marmol">
+
+                <div class="material-card" data-category="granito">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/2-negro-marquina.jpg" alt="Negro Marquina">
-                        <span class="material-badge">Mármol</span>
+                        <img class="material-image" src="images/catalogo/granito-negro-san-gabriel.jpg" alt="Granito Negro San Gabriel">
+                        <span class="material-badge">Granito</span>
                     </div>
                     <div class="material-info">
-                        <h4 class="material-name">Negro Marquina</h4>
-                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Negro%20Marquina" class="btn-cotizar" target="_blank">Cotizar</a>
+                        <h4 class="material-name">Granito Negro San Gabriel</h4>
+                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Granito%20Negro%20San%20Gabriel" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
+
+                <div class="material-card" data-category="granito">
+                    <div class="material-image-wrapper">
+                        <img class="material-image" src="images/catalogo/granito-cafe-imperial.jpg" alt="Granito Café Imperial">
+                        <span class="material-badge">Granito</span>
+                    </div>
+                    <div class="material-info">
+                        <h4 class="material-name">Granito Café Imperial</h4>
+                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Granito%20Café%20Imperial" class="btn-cotizar" target="_blank">Cotizar</a>
+                    </div>
+                </div>
+
+                <div class="material-card" data-category="granito">
+                    <div class="material-image-wrapper">
+                        <img class="material-image" src="images/catalogo/granito-gris-corumba.jpg" alt="Granito Gris Corumba">
+                        <span class="material-badge">Granito</span>
+                    </div>
+                    <div class="material-info">
+                        <h4 class="material-name">Granito Gris Corumba</h4>
+                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Granito%20Gris%20Corumba" class="btn-cotizar" target="_blank">Cotizar</a>
+                    </div>
+                </div>
+
+                <div class="material-card" data-category="granito">
+                    <div class="material-image-wrapper">
+                        <img class="material-image" src="images/catalogo/granito-blanco-dallas.jpg" alt="Granito Blanco Dallas">
+                        <span class="material-badge">Granito</span>
+                    </div>
+                    <div class="material-info">
+                        <h4 class="material-name">Granito Blanco Dallas</h4>
+                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Granito%20Blanco%20Dallas" class="btn-cotizar" target="_blank">Cotizar</a>
+                    </div>
+                </div>
+
+                <div class="material-card" data-category="granito">
+                    <div class="material-image-wrapper">
+                        <img class="material-image" src="images/catalogo/granito-blanco-itaunas.jpg" alt="Granito Blanco Itaúnas">
+                        <span class="material-badge">Granito</span>
+                    </div>
+                    <div class="material-info">
+                        <h4 class="material-name">Granito Blanco Itaúnas</h4>
+                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Granito%20Blanco%20Itaúnas" class="btn-cotizar" target="_blank">Cotizar</a>
+                    </div>
+                </div>
+
+                <div class="material-card" data-category="granito">
+                    <div class="material-image-wrapper">
+                        <img class="material-image" src="images/catalogo/granito-blanco-di-capri.jpg" alt="Granito Blanco Di Capri">
+                        <span class="material-badge">Granito</span>
+                    </div>
+                    <div class="material-info">
+                        <h4 class="material-name">Granito Blanco Di Capri</h4>
+                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Granito%20Blanco%20Di%20Capri" class="btn-cotizar" target="_blank">Cotizar</a>
+                    </div>
+                </div>
+
+                <!-- SINTERIZADO -->
+                <div class="material-card" data-category="sinterizado">
+                    <div class="material-image-wrapper">
+                        <img class="material-image" src="images/catalogo/neolith-calacatta.jpg" alt="Neolith Calacatta">
+                        <span class="material-badge">Neolith</span>
+                    </div>
+                    <div class="material-info">
+                        <h4 class="material-name">Neolith Calacatta</h4>
+                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Neolith%20Calacatta" class="btn-cotizar" target="_blank">Cotizar</a>
+                    </div>
+                </div>
+
+                <!-- CUARZO -->
                 <div class="material-card" data-category="cuarzo">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/4-blanco-estelar.jpg" alt="Blanco Estelar">
+                        <img class="material-image" src="images/catalogo/cuarzo-blanco-estelar.jpg" alt="Cuarzo Blanco Estelar">
                         <span class="material-badge">Cuarzo</span>
                     </div>
                     <div class="material-info">
-                        <h4 class="material-name">Blanco Estelar</h4>
-                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Blanco%20Estelar" class="btn-cotizar" target="_blank">Cotizar</a>
+                        <h4 class="material-name">Cuarzo Blanco Estelar</h4>
+                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Cuarzo%20Blanco%20Estelar" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
-                <div class="material-card" data-category="granito">
-                    <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/14-negro-absoluto.jpg" alt="Negro Absoluto">
-                        <span class="material-badge">Granito</span>
-                    </div>
-                    <div class="material-info">
-                        <h4 class="material-name">Negro Absoluto</h4>
-                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Negro%20Absoluto" class="btn-cotizar" target="_blank">Cotizar</a>
-                    </div>
-                </div>
+
+                <!-- MÁRMOLES -->
                 <div class="material-card" data-category="marmol">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/7-emperador-dark.jpg" alt="Emperador Dark">
+                        <img class="material-image" src="images/catalogo/marron-emperador.jpg" alt="Marrón Emperador">
                         <span class="material-badge">Mármol</span>
                     </div>
                     <div class="material-info">
-                        <h4 class="material-name">Emperador Dark</h4>
-                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Emperador%20Dark" class="btn-cotizar" target="_blank">Cotizar</a>
+                        <h4 class="material-name">Marrón Emperador</h4>
+                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Marrón%20Emperador" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
-                <div class="material-card" data-category="granito">
-                    <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/8-santa-cecilia.jpg" alt="Santa Cecilia">
-                        <span class="material-badge">Granito</span>
-                    </div>
-                    <div class="material-info">
-                        <h4 class="material-name">Santa Cecilia</h4>
-                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Santa%20Cecilia" class="btn-cotizar" target="_blank">Cotizar</a>
-                    </div>
-                </div>
-                <div class="material-card" data-category="cuarzo">
-                    <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/9-gris-concrete.jpg" alt="Gris Concrete">
-                        <span class="material-badge">Cuarzo</span>
-                    </div>
-                    <div class="material-info">
-                        <h4 class="material-name">Gris Concrete</h4>
-                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Gris%20Concrete" class="btn-cotizar" target="_blank">Cotizar</a>
-                    </div>
-                </div>
+
                 <div class="material-card" data-category="marmol">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/11-statuario-extra.jpg" alt="Statuario Extra">
+                        <img class="material-image" src="images/catalogo/marmol-travertino.jpg" alt="Mármol Travertino">
                         <span class="material-badge">Mármol</span>
                     </div>
                     <div class="material-info">
-                        <h4 class="material-name">Statuario Extra</h4>
-                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Statuario%20Extra" class="btn-cotizar" target="_blank">Cotizar</a>
+                        <h4 class="material-name">Mármol Travertino</h4>
+                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Mármol%20Travertino" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
-                <div class="material-card" data-category="granito">
+
+                <div class="material-card" data-category="marmol">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/12-amarillo-victoria.jpg" alt="Amarillo Victoria">
-                        <span class="material-badge">Granito</span>
+                        <img class="material-image" src="images/catalogo/marmol-blanco.jpg" alt="Mármol Blanco">
+                        <span class="material-badge">Mármol</span>
                     </div>
                     <div class="material-info">
-                        <h4 class="material-name">Amarillo Victoria</h4>
-                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Amarillo%20Victoria" class="btn-cotizar" target="_blank">Cotizar</a>
+                        <h4 class="material-name">Mármol Blanco</h4>
+                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Mármol%20Blanco" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
-                <div class="material-card" data-category="granito">
+
+                <!-- ESPECIAL -->
+                <div class="material-card" data-category="especial">
                     <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/13-blanco-dallas.jpg" alt="Blanco Dallas">
-                        <span class="material-badge">Granito</span>
+                        <img class="material-image" src="images/catalogo/piedra-traslucida.jpg" alt="Piedra Traslúcida">
+                        <span class="material-badge">Especial</span>
                     </div>
                     <div class="material-info">
-                        <h4 class="material-name">Blanco Dallas</h4>
-                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Blanco%20Dallas" class="btn-cotizar" target="_blank">Cotizar</a>
+                        <h4 class="material-name">Piedra Traslúcida</h4>
+                        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20interesa%20cotizar%20el%20material%20Piedra%20Traslúcida" class="btn-cotizar" target="_blank">Cotizar</a>
                     </div>
                 </div>
-                <div class="material-card" data-category="cuarcita">
-                    <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/1-calacatta-gold.jpg" alt="Próximamente" style="opacity: 0.3;">
-                        <span class="material-badge">Cuarcita</span>
-                    </div>
-                    <div class="material-info">
-                        <h4 class="material-name">Próximamente</h4>
-                        <button class="btn-cotizar" style="opacity: 0.5; cursor: not-allowed;">Próximamente</button>
-                    </div>
-                </div>
-                <div class="material-card" data-category="cuarcita">
-                    <div class="material-image-wrapper">
-                        <img class="material-image" src="images/catalogo/1-calacatta-gold.jpg" alt="Próximamente" style="opacity: 0.3;">
-                        <span class="material-badge">Cuarcita</span>
-                    </div>
-                    <div class="material-info">
-                        <h4 class="material-name">Próximamente</h4>
-                        <button class="btn-cotizar" style="opacity: 0.5; cursor: not-allowed;">Próximamente</button>
-                    </div>
-                </div>
+
             </div>
         </div>
     </section>
@@ -721,7 +751,7 @@
         </div>
     </section>
 
-    <!-- NUESTROS TRABAJOS - SECCIÓN NUEVA -->
+    <!-- NUESTROS TRABAJOS - SECCIÓN COMPLETA CONSERVADA -->
     <section class="works-section" id="trabajos">
         <div class="container">
             <div class="works-header">
@@ -875,7 +905,6 @@
         </div>
     </div>
 
-    <!-- CARRUSEL PROYECTOS -->
     <!-- FOOTER -->
     <footer id="contacto">
         <div class="footer-content">
@@ -990,7 +1019,7 @@
         function goToFeaturedSlide(index) { showFeaturedSlide(index); }
         setInterval(() => { changeFeaturedSlide(1); }, 5000);
 
-        // ===== NUEVO: TRABAJOS =====
+        // ===== TRABAJOS =====
         const worksData = [
             // Cocinas (0-10)
             { src: 'images/trabajos/cocina/1-trabajo-cocina.jpg', category: 'cocina' },
@@ -1066,7 +1095,6 @@
             const currentSpan = document.getElementById('currentSlide');
             const totalSpan = document.getElementById('totalSlides');
 
-            // Ajustar índice según filtro actual
             if (currentFilter !== 'all') {
                 const visibleItems = Array.from(workItems).filter(item => 
                     item.getAttribute('data-category') === currentFilter
