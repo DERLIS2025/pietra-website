@@ -26,7 +26,7 @@
     
     <!-- ✅ OPEN GRAPH (Facebook, WhatsApp, Instagram) -->
     <meta property="og:title" content="Marmolería Pietra | Mármol, Granito y Cuarzo en Paraguay">
-    <meta property="og:description" content="Proveemos e instalamos todo tipo de mesadas. ¡Cotiza ahora!">
+    <meta property="og:description" content="Proveedores de granitos exclusivos y mármoles importados de alta calidad para proyectos residenciales y comerciales. ¡Cotiza ahora!">
     <meta property="og:image" content="https://marmoleriapietra.com/images/categorias/cocina-6.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -191,114 +191,34 @@
         }
         .navbar.scrolled .nav-links a { color: var(--color-dark); }
         
-        /* LOGO CSS - DISEÑO MP + MARMOLERIA PIETRA */
+        /* LOGO - REEMPLAZADO CON IMAGEN */
         .logo {
             display: flex;
             align-items: center;
             text-decoration: none;
-            gap: 12px;
         }
 
-        .logo-icon {
-            width: 50px;
+        .logo img {
             height: 50px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            border: 3px solid var(--color-primary);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
-
-        .logo-icon::before {
-            content: '';
-            position: absolute;
-            width: 42px;
-            height: 42px;
-            border: 2px solid #1a1a1a;
-            border-radius: 50%;
-        }
-
-        .logo-letters {
-            font-family: var(--font-sans);
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #8B5A3C;
-            letter-spacing: -2px;
-            line-height: 1;
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.1;
-        }
-
-        .logo-text-small {
-            font-family: var(--font-sans);
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--color-primary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .logo-text-large {
-            font-family: var(--font-serif);
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: #8B5A3C;
-            letter-spacing: 1px;
-        }
-
-        /* Hover effects */
-        .logo:hover .logo-icon {
-            transform: scale(1.05);
+            width: auto;
+            display: block;
             transition: transform 0.3s ease;
         }
 
-        /* Responsive */
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Responsive logo */
         @media (max-width: 768px) {
-            .logo-icon {
-                width: 42px;
+            .logo img {
                 height: 42px;
-            }
-            .logo-icon::before {
-                width: 35px;
-                height: 35px;
-            }
-            .logo-letters {
-                font-size: 1.1rem;
-            }
-            .logo-text-small {
-                font-size: 0.65rem;
-            }
-            .logo-text-large {
-                font-size: 1.3rem;
             }
         }
 
         @media (max-width: 480px) {
-            .logo {
-                gap: 8px;
-            }
-            .logo-icon {
-                width: 38px;
+            .logo img {
                 height: 38px;
-                border-width: 2px;
-            }
-            .logo-icon::before {
-                width: 32px;
-                height: 32px;
-                border-width: 1.5px;
-            }
-            .logo-letters {
-                font-size: 1rem;
-            }
-            .logo-text {
-                display: none;
             }
         }
 
@@ -609,13 +529,7 @@
     <!-- NAVEGACIÓN -->
     <nav class="navbar" id="navbar">
         <a href="#" class="logo">
-            <div class="logo-icon">
-                <span class="logo-letters">MP</span>
-            </div>
-            <div class="logo-text">
-                <span class="logo-text-small">Marmoleria</span>
-                <span class="logo-text-large">Pietra</span>
-            </div>
+            <img src="images/Logo/logo_transparente_v2 (1) (1).png" alt="Marmolería Pietra">
         </a>
         <ul class="nav-links">
             <li><a href="#">Inicio</a></li>
