@@ -410,17 +410,7 @@
         .works-subtitle { font-family: var(--font-sans); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 4px; color: var(--color-primary); margin-bottom: 15px; font-weight: 500; }
         .works-title { font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 2.8rem); color: var(--color-dark); font-weight: 400; margin-bottom: 40px; }
 
-        .works-filters {
-            display: flex; justify-content: center; gap: 12px; margin-bottom: 50px; flex-wrap: wrap;
-            position: sticky; top: 0; z-index: 100; padding: 15px 0;
-            background: rgba(248, 248, 246, 0.95); backdrop-filter: blur(10px);
-        }
-        .works-filter-btn {
-            padding: 12px 30px; border: 2px solid var(--color-dark); background: transparent;
-            font-family: var(--font-sans); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px;
-            cursor: pointer; transition: all 0.3s ease; color: var(--color-dark); font-weight: 500;
-        }
-        .works-filter-btn:hover, .works-filter-btn.active { background: var(--color-dark); color: white; }
+        
 
         .works-grid { column-count: 4; column-gap: 20px; }
         .work-item {
@@ -445,9 +435,7 @@
         @media (max-width: 1200px) { .works-grid { column-count: 3; } }
         @media (max-width: 768px) {
             .works-section { padding: 70px 5%; }
-            .works-filters { top: 0; gap: 8px; padding: 10px 0; }
-            .works-filter-btn { padding: 10px 20px; font-size: 0.75rem; }
-            .works-grid { column-count: 2; column-gap: 12px; }
+            
             .work-item { margin-bottom: 12px; border-radius: 6px; }
         }
         @media (max-width: 480px) {
@@ -544,128 +532,7 @@
     
         
 
-        /* CARRUSEL CON FILTRO FUNCIONAL */
-        .carousel-wrapper {
-            position: relative;
-            width: 100%;
-            padding: 0 60px;
-        }
-
-        .carousel-viewport {
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .carousel-track-filtered {
-            display: flex;
-            gap: 20px;
-            transition: transform 0.5s ease;
-            will-change: transform;
-        }
-
-        .carousel-slide {
-            flex: 0 0 calc(25% - 15px);
-            aspect-ratio: 3/4;
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .carousel-slide.hidden {
-            display: none;
-        }
-
-        .carousel-slide:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-        }
-
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .carousel-slide:hover img {
-            transform: scale(1.05);
-        }
-
-        .carousel-slide-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(90, 124, 108, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .carousel-slide:hover .carousel-slide-overlay {
-            opacity: 1;
-        }
-
-        .carousel-slide-overlay span {
-            color: white;
-            font-family: var(--font-sans);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border: 2px solid white;
-            padding: 12px 24px;
-            background: transparent;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .carousel-slide-overlay span:hover {
-            background: white;
-            color: var(--color-primary);
-        }
-
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: var(--color-dark);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            transition: all 0.3s;
-            z-index: 10;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .carousel-nav:hover {
-            background: var(--color-primary);
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .carousel-nav:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-
-        .carousel-prev {
-            left: 0;
-        }
+        
 
         .carousel-next {
             right: 0;
@@ -722,7 +589,141 @@
                 padding: 0 35px;
             }
         }
+
+        /* SECCIONES DE TRABAJOS POR CATEGORÍA */
+        .works-category-section {
+            margin-bottom: 80px;
+        }
+
+        .works-category-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .works-category-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--color-dark);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--color-primary);
+            display: inline-block;
+        }
+
+        .works-category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .works-grid-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            aspect-ratio: 4/3;
+        }
+
+        .works-grid-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+        }
+
+        .works-grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .works-grid-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .works-item-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(90, 124, 108, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .works-grid-item:hover .works-item-overlay {
+            opacity: 1;
+        }
+
+        .works-item-overlay span {
+            color: white;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 2px solid white;
+            padding: 12px 24px;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .works-item-overlay span:hover {
+            background: white;
+            color: var(--color-primary);
+        }
+
+        @media (max-width: 1024px) {
+            .works-category-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .works-section {
+                padding: 60px 0 60px 5%;
+            }
+            .works-category-section {
+                margin-bottom: 40px;
+            }
+            .works-category-title {
+                margin-bottom: 20px;
+                font-size: 1.3rem;
+            }
+            /* Carrusel horizontal en mobile */
+            .works-category-grid {
+                display: flex;
+                gap: 15px;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                padding-right: 5%;
+                padding-bottom: 10px;
+            }
+            .works-category-grid::-webkit-scrollbar {
+                display: none;
+            }
+            .works-grid-item {
+                flex: 0 0 85%;
+                aspect-ratio: 4/3;
+                scroll-snap-align: start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .works-grid-item {
+                flex: 0 0 90%;
+            }
+        }
 </style>
+<base target="_blank">
 <base target="_blank">
 <base target="_blank">
 </head>
@@ -1074,7 +1075,7 @@
         </div>
     </section>
 
-    <!-- NUESTROS TRABAJOS - CARRUSEL CON FILTRO -->
+    <!-- NUESTROS TRABAJOS - SECCIONES POR CATEGORÍA -->
     <section class="works-section" id="trabajos">
         <div class="container">
             <div class="works-header">
@@ -1082,146 +1083,143 @@
                 <h2 class="works-title">Nuestros Trabajos</h2>
             </div>
 
-            <div class="works-filters">
-                <button class="works-filter-btn active" data-filter="all">Todos</button>
-                <button class="works-filter-btn" data-filter="cocina">Cocinas</button>
-                <button class="works-filter-btn" data-filter="bano">Baños</button>
-                <button class="works-filter-btn" data-filter="quincho">Quinchos</button>
-            </div>
-
-            <div class="carousel-wrapper">
-                <button class="carousel-nav carousel-prev" onclick="moveCarousel(-1)">‹</button>
-                <div class="carousel-viewport">
-                    <div class="carousel-track-filtered" id="worksCarousel">
-
-                        <!-- COCINAS (11) -->
-                        <div class="carousel-slide" data-category="cocina" onclick="openLightbox(0)">
-                            <img src="images/trabajos/cocina/1-trabajo-cocina.jpg" alt="Cocina 1" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="cocina" onclick="openLightbox(1)">
-                            <img src="images/trabajos/cocina/2-trabajo-cocina.jpg" alt="Cocina 2" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="cocina" onclick="openLightbox(2)">
-                            <img src="images/trabajos/cocina/3-trabajo-cocina.jpg" alt="Cocina 3" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="cocina" onclick="openLightbox(3)">
-                            <img src="images/trabajos/cocina/4-trabajo-cocina.jpg" alt="Cocina 4" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="cocina" onclick="openLightbox(4)">
-                            <img src="images/trabajos/cocina/5-trabajo-cocina.jpg" alt="Cocina 5" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="cocina" onclick="openLightbox(5)">
-                            <img src="images/trabajos/cocina/6-trabajo-cocina.jpg" alt="Cocina 6" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="cocina" onclick="openLightbox(6)">
-                            <img src="images/trabajos/cocina/7-trabajo-cocina.jpg" alt="Cocina 7" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="cocina" onclick="openLightbox(7)">
-                            <img src="images/trabajos/cocina/8-trabajo-cocina.jpg" alt="Cocina 8" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="cocina" onclick="openLightbox(8)">
-                            <img src="images/trabajos/cocina/9-trabajo-cocina.jpg" alt="Cocina 9" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="cocina" onclick="openLightbox(9)">
-                            <img src="images/trabajos/cocina/10-trabajo-cocina.jpg" alt="Cocina 10" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="cocina" onclick="openLightbox(10)">
-                            <img src="images/trabajos/cocina/11-trabajo-cocina.jpg" alt="Cocina 11" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-
-                        <!-- BAÑOS (12) -->
-                        <div class="carousel-slide" data-category="bano" onclick="openLightbox(11)">
-                            <img src="images/trabajos/baños/1-trabajo-baño.jpg" alt="Baño 1" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="bano" onclick="openLightbox(12)">
-                            <img src="images/trabajos/baños/2-trabajo-baño.jpg" alt="Baño 2" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="bano" onclick="openLightbox(13)">
-                            <img src="images/trabajos/baños/3-trabajo-baño.jpg" alt="Baño 3" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="bano" onclick="openLightbox(14)">
-                            <img src="images/trabajos/baños/4-trabajo-baño.jpg" alt="Baño 4" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="bano" onclick="openLightbox(15)">
-                            <img src="images/trabajos/baños/5-trabajo-baño.jpg" alt="Baño 5" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="bano" onclick="openLightbox(16)">
-                            <img src="images/trabajos/baños/6-trabajo-baño.jpg" alt="Baño 6" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="bano" onclick="openLightbox(17)">
-                            <img src="images/trabajos/baños/7-trabajo-baño.jpg" alt="Baño 7" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="bano" onclick="openLightbox(18)">
-                            <img src="images/trabajos/baños/8-trabajo-baño.jpg" alt="Baño 8" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="bano" onclick="openLightbox(19)">
-                            <img src="images/trabajos/baños/9-trabajo-baño.jpg" alt="Baño 9" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="bano" onclick="openLightbox(20)">
-                            <img src="images/trabajos/baños/10-trabajo-baño.jpg" alt="Baño 10" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="bano" onclick="openLightbox(21)">
-                            <img src="images/trabajos/baños/11-trabajo-baño.jpg" alt="Baño 11" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="bano" onclick="openLightbox(22)">
-                            <img src="images/trabajos/baños/12-trabajo-baño.jpg" alt="Baño 12" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-
-                        <!-- QUINCHOS (6) -->
-                        <div class="carousel-slide" data-category="quincho" onclick="openLightbox(23)">
-                            <img src="images/trabajos/quinchos/IMG-20260224-WA0014.jpg" alt="Quincho 1" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="quincho" onclick="openLightbox(24)">
-                            <img src="images/trabajos/quinchos/IMG-20260224-WA0055.jpg" alt="Quincho 2" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="quincho" onclick="openLightbox(25)">
-                            <img src="images/trabajos/quinchos/IMG-20260224-WA0056.jpg" alt="Quincho 3" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="quincho" onclick="openLightbox(26)">
-                            <img src="images/trabajos/quinchos/IMG-20260224-WA0088 - copia.jpg" alt="Quincho 4" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="quincho" onclick="openLightbox(27)">
-                            <img src="images/trabajos/quinchos/IMG-20260224-WA0089.jpg" alt="Quincho 5" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-                        <div class="carousel-slide" data-category="quincho" onclick="openLightbox(28)">
-                            <img src="images/trabajos/quinchos/IMG-20260224-WA0090.jpg" alt="Quincho 6" loading="lazy">
-                            <div class="carousel-slide-overlay"><span>Ver +</span></div>
-                        </div>
-
+            <!-- SECCIÓN COCINAS -->
+            <div class="works-category-section">
+                <h3 class="works-category-title">Cocinas</h3>
+                <div class="works-category-grid">
+                    <div class="works-grid-item" onclick="openLightbox(0)">
+                        <img src="images/trabajos/cocina/1-trabajo-cocina.jpg" alt="Cocina 1" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(1)">
+                        <img src="images/trabajos/cocina/2-trabajo-cocina.jpg" alt="Cocina 2" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(2)">
+                        <img src="images/trabajos/cocina/3-trabajo-cocina.jpg" alt="Cocina 3" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(3)">
+                        <img src="images/trabajos/cocina/4-trabajo-cocina.jpg" alt="Cocina 4" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(4)">
+                        <img src="images/trabajos/cocina/5-trabajo-cocina.jpg" alt="Cocina 5" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(5)">
+                        <img src="images/trabajos/cocina/6-trabajo-cocina.jpg" alt="Cocina 6" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(6)">
+                        <img src="images/trabajos/cocina/7-trabajo-cocina.jpg" alt="Cocina 7" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(7)">
+                        <img src="images/trabajos/cocina/8-trabajo-cocina.jpg" alt="Cocina 8" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(8)">
+                        <img src="images/trabajos/cocina/9-trabajo-cocina.jpg" alt="Cocina 9" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(9)">
+                        <img src="images/trabajos/cocina/10-trabajo-cocina.jpg" alt="Cocina 10" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(10)">
+                        <img src="images/trabajos/cocina/11-trabajo-cocina.jpg" alt="Cocina 11" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
                     </div>
                 </div>
-                <button class="carousel-nav carousel-next" onclick="moveCarousel(1)">›</button>
             </div>
 
-            <div class="carousel-dots" id="carouselDots"></div>
+            <!-- SECCIÓN BAÑOS -->
+            <div class="works-category-section">
+                <h3 class="works-category-title">Baños</h3>
+                <div class="works-category-grid">
+                    <div class="works-grid-item" onclick="openLightbox(11)">
+                        <img src="images/trabajos/baños/1-trabajo-baño.jpg" alt="Baño 1" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(12)">
+                        <img src="images/trabajos/baños/2-trabajo-baño.jpg" alt="Baño 2" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(13)">
+                        <img src="images/trabajos/baños/3-trabajo-baño.jpg" alt="Baño 3" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(14)">
+                        <img src="images/trabajos/baños/4-trabajo-baño.jpg" alt="Baño 4" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(15)">
+                        <img src="images/trabajos/baños/5-trabajo-baño.jpg" alt="Baño 5" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(16)">
+                        <img src="images/trabajos/baños/6-trabajo-baño.jpg" alt="Baño 6" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(17)">
+                        <img src="images/trabajos/baños/7-trabajo-baño.jpg" alt="Baño 7" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(18)">
+                        <img src="images/trabajos/baños/8-trabajo-baño.jpg" alt="Baño 8" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(19)">
+                        <img src="images/trabajos/baños/9-trabajo-baño.jpg" alt="Baño 9" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(20)">
+                        <img src="images/trabajos/baños/10-trabajo-baño.jpg" alt="Baño 10" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(21)">
+                        <img src="images/trabajos/baños/11-trabajo-baño.jpg" alt="Baño 11" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(22)">
+                        <img src="images/trabajos/baños/12-trabajo-baño.jpg" alt="Baño 12" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN QUINCHOS -->
+            <div class="works-category-section">
+                <h3 class="works-category-title">Quinchos</h3>
+                <div class="works-category-grid">
+                    <div class="works-grid-item" onclick="openLightbox(23)">
+                        <img src="images/trabajos/quinchos/IMG-20260224-WA0014.jpg" alt="Quincho 1" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(24)">
+                        <img src="images/trabajos/quinchos/IMG-20260224-WA0055.jpg" alt="Quincho 2" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(25)">
+                        <img src="images/trabajos/quinchos/IMG-20260224-WA0056.jpg" alt="Quincho 3" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(26)">
+                        <img src="images/trabajos/quinchos/IMG-20260224-WA0088 - copia.jpg" alt="Quincho 4" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(27)">
+                        <img src="images/trabajos/quinchos/IMG-20260224-WA0089.jpg" alt="Quincho 5" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                    <div class="works-grid-item" onclick="openLightbox(28)">
+                        <img src="images/trabajos/quinchos/IMG-20260224-WA0090.jpg" alt="Quincho 6" loading="lazy">
+                        <div class="works-item-overlay"><span>Ver +</span></div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -1424,111 +1422,7 @@
         });
     <
 
-        // Carrusel con filtro funcional
-        let currentFilter = 'all';
-        let currentSlide = 0;
-        let visibleSlides = [];
-
-        function updateVisibleSlides() {
-            const allSlides = document.querySelectorAll('.carousel-slide');
-            visibleSlides = Array.from(allSlides).filter(slide => {
-                if (currentFilter === 'all') return true;
-                return slide.dataset.category === currentFilter;
-            });
-
-            // Hide all slides first
-            allSlides.forEach(slide => slide.classList.add('hidden'));
-
-            // Show only visible slides
-            visibleSlides.forEach(slide => slide.classList.remove('hidden'));
-
-            // Reset position
-            currentSlide = 0;
-            updateCarouselPosition();
-            updateDots();
-            updateNavButtons();
-        }
-
-        function getSlidesPerView() {
-            if (window.innerWidth <= 480) return 1;
-            if (window.innerWidth <= 768) return 2;
-            if (window.innerWidth <= 1200) return 3;
-            return 4;
-        }
-
-        function updateCarouselPosition() {
-            const track = document.getElementById('worksCarousel');
-            const slidesPerView = getSlidesPerView();
-            const slideWidth = track.parentElement.offsetWidth / slidesPerView;
-            const gap = 20;
-            const offset = currentSlide * (slideWidth + gap - (gap / slidesPerView));
-            track.style.transform = `translateX(-${offset}px)`;
-        }
-
-        function updateNavButtons() {
-            const prevBtn = document.querySelector('.carousel-prev');
-            const nextBtn = document.querySelector('.carousel-next');
-            const slidesPerView = getSlidesPerView();
-
-            if (prevBtn) prevBtn.disabled = currentSlide === 0;
-            if (nextBtn) nextBtn.disabled = currentSlide >= visibleSlides.length - slidesPerView;
-        }
-
-        function updateDots() {
-            const dotsContainer = document.getElementById('carouselDots');
-            if (!dotsContainer) return;
-
-            const slidesPerView = getSlidesPerView();
-            const totalDots = Math.ceil(visibleSlides.length / slidesPerView);
-
-            dotsContainer.innerHTML = '';
-            for (let i = 0; i < totalDots; i++) {
-                const dot = document.createElement('button');
-                dot.className = 'carousel-dot' + (i === Math.floor(currentSlide / slidesPerView) ? ' active' : '');
-                dot.onclick = () => {
-                    currentSlide = i * slidesPerView;
-                    updateCarouselPosition();
-                    updateDots();
-                    updateNavButtons();
-                };
-                dotsContainer.appendChild(dot);
-            }
-        }
-
-        function moveCarousel(direction) {
-            const slidesPerView = getSlidesPerView();
-            const maxSlide = Math.max(0, visibleSlides.length - slidesPerView);
-
-            currentSlide += direction;
-
-            if (currentSlide < 0) currentSlide = 0;
-            if (currentSlide > maxSlide) currentSlide = maxSlide;
-
-            updateCarouselPosition();
-            updateDots();
-            updateNavButtons();
-        }
-
-        // Filter buttons
-        document.querySelectorAll('.works-filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.works-filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentFilter = btn.dataset.filter;
-                updateVisibleSlides();
-            });
-        });
-
-        // Window resize
-        window.addEventListener('resize', () => {
-            updateCarouselPosition();
-            updateNavButtons();
-        });
-
-        // Initialize
-        document.addEventDOMContentLoaded = () => {
-            updateVisibleSlides();
-        };
+        
 /script>
 </body>
 </html>
