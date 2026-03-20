@@ -179,16 +179,22 @@
         }
         body { font-family: var(--font-sans); color: var(--color-dark); overflow-x: hidden; }
 
-        /* NAVEGACIÓN */
+        /* NAVEGACIÓN - CORREGIDO: Sin altura forzada, centrado perfecto */
         .navbar {
-            position: absolute; top: 0; left: 0; right: 0; z-index: 1000;
-            padding: 1rem 4%; display: flex; justify-content: space-between; align-items: center;
-            transition: all 0.4s ease;
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            z-index: 1000;
+            display: flex; 
+            align-items: center; /* Centrado vertical estricto */
+            justify-content: space-between;
+            padding: 0.5rem 4%; /* Reducido para eliminar espacio vacío */
             background: transparent;
-            min-height: 100px;
+            /* min-height: auto; explícito: sin altura forzada */
         }
         
-        /* LOGO - AJUSTADO: Tamaños optimizados para mayor visibilidad */
+        /* LOGO - Desktop */
         .logo {
             display: flex;
             align-items: center;
@@ -196,7 +202,7 @@
         }
 
         .logo img {
-            height: 195px;
+            height: 120px;
             width: auto;
             display: block;
             transition: transform 0.3s ease;
@@ -206,36 +212,33 @@
             transform: scale(1.05);
         }
 
-        /* Tablet */
+        /* TABLET */
         @media (max-width: 1024px) {
             .logo img {
-                height: 95px;
+                height: 100px;
             }
             .navbar {
-                padding: 0.8rem 4%;
-                min-height: 90px;
+                padding: 0.5rem 4%;
             }
         }
 
-        /* Mobile */
-        @media (max-width: 790px) {
+        /* MOBILE - CORREGIDO: Logo más grande, navbar se adapta */
+        @media (max-width: 768px) {
             .logo img {
-                height: 120px;
-            }
-            .navbar {
-                padding: 0.7rem 4%;
-                min-height: 80px;
-            }
-        }
-
-        /* Small mobile */
-        @media (max-width: 480px) {
-            .logo img {
-                height: 72px;
+                height: 95px; /* Grande pero controlado */
             }
             .navbar {
                 padding: 0.6rem 4%;
-                min-height: 75px;
+            }
+        }
+
+        /* SMALL MOBILE */
+        @media (max-width: 480px) {
+            .logo img {
+                height: 85px;
+            }
+            .navbar {
+                padding: 0.5rem 4%;
             }
         }
 
