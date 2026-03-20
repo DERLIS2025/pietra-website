@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre Nosotros - PIETRA | Mármol y Granito de Lujo</title>
-    <meta name="description" content="Conoce a PIETRA. Más de 15 años de experiencia en diseño y fabricación de cocinas, baños y mobiliario en mármol y granito.">
+    <title>Sobre Nosotros - Marmolería Pietra | Mármol y Granito en Paraguay</title>
+    <meta name="description" content="Conoce la historia de Marmolería Pietra. Más de 15 años de experiencia en diseño y fabricación de cocinas, baños y mobiliario en mármol, granito y cuarzo en Paraguay.">
+    <meta name="keywords" content="marmolería Pietra historia, mármol Paraguay, granito Asunción, cuarzo, nosotros Pietra, experiencia mármol">
+    
+    <link rel="canonical" href="https://marmoleriapietra.com/nosotros.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Sobre Nosotros - Marmolería Pietra">
+    <meta property="og:description" content="Conoce nuestra historia. Artesanos de la piedra natural desde 2008.">
+    <meta property="og:image" content="https://marmoleriapietra.com/images/categorias/cocina-6.jpg">
+    <meta property="og:url" content="https://marmoleriapietra.com/nosotros.html">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        /* ============================================
-           VARIABLES Y RESET (Mismos que index.html)
-        ============================================ */
         * {
             margin: 0;
             padding: 0;
@@ -21,8 +27,9 @@
         }
 
         :root {
-            --color-primary: #7c8b6f;
-            --color-primary-dark: #5a6b4f;
+            --color-primary: #5a7c6c;
+            --color-primary-dark: #4a6356;
+            --color-secondary: #c4b5a0;
             --color-dark: #1a1a1a;
             --color-light: #f5f5f0;
             --font-serif: 'Playfair Display', serif;
@@ -38,7 +45,7 @@
         }
 
         /* ============================================
-           NAVEGACIÓN (Idéntica a index.html)
+           NAVEGACIÓN - Coherente con index.html
         ============================================ */
         .navbar {
             position: fixed;
@@ -46,33 +53,62 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 1.5rem 4%;
-            display: flex;
-            justify-content: space-between;
+            display: flex; 
             align-items: center;
-            transition: all 0.4s ease;
+            justify-content: space-between;
+            padding: 0.5rem 4%;
             background: rgba(26, 26, 26, 0.95);
             backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
         }
 
         .navbar.scrolled {
             background: rgba(255, 255, 255, 0.98);
-            padding: 1rem 4%;
+            padding: 0.5rem 4%;
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
 
-        .navbar.scrolled .nav-links a,
-        .navbar.scrolled .logo {
+        .navbar.scrolled .nav-links a {
             color: var(--color-dark);
         }
 
+        /* LOGO - LIMPIO, SIN FONDO */
         .logo {
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: white;
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            letter-spacing: 2px;
+        }
+
+        .logo img {
+            height: 110px;
+            width: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        /* TABLET */
+        @media (max-width: 1024px) {
+            .logo img {
+                height: 100px;
+            }
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .logo img {
+                height: 85px;
+            }
+        }
+
+        /* SMALL MOBILE */
+        @media (max-width: 480px) {
+            .logo img {
+                height: 80px;
+            }
         }
 
         .nav-links {
@@ -138,39 +174,49 @@
         }
 
         /* ============================================
-           HERO PÁGINA NOSOTROS
+           HERO NOSOTROS
         ============================================ */
         .about-hero {
-            padding: 160px 5% 100px;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            color: white;
-            text-align: center;
+            height: 70vh;
+            min-height: 500px;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
+            margin-top: 0;
         }
 
-        .about-hero::before {
-            content: '';
+        .about-hero-bg {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(124,139,111,0.1)" stroke-width="0.5"/></svg>');
-            background-size: 60px 60px;
-            opacity: 0.5;
+            width: 100%;
+            height: 100%;
+            background: url('images/categorias/cocina-6.jpg') center/cover;
+        }
+
+        .about-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
         }
 
         .about-hero-content {
             position: relative;
             z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            padding: 0 2rem;
         }
 
         .about-hero h1 {
             font-family: var(--font-serif);
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 400;
             margin-bottom: 1.5rem;
             line-height: 1.2;
@@ -183,20 +229,161 @@
 
         .about-hero p {
             font-size: 1.2rem;
-            opacity: 0.9;
             font-weight: 300;
             line-height: 1.8;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         /* ============================================
-           SECCIÓN HISTORIA
+           SECCIÓN HISTORIA - TIMELINE
         ============================================ */
-        .story-section {
+        .history-section {
             padding: 100px 5%;
             background: white;
         }
 
-        .story-container {
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-subtitle {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            display: block;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 400;
+            color: var(--color-dark);
+            margin-bottom: 20px;
+        }
+
+        .history-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 80px;
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Timeline */
+        .timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--color-primary);
+            opacity: 0.3;
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 50%;
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: 50%;
+        }
+
+        .timeline-content {
+            background: var(--color-light);
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 400px;
+            position: relative;
+            margin-right: 30px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: 0;
+            margin-left: 30px;
+        }
+
+        .timeline-year {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+
+        .timeline-content h3 {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--color-dark);
+        }
+
+        .timeline-content p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                justify-content: flex-start;
+                padding-left: 80px;
+                padding-right: 0;
+            }
+
+            .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 0;
+                margin-right: 0;
+                max-width: 100%;
+            }
+
+            .timeline-year {
+                left: 30px;
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ============================================
+           SECCIÓN NOSOTROS - CONTENIDO PRINCIPAL
+        ============================================ */
+        .about-content {
+            padding: 100px 5%;
+            background: var(--color-light);
+        }
+
+        .about-container {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
@@ -205,7 +392,7 @@
             align-items: center;
         }
 
-        .story-content h2 {
+        .about-text h2 {
             font-family: var(--font-serif);
             font-size: 2.5rem;
             font-weight: 400;
@@ -213,25 +400,29 @@
             color: var(--color-dark);
         }
 
-        .story-content h2 em {
+        .about-text h2 em {
             font-style: italic;
             color: var(--color-primary);
         }
 
-        .story-content p {
+        .about-text p {
             color: #666;
             font-size: 1.05rem;
             line-height: 1.8;
             margin-bottom: 1.5rem;
         }
 
-        .story-stats {
+        .about-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             margin-top: 40px;
             padding-top: 40px;
-            border-top: 1px solid #eee;
+            border-top: 1px solid #ddd;
+        }
+
+        .stat-item {
+            text-align: center;
         }
 
         .stat-item h3 {
@@ -248,11 +439,11 @@
             letter-spacing: 1px;
         }
 
-        .story-image {
+        .about-image {
             position: relative;
         }
 
-        .story-image img {
+        .about-image img {
             width: 100%;
             height: 500px;
             object-fit: cover;
@@ -260,7 +451,7 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
-        .story-image::before {
+        .about-image::before {
             content: '';
             position: absolute;
             top: 30px;
@@ -272,36 +463,34 @@
             z-index: -1;
         }
 
+        @media (max-width: 1024px) {
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .about-image::before {
+                display: none;
+            }
+
+            .about-stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-stats {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
         /* ============================================
            SECCIÓN VALORES
         ============================================ */
         .values-section {
             padding: 100px 5%;
-            background: var(--color-light);
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 60px;
-        }
-
-        .section-subtitle {
-            font-family: var(--font-serif);
-            font-size: 0.9rem;
-            color: var(--color-primary);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .section-title {
-            font-family: var(--font-serif);
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            font-weight: 400;
-            color: var(--color-dark);
-            margin-bottom: 20px;
+            background: white;
         }
 
         .values-grid {
@@ -314,32 +503,35 @@
 
         .value-card {
             text-align: center;
-            padding: 40px 30px;
-            background: white;
+            padding: 50px 30px;
+            background: var(--color-light);
             border-radius: 8px;
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
         }
 
         .value-card:hover {
             transform: translateY(-10px);
+            border-color: var(--color-primary);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
 
         .value-icon {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             background: var(--color-primary);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin: 0 auto 25px;
         }
 
         .value-card h3 {
             font-family: var(--font-serif);
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 15px;
             color: var(--color-dark);
         }
@@ -350,199 +542,126 @@
             line-height: 1.6;
         }
 
+        @media (max-width: 1024px) {
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* ============================================
-           SECCIÓN CONTACTO
+           SECCIÓN EQUIPO
         ============================================ */
-        .contact-section {
+        .team-section {
             padding: 100px 5%;
             background: var(--color-dark);
             color: white;
         }
 
-        .contact-section .section-title {
+        .team-section .section-title {
             color: white;
         }
 
-        .contact-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .team-grid {
+            max-width: 1000px;
+            margin: 60px auto 0;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
         }
 
-        .contact-info h3 {
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            color: white;
+        .team-member {
+            text-align: center;
         }
 
-        .contact-item {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 30px;
-            align-items: flex-start;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--color-primary);
+        .team-member-img {
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
+            background: var(--color-primary);
+            margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            flex-shrink: 0;
+            font-size: 3rem;
+            color: white;
+            overflow: hidden;
         }
 
-        .contact-item h4 {
-            font-size: 1.1rem;
+        .team-member h4 {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
             margin-bottom: 5px;
-            color: white;
         }
 
-        .contact-item p {
+        .team-member p {
             color: #aaa;
-            font-size: 0.95rem;
-        }
-
-        .contact-item a {
-            color: var(--color-primary);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .contact-item a:hover {
-            color: white;
-        }
-
-        /* Formulario */
-        .contact-form {
-            background: rgba(255,255,255,0.05);
-            padding: 50px;
-            border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
             font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #aaa;
         }
 
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 15px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white;
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            transition: all 0.3s;
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--color-primary);
-            background: rgba(255,255,255,0.15);
-        }
-
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .btn-submit {
-            width: 100%;
-            padding: 18px;
+        /* ============================================
+           CTA SECTION
+        ============================================ */
+        .cta-section {
+            padding: 100px 5%;
             background: var(--color-primary);
+            text-align: center;
             color: white;
+        }
+
+        .cta-section h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--color-primary);
+            padding: 1rem 2.5rem;
             border: none;
             font-size: 0.9rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             cursor: pointer;
             transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
         }
 
-        .btn-submit:hover {
-            background: var(--color-primary-dark);
-            transform: translateY(-2px);
-        }
-
-        /* ============================================
-           FAQ
-        ============================================ */
-        .faq-section {
-            padding: 100px 5%;
-            background: white;
-        }
-
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid #eee;
-            padding: 25px 0;
-        }
-
-        .faq-question {
-            font-family: var(--font-serif);
-            font-size: 1.2rem;
-            color: var(--color-dark);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: color 0.3s;
-        }
-
-        .faq-question:hover {
-            color: var(--color-primary);
-        }
-
-        .faq-answer {
-            color: #666;
-            line-height: 1.7;
-            margin-top: 15px;
-            display: none;
-        }
-
-        .faq-item.active .faq-answer {
-            display: block;
-        }
-
-        .faq-toggle {
-            font-size: 1.5rem;
-            color: var(--color-primary);
-            transition: transform 0.3s;
-        }
-
-        .faq-item.active .faq-toggle {
-            transform: rotate(45deg);
+        .btn-white:hover {
+            background: var(--color-dark);
+            color: white;
+            transform: translateY(-3px);
         }
 
         /* ============================================
-           FOOTER
+           FOOTER - Coherente con index.html
         ============================================ */
         footer {
-            background: #111;
+            background: var(--color-dark);
             color: white;
             padding: 60px 5% 30px;
         }
@@ -561,6 +680,11 @@
             font-size: 1.2rem;
             margin-bottom: 20px;
             color: var(--color-primary);
+        }
+
+        .footer-section p {
+            color: #aaa;
+            line-height: 1.6;
         }
 
         .footer-section ul {
@@ -590,6 +714,16 @@
             font-size: 0.9rem;
         }
 
+        .footer-bottom a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-bottom a:hover {
+            color: white;
+        }
+
         /* ============================================
            WHATSAPP FLOAT
         ============================================ */
@@ -617,23 +751,9 @@
             transform: scale(1.1);
         }
 
-        /* ============================================
-           RESPONSIVE
-        ============================================ */
-        @media (max-width: 1024px) {
-            .story-container,
-            .contact-container {
-                grid-template-columns: 1fr;
-                gap: 50px;
-            }
-
-            .story-image::before {
-                display: none;
-            }
-
-            .values-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
         }
 
         @media (max-width: 768px) {
@@ -642,20 +762,8 @@
             }
 
             .about-hero {
-                padding: 120px 5% 60px;
-            }
-
-            .story-stats {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .values-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-form {
-                padding: 30px;
+                height: 60vh;
+                min-height: 400px;
             }
 
             .whatsapp-float {
@@ -665,44 +773,108 @@
                 bottom: 20px;
                 right: 20px;
             }
+
+            .whatsapp-float svg {
+                width: 24px;
+                height: 24px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVEGACIÓN (Idéntica a index.html) -->
+    <!-- NAVEGACIÓN -->
     <nav class="navbar" id="navbar">
-        <a href="index.html" class="logo">PIETRA.</a>
+        <a href="index.html" class="logo">
+            <img src="images/Logo/logo_correcto_v2%20(1).png" alt="Marmolería Pietra">
+        </a>
         <ul class="nav-links">
             <li><a href="index.html">Inicio</a></li>
             <li><a href="index.html#catalogo">Catálogo</a></li>
-            <li><a href="index.html#proyectos">Proyectos</a></li>
+            <li><a href="index.html#trabajos">Proyectos</a></li>
             <li><a href="nosotros.html">Nosotros</a></li>
             <li><a href="#contacto">Contacto</a></li>
         </ul>
         <div class="nav-actions">
-            <a href="https://wa.me/+595984756158?text=Hola,%20quiero%20una%20cotización" class="btn-quote" target="_blank">Solicitar Cotización</a>
+            <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20gustaría%20solicitar%20una%20cotización" class="btn-quote" target="_blank">Solicitar Cotización</a>
         </div>
     </nav>
 
     <!-- HERO -->
-    <header class="about-hero">
+    <section class="about-hero">
+        <div class="about-hero-bg"></div>
+        <div class="about-hero-overlay"></div>
         <div class="about-hero-content">
-            <h1>Artesanos de la <em>piedra natural</em></h1>
+            <h1>Nuestra <em>Historia</em></h1>
             <p>Desde 2008 transformamos espacios con la belleza eterna del mármol y granito. Cada proyecto es una obra de arte única, diseñada para perdurar generaciones.</p>
         </div>
-    </header>
+    </section>
 
-    <!-- HISTORIA -->
-    <section class="story-section">
-        <div class="story-container">
-            <div class="story-content">
-                <h2>Nuestra <em>Historia</em></h2>
-                <p>PIETRA nació de una pasión por la piedra natural y el diseño de interiores. Lo que comenzó como un pequeño taller familiar se ha convertido en referente de lujo en acabados de mármol y granito.</p>
+    <!-- HISTORIA - TIMELINE -->
+    <section class="history-section">
+        <div class="section-header">
+            <span class="section-subtitle">Nuestro Camino</span>
+            <h2 class="section-title">Más de 15 años de excelencia</h2>
+        </div>
+
+        <p class="history-intro">
+            Lo que comenzó como un sueño familiar se convirtió en la marmolería de referencia en Paraguay. 
+            Cada etapa de nuestra historia está marcada por el compromiso con la calidad y la pasión por la piedra natural.
+        </p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">2008</div>
+                <div class="timeline-content">
+                    <h3>Los Inicios</h3>
+                    <p>Fundación de Marmolería Pietra como un pequeño taller familiar en Asunción, con la visión de traer los mejores materiales del mundo a Paraguay.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2012</div>
+                <div class="timeline-content">
+                    <h3>Primera Expansión</h3>
+                    <p>Ampliación de instalaciones e importación directa desde canteras de Brasil e Italia. Incorporación de maquinaria de última generación.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2016</div>
+                <div class="timeline-content">
+                    <h3>Proyectos de Lujo</h3>
+                    <p>Realización de proyectos emblemáticos en residencias y edificios de prestigio. Consolidación como referente en acabados premium.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2020</div>
+                <div class="timeline-content">
+                    <h3>Innovación y Tecnología</h3>
+                    <p>Implementación de tecnología CNC para cortes de precisión. Incorporación de nuevos materiales como Neolith y cuarzos de ingeniería.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2024</div>
+                <div class="timeline-content">
+                    <h3>Presente y Futuro</h3>
+                    <p>Seguimos creciendo con el mismo compromiso de siempre: transformar espacios con la belleza eterna de la piedra natural.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOSOTROS - CONTENIDO PRINCIPAL -->
+    <section class="about-content">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>Artesanos de la <em>piedra natural</em></h2>
+                <p>En Marmolería Pietra no solo trabajamos con piedra, la honramos. Cada losa que pasa por nuestras manos cuenta una historia de millones de años, y nosotros somos los encargados de darle su próximo capítulo.</p>
                 <p>Trabajamos directamente con canteras de Brasil, Italia y España para traer los materiales más exclusivos del mundo. Nuestro equipo de artesanos combina técnicas tradicionales con tecnología de vanguardia.</p>
                 <p>Cada encimera, cada revestimiento, cada detalle cuenta una historia de dedicación, precisión y amor por la belleza natural.</p>
                 
-                <div class="story-stats">
+                <div class="about-stats">
                     <div class="stat-item">
                         <h3>15+</h3>
                         <p>Años de experiencia</p>
@@ -717,8 +889,8 @@
                     </div>
                 </div>
             </div>
-            <div class="story-image">
-                <img src="images/taller-pietra.jpg" alt="Taller PIETRA">
+            <div class="about-image">
+                <img src="images/categorias/cocina-6.jpg" alt="Taller Marmolería Pietra">
             </div>
         </div>
     </section>
@@ -734,7 +906,7 @@
             <div class="value-card">
                 <div class="value-icon">◆</div>
                 <h3>Excelencia</h3>
-                <p>No aceptamos menos que la perfección. Cada corte, cada pulido, cada instalación es ejecutada con precisión milimétrica.</p>
+                <p>No aceptamos menos que la perfección. Cada corte, cada pulido, cada instalación es ejecutada con precisión milimétrica y atención al detalle.</p>
             </div>
             <div class="value-card">
                 <div class="value-icon">♦</div>
@@ -749,159 +921,77 @@
         </div>
     </section>
 
-    <!-- CONTACTO -->
-    <section class="contact-section" id="contacto">
+    <!-- EQUIPO -->
+    <section class="team-section">
         <div class="section-header">
-            <span class="section-subtitle" style="color: var(--color-primary);">Estemos en contacto</span>
-            <h2 class="section-title">¿Tienes un proyecto en mente?</h2>
+            <span class="section-subtitle" style="color: var(--color-primary);">Quienes Somos</span>
+            <h2 class="section-title">Nuestro Equipo</h2>
         </div>
-        
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>Información de contacto</h3>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">✉</div>
-                    <div>
-                        <h4>Email</h4>
-                        <p><a href="mailto:info@PIETRA.com">info@PIETRA.com</a></p>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">💬</div>
-                    <div>
-                        <h4>WhatsApp</h4>
-                        <p><a href="https://wa.me/+595984756158" target="_blank">+595 984 756 158</a></p>
-                        <p style="font-size: 0.85rem; margin-top: 5px;">Respuesta inmediata</p>
-                    </div>
-                </div>
+
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="team-member-img">👤</div>
+                <h4>Fundador</h4>
+                <p>Visión y Liderazgo</p>
             </div>
-            
-            <form class="contact-form" action="thank-you.html" method="GET">
-                <div class="form-group">
-                    <label for="nombre">Nombre completo</label>
-                    <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Correo electrónico</label>
-                    <input type="email" id="email" name="email" required placeholder="tu@email.com">
-                </div>
-                
-                <div class="form-group">
-                    <label for="telefono">Teléfono</label>
-                    <input type="tel" id="telefono" name="telefono" placeholder="+595 984 000 000">
-                </div>
-                
-                <div class="form-group">
-                    <label for="tipo">Tipo de proyecto</label>
-                    <select id="tipo" name="tipo" required>
-                        <option value="">Selecciona una opción</option>
-                        <option value="cocina">Cocina</option>
-                        <option value="bano">Baño</option>
-                        <option value="mobiliario">Mobiliario</option>
-                        <option value="exterior">Exterior / Quincho</option>
-                        <option value="revestimiento">Revestimiento</option>
-                        <option value="otro">Otro</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="mensaje">Cuéntanos sobre tu proyecto</label>
-                    <textarea id="mensaje" name="mensaje" required placeholder="Describe tu proyecto, dimensiones aproximadas, material de interés..."></textarea>
-                </div>
-                
-                <button type="submit" class="btn-submit">Enviar mensaje</button>
-            </form>
+            <div class="team-member">
+                <div class="team-member-img">👤</div>
+                <h4>Equipo Técnico</h4>
+                <p>Artesanos Especializados</p>
+            </div>
+            <div class="team-member">
+                <div class="team-member-img">👤</div>
+                <h4>Atención al Cliente</h4>
+                <p>Asesoramiento Personalizado</p>
+            </div>
         </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="faq-section">
-        <div class="section-header">
-            <span class="section-subtitle">Preguntas frecuentes</span>
-            <h2 class="section-title">Resolvemos tus dudas</h2>
-        </div>
-        
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question">
-                    ¿Cuánto tiempo toma un proyecto típico?
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    Desde la aprobación del diseño, una cocina estándar toma entre 15-20 días hábiles. Proyectos más complejos o con materiales importados bajo pedido pueden tomar 4-6 semanas. Siempre te damos un cronograma detallado antes de iniciar.
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    ¿Ofrecen garantía en sus trabajos?
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    Sí, ofrecemos garantía de 1 año en la instalación y sellado de nuestros materiales. Los productos de ingeniería como cuarzo y neolith tienen garantía extendida del fabricante de hasta 15 años.
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    ¿Cómo es el proceso de cotización?
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    Puedes solicitar cotización vía WhatsApp, formulario web o email. Necesitamos: tipo de proyecto, dimensiones aproximadas, material de interés (o te asesoramos) y ubicación. Entregamos cotización detallada en 24-48 horas.
-                </div>
-            </div>
-        </div>
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>¿Listo para transformar tu espacio?</h2>
+        <p>Contáctanos hoy mismo y descubre cómo podemos hacer realidad tu proyecto con la belleza eterna de la piedra natural.</p>
+        <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20gustaría%20solicitar%20una%20cotización" class="btn-white" target="_blank">Solicitar Cotización</a>
     </section>
 
     <!-- FOOTER -->
-    <footer>
+    <footer id="contacto">
         <div class="footer-content">
             <div class="footer-section">
-                <h4>Navegación</h4>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="index.html#catalogo">Catálogo</a></li>
-                    <li><a href="index.html#proyectos">Proyectos</a></li>
-                    <li><a href="nosotros.html">Nosotros</a></li>
-                    <li><a href="nosotros.html#contacto">Contacto</a></li>
-                </ul>
+                <h4>PIETRA.</h4>
+                <p>Especialistas en mármol, granito y cuarzo. Diseñando espacios únicos desde 2008.</p>
             </div>
             <div class="footer-section">
                 <h4>Servicios</h4>
                 <ul>
-                    <li><a href="index.html#catalogo">Cocinas Premium</a></li>
-                    <li><a href="index.html#catalogo">Baños de Lujo</a></li>
-                    <li><a href="index.html#catalogo">Mobiliario a Medida</a></li>
-                    <li><a href="index.html#catalogo">Exteriores</a></li>
+                    <li><a href="index.html#categorias">Cocinas</a></li>
+                    <li><a href="index.html#categorias">Baños</a></li>
+                    <li><a href="index.html#categorias">Quinchos</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Contacto</h4>
                 <ul>
-                    <li>+595 984 756 158</li>
-                    <li>info@PIETRA.com</li>
-                    <li>Asunción, Paraguay</li>
+                    <li><a href="mailto:info@pietra.com">info@pietra.com</a></li>
+                    <li><a href="https://wa.me/595984756158" target="_blank">+595 984 756 158</a></li>
+                    <li><a href="#">Asunción, Paraguay</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h4>Síguenos</h4>
+                <h4>Redes</h4>
                 <ul>
-                    <li><a href="#">Instagram</a></li>
+                    <li><a href="https://instagram.com/marmoleria_pietra" target="_blank">Instagram</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 PIETRA. Todos los derechos reservados.</p>
+            <p>Desarrollado por <a href="#" target="_blank">eQuantum</a> | &copy; 2026 Marmolería Pietra. Todos los derechos reservados.</p>
         </div>
     </footer>
 
     <!-- WHATSAPP -->
-    <a href="https://wa.me/+595984756158" class="whatsapp-float" target="_blank">
-        💬
+    <a href="https://wa.me/595984756158?text=Hola%20Marmolería%20Pietra,%20me%20gustaría%20recibir%20más%20información" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
     </a>
 
     <script>
@@ -913,22 +1003,6 @@
             } else {
                 navbar.classList.remove('scrolled');
             }
-        });
-
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const item = question.parentElement;
-                const isActive = item.classList.contains('active');
-                
-                // Cerrar todos
-                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-                
-                // Abrir el clickeado si no estaba activo
-                if (!isActive) {
-                    item.classList.add('active');
-                }
-            });
         });
     </script>
 
