@@ -199,6 +199,11 @@
             display: flex;
             align-items: center;
             text-decoration: none;
+            /* Fondo blanco para que se vea el logo transparente */
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 8px 16px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .logo img {
@@ -224,6 +229,9 @@
 
         /* MOBILE - CORREGIDO: Logo más grande, navbar se adapta */
         @media (max-width: 768px) {
+            .logo {
+                padding: 6px 12px;
+            }
             .logo img {
                 height: 95px;
             }
@@ -234,6 +242,9 @@
 
         /* SMALL MOBILE */
         @media (max-width: 480px) {
+            .logo {
+                padding: 5px 10px;
+            }
             .logo img {
                 height: 85px;
             }
@@ -550,7 +561,8 @@
     <!-- NAVEGACIÓN -->
     <nav class="navbar" id="navbar">
         <a href="#" class="logo">
-            <img src="imagenes-logo/logo_correcto_v2 (1).png" alt="Marmolería Pietra">
+            <!-- Ruta corregida con URL encoding para el espacio -->
+            <img src="imagenes-logo/logo_correcto_v2%20(1).png" alt="Marmolería Pietra">
         </a>
         <ul class="nav-links">
             <li><a href="#">Inicio</a></li>
@@ -916,7 +928,7 @@
                 </div>
                 <div class="work-item" data-category="cocina" onclick="openLightbox(2)">
                     <img src="images/trabajos/cocina/3-trabajo-cocina.jpg" alt="Cocina 3" loading="lazy">
-                    <div class="workoverlay"><button class="work-view-btn">Ver +</button></div>
+                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
                 </div>
                 <div class="work-item" data-category="cocina" onclick="openLightbox(3)">
                     <img src="images/trabajos/cocina/4-trabajo-cocina.jpg" alt="Cocina 4" loading="lazy">
