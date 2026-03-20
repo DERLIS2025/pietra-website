@@ -179,7 +179,7 @@
         }
         body { font-family: var(--font-sans); color: var(--color-dark); overflow-x: hidden; }
 
-        /* NAVEGACIÓN - CORREGIDO: Sin altura forzada, centrado perfecto */
+        /* NAVEGACIÓN - Sin altura forzada, centrado perfecto */
         .navbar {
             position: absolute; 
             top: 0; 
@@ -187,27 +187,21 @@
             right: 0; 
             z-index: 1000;
             display: flex; 
-            align-items: center; /* Centrado vertical estricto */
+            align-items: center;
             justify-content: space-between;
-            padding: 0.5rem 4%; /* Reducido para eliminar espacio vacío */
+            padding: 0.5rem 4%;
             background: transparent;
-            /* min-height: auto; explícito: sin altura forzada */
         }
         
-        /* LOGO - Desktop */
+        /* LOGO - LIMPIO, SIN FONDO, SIN SOMBRAS */
         .logo {
             display: flex;
             align-items: center;
             text-decoration: none;
-            /* Fondo blanco para que se vea el logo transparente */
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 8px 16px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .logo img {
-            height: 70px;
+            height: 110px;
             width: auto;
             display: block;
             transition: transform 0.3s ease;
@@ -227,13 +221,10 @@
             }
         }
 
-        /* MOBILE - CORREGIDO: Logo más grande, navbar se adapta */
+        /* MOBILE */
         @media (max-width: 768px) {
-            .logo {
-                padding: 6px 12px;
-            }
             .logo img {
-                height: 50px;
+                height: 85px;
             }
             .navbar {
                 padding: 0.6rem 4%;
@@ -242,11 +233,8 @@
 
         /* SMALL MOBILE */
         @media (max-width: 480px) {
-            .logo {
-                padding: 5px 10px;
-            }
             .logo img {
-                height: 85px;
+                height: 80px;
             }
             .navbar {
                 padding: 0.5rem 4%;
@@ -561,7 +549,6 @@
     <!-- NAVEGACIÓN -->
     <nav class="navbar" id="navbar">
         <a href="#" class="logo">
-            <!-- RUTA CORREGIDA: Logo con mayúscula y URL encoding -->
             <img src="images/Logo/logo_correcto_v2%20(1).png" alt="Marmolería Pietra">
         </a>
         <ul class="nav-links">
