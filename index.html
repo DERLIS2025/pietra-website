@@ -201,7 +201,7 @@
         }
 
         .logo img {
-            height: 110px;
+            height: 105px;
             width: auto;
             display: block;
             transition: transform 0.3s ease;
@@ -216,7 +216,7 @@
             .logo img {
                 height: 100px;
             }
-            .navbar {
+            .navbar {s
                 padding: 0.5rem 4%;
             }
         }
@@ -224,7 +224,7 @@
         /* MOBILE */
         @media (max-width: 768px) {
             .logo img {
-                height: 85px;
+                height: 40px;
             }
             .navbar {
                 padding: 0.6rem 4%;
@@ -234,7 +234,7 @@
         /* SMALL MOBILE */
         @media (max-width: 480px) {
             .logo img {
-                height: 80px;
+                height: 40px;
             }
             .navbar {
                 padding: 0.5rem 4%;
@@ -541,7 +541,139 @@
             .whatsapp-float { width: 50px; height: 50px; font-size: 24px; bottom: 20px; right: 20px; }
             .whatsapp-float svg { width: 24px; height: 24px; }
         }
-    </style>
+    
+        /* CARRUSEL INFINITO - NUESTROS TRABAJOS */
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .carousel-container::before,
+        .carousel-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 100px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .carousel-container::before {
+            left: 0;
+            background: linear-gradient(to right, #f8f8f6 0%, transparent 100%);
+        }
+
+        .carousel-container::after {
+            right: 0;
+            background: linear-gradient(to left, #f8f8f6 0%, transparent 100%);
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 20px;
+            animation: scroll 60s linear infinite;
+            width: max-content;
+        }
+
+        .carousel-container:hover .carousel-track {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .carousel-item {
+            flex: 0 0 auto;
+            width: 300px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .carousel-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(90, 124, 108, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .carousel-item:hover .carousel-overlay {
+            opacity: 1;
+        }
+
+        .carousel-view {
+            color: white;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 2px solid white;
+            padding: 12px 24px;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .carousel-view:hover {
+            background: white;
+            color: var(--color-primary);
+        }
+
+        @media (max-width: 768px) {
+            .carousel-item {
+                width: 250px;
+                height: 350px;
+            }
+
+            .carousel-container::before,
+            .carousel-container::after {
+                width: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-item {
+                width: 200px;
+                height: 280px;
+            }
+        }
+</style>
 <base target="_blank">
 <base target="_blank">
 </head>
@@ -893,7 +1025,7 @@
         </div>
     </section>
 
-    <!-- NUESTROS TRABAJOS -->
+    <!-- NUESTROS TRABAJOS - CARRUSEL INFINITO -->
     <section class="works-section" id="trabajos">
         <div class="container">
             <div class="works-header">
@@ -908,127 +1040,356 @@
                 <button class="works-filter-btn" data-filter="quincho">Quinchos</button>
             </div>
 
-            <div class="works-grid" id="worksGrid">
-                <!-- Cocinas (11) -->
-                <div class="work-item" data-category="cocina" onclick="openLightbox(0)">
-                    <img src="images/trabajos/cocina/1-trabajo-cocina.jpg" alt="Cocina 1" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="cocina" onclick="openLightbox(1)">
-                    <img src="images/trabajos/cocina/2-trabajo-cocina.jpg" alt="Cocina 2" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="cocina" onclick="openLightbox(2)">
-                    <img src="images/trabajos/cocina/3-trabajo-cocina.jpg" alt="Cocina 3" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="cocina" onclick="openLightbox(3)">
-                    <img src="images/trabajos/cocina/4-trabajo-cocina.jpg" alt="Cocina 4" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="cocina" onclick="openLightbox(4)">
-                    <img src="images/trabajos/cocina/5-trabajo-cocina.jpg" alt="Cocina 5" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="cocina" onclick="openLightbox(5)">
-                    <img src="images/trabajos/cocina/6-trabajo-cocina.jpg" alt="Cocina 6" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="cocina" onclick="openLightbox(6)">
-                    <img src="images/trabajos/cocina/7-trabajo-cocina.jpg" alt="Cocina 7" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="cocina" onclick="openLightbox(7)">
-                    <img src="images/trabajos/cocina/8-trabajo-cocina.jpg" alt="Cocina 8" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="cocina" onclick="openLightbox(8)">
-                    <img src="images/trabajos/cocina/9-trabajo-cocina.jpg" alt="Cocina 9" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="cocina" onclick="openLightbox(9)">
-                    <img src="images/trabajos/cocina/10-trabajo-cocina.jpg" alt="Cocina 10" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="cocina" onclick="openLightbox(10)">
-                    <img src="images/trabajos/cocina/11-trabajo-cocina.jpg" alt="Cocina 11" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-
-                <!-- Baños (12) -->
-                <div class="work-item" data-category="bano" onclick="openLightbox(11)">
-                    <img src="images/trabajos/baños/1-trabajo-baño.jpg" alt="Baño 1" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="bano" onclick="openLightbox(12)">
-                    <img src="images/trabajos/baños/2-trabajo-baño.jpg" alt="Baño 2" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="bano" onclick="openLightbox(13)">
-                    <img src="images/trabajos/baños/3-trabajo-baño.jpg" alt="Baño 3" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="bano" onclick="openLightbox(14)">
-                    <img src="images/trabajos/baños/4-trabajo-baño.jpg" alt="Baño 4" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="bano" onclick="openLightbox(15)">
-                    <img src="images/trabajos/baños/5-trabajo-baño.jpg" alt="Baño 5" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="bano" onclick="openLightbox(16)">
-                    <img src="images/trabajos/baños/6-trabajo-baño.jpg" alt="Baño 6" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="bano" onclick="openLightbox(17)">
-                    <img src="images/trabajos/baños/7-trabajo-baño.jpg" alt="Baño 7" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="bano" onclick="openLightbox(18)">
-                    <img src="images/trabajos/baños/8-trabajo-baño.jpg" alt="Baño 8" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="bano" onclick="openLightbox(19)">
-                    <img src="images/trabajos/baños/9-trabajo-baño.jpg" alt="Baño 9" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="bano" onclick="openLightbox(20)">
-                    <img src="images/trabajos/baños/10-trabajo-baño.jpg" alt="Baño 10" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="bano" onclick="openLightbox(21)">
-                    <img src="images/trabajos/baños/11-trabajo-baño.jpg" alt="Baño 11" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="bano" onclick="openLightbox(22)">
-                    <img src="images/trabajos/baños/12-trabajo-baño.jpg" alt="Baño 12" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-
-                <!-- Quinchos (6) -->
-                <div class="work-item" data-category="quincho" onclick="openLightbox(23)">
-                    <img src="images/trabajos/quinchos/IMG-20260224-WA0014.jpg" alt="Quincho 1" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="quincho" onclick="openLightbox(24)">
-                    <img src="images/trabajos/quinchos/IMG-20260224-WA0055.jpg" alt="Quincho 2" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="quincho" onclick="openLightbox(25)">
-                    <img src="images/trabajos/quinchos/IMG-20260224-WA0056.jpg" alt="Quincho 3" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="quincho" onclick="openLightbox(26)">
-                    <img src="images/trabajos/quinchos/IMG-20260224-WA0088 - copia.jpg" alt="Quincho 4" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="quincho" onclick="openLightbox(27)">
-                    <img src="images/trabajos/quinchos/IMG-20260224-WA0089.jpg" alt="Quincho 5" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
-                </div>
-                <div class="work-item" data-category="quincho" onclick="openLightbox(28)">
-                    <img src="images/trabajos/quinchos/IMG-20260224-WA0090.jpg" alt="Quincho 6" loading="lazy">
-                    <div class="work-overlay"><button class="work-view-btn">Ver +</button></div>
+            <div class="carousel-container">
+                <div class="carousel-track" id="worksCarousel">
+                    <div class="carousel-item" onclick="openLightbox(0)">
+                        <img src="images/trabajos/cocina/1-trabajo-cocina.jpg" alt="Cocina 1" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(1)">
+                        <img src="images/trabajos/cocina/2-trabajo-cocina.jpg" alt="Cocina 2" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(2)">
+                        <img src="images/trabajos/cocina/3-trabajo-cocina.jpg" alt="Cocina 3" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(3)">
+                        <img src="images/trabajos/cocina/4-trabajo-cocina.jpg" alt="Cocina 4" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(4)">
+                        <img src="images/trabajos/cocina/5-trabajo-cocina.jpg" alt="Cocina 5" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(5)">
+                        <img src="images/trabajos/cocina/6-trabajo-cocina.jpg" alt="Cocina 6" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(6)">
+                        <img src="images/trabajos/cocina/7-trabajo-cocina.jpg" alt="Cocina 7" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(7)">
+                        <img src="images/trabajos/cocina/8-trabajo-cocina.jpg" alt="Cocina 8" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(8)">
+                        <img src="images/trabajos/cocina/9-trabajo-cocina.jpg" alt="Cocina 9" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(9)">
+                        <img src="images/trabajos/cocina/10-trabajo-cocina.jpg" alt="Cocina 10" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(10)">
+                        <img src="images/trabajos/cocina/11-trabajo-cocina.jpg" alt="Cocina 11" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(11)">
+                        <img src="images/trabajos/baños/1-trabajo-baño.jpg" alt="Baño 1" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(12)">
+                        <img src="images/trabajos/baños/2-trabajo-baño.jpg" alt="Baño 2" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(13)">
+                        <img src="images/trabajos/baños/3-trabajo-baño.jpg" alt="Baño 3" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(14)">
+                        <img src="images/trabajos/baños/4-trabajo-baño.jpg" alt="Baño 4" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(15)">
+                        <img src="images/trabajos/baños/5-trabajo-baño.jpg" alt="Baño 5" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(16)">
+                        <img src="images/trabajos/baños/6-trabajo-baño.jpg" alt="Baño 6" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(17)">
+                        <img src="images/trabajos/baños/7-trabajo-baño.jpg" alt="Baño 7" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(18)">
+                        <img src="images/trabajos/baños/8-trabajo-baño.jpg" alt="Baño 8" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(19)">
+                        <img src="images/trabajos/baños/9-trabajo-baño.jpg" alt="Baño 9" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(20)">
+                        <img src="images/trabajos/baños/10-trabajo-baño.jpg" alt="Baño 10" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(21)">
+                        <img src="images/trabajos/baños/11-trabajo-baño.jpg" alt="Baño 11" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(22)">
+                        <img src="images/trabajos/baños/12-trabajo-baño.jpg" alt="Baño 12" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(23)">
+                        <img src="images/trabajos/quinchos/IMG-20260224-WA0014.jpg" alt="Quincho 1" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(24)">
+                        <img src="images/trabajos/quinchos/IMG-20260224-WA0055.jpg" alt="Quincho 2" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(25)">
+                        <img src="images/trabajos/quinchos/IMG-20260224-WA0056.jpg" alt="Quincho 3" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(26)">
+                        <img src="images/trabajos/quinchos/IMG-20260224-WA0088 - copia.jpg" alt="Quincho 4" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(27)">
+                        <img src="images/trabajos/quinchos/IMG-20260224-WA0089.jpg" alt="Quincho 5" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(28)">
+                        <img src="images/trabajos/quinchos/IMG-20260224-WA0090.jpg" alt="Quincho 6" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(0)">
+                        <img src="images/trabajos/cocina/1-trabajo-cocina.jpg" alt="Cocina 1" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(1)">
+                        <img src="images/trabajos/cocina/2-trabajo-cocina.jpg" alt="Cocina 2" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(2)">
+                        <img src="images/trabajos/cocina/3-trabajo-cocina.jpg" alt="Cocina 3" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(3)">
+                        <img src="images/trabajos/cocina/4-trabajo-cocina.jpg" alt="Cocina 4" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(4)">
+                        <img src="images/trabajos/cocina/5-trabajo-cocina.jpg" alt="Cocina 5" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(5)">
+                        <img src="images/trabajos/cocina/6-trabajo-cocina.jpg" alt="Cocina 6" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(6)">
+                        <img src="images/trabajos/cocina/7-trabajo-cocina.jpg" alt="Cocina 7" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(7)">
+                        <img src="images/trabajos/cocina/8-trabajo-cocina.jpg" alt="Cocina 8" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(8)">
+                        <img src="images/trabajos/cocina/9-trabajo-cocina.jpg" alt="Cocina 9" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(9)">
+                        <img src="images/trabajos/cocina/10-trabajo-cocina.jpg" alt="Cocina 10" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(10)">
+                        <img src="images/trabajos/cocina/11-trabajo-cocina.jpg" alt="Cocina 11" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(11)">
+                        <img src="images/trabajos/baños/1-trabajo-baño.jpg" alt="Baño 1" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(12)">
+                        <img src="images/trabajos/baños/2-trabajo-baño.jpg" alt="Baño 2" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(13)">
+                        <img src="images/trabajos/baños/3-trabajo-baño.jpg" alt="Baño 3" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(14)">
+                        <img src="images/trabajos/baños/4-trabajo-baño.jpg" alt="Baño 4" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(15)">
+                        <img src="images/trabajos/baños/5-trabajo-baño.jpg" alt="Baño 5" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(16)">
+                        <img src="images/trabajos/baños/6-trabajo-baño.jpg" alt="Baño 6" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(17)">
+                        <img src="images/trabajos/baños/7-trabajo-baño.jpg" alt="Baño 7" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(18)">
+                        <img src="images/trabajos/baños/8-trabajo-baño.jpg" alt="Baño 8" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(19)">
+                        <img src="images/trabajos/baños/9-trabajo-baño.jpg" alt="Baño 9" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(20)">
+                        <img src="images/trabajos/baños/10-trabajo-baño.jpg" alt="Baño 10" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(21)">
+                        <img src="images/trabajos/baños/11-trabajo-baño.jpg" alt="Baño 11" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(22)">
+                        <img src="images/trabajos/baños/12-trabajo-baño.jpg" alt="Baño 12" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(23)">
+                        <img src="images/trabajos/quinchos/IMG-20260224-WA0014.jpg" alt="Quincho 1" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(24)">
+                        <img src="images/trabajos/quinchos/IMG-20260224-WA0055.jpg" alt="Quincho 2" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(25)">
+                        <img src="images/trabajos/quinchos/IMG-20260224-WA0056.jpg" alt="Quincho 3" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(26)">
+                        <img src="images/trabajos/quinchos/IMG-20260224-WA0088 - copia.jpg" alt="Quincho 4" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(27)">
+                        <img src="images/trabajos/quinchos/IMG-20260224-WA0089.jpg" alt="Quincho 5" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item" onclick="openLightbox(28)">
+                        <img src="images/trabajos/quinchos/IMG-20260224-WA0090.jpg" alt="Quincho 6" loading="lazy">
+                        <div class="carousel-overlay">
+                            <span class="carousel-view">Ver +</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
