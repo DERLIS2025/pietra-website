@@ -31,32 +31,32 @@ img {
 .site-header {
   position: sticky;
   top: 0;
-  background: rgba(255, 255, 255, 0.96);
-  border-bottom: 1px solid #eee;
-  z-index: 20;
+  z-index: 30;
+  background: rgba(16, 16, 16, 0.58);
+  backdrop-filter: blur(4px);
 }
 
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 74px;
+  min-height: 88px;
+  gap: 1.2rem;
 }
 
 .brand {
-  text-decoration: none;
-  color: var(--color-dark);
-  font-family: var(--font-serif), serif;
-  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
 }
 
-.brand span {
-  color: var(--color-primary);
+.brand img {
+  width: auto;
+  height: 58px;
 }
 
 .nav-list {
   display: flex;
-  gap: 1rem;
+  gap: 1.4rem;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -64,14 +64,29 @@ img {
 
 .nav-list a {
   text-decoration: none;
-  color: var(--color-dark);
-  font-size: 0.92rem;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.btn-quote {
+  background: var(--color-primary);
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
 }
 
 .hero {
-  padding: 4.5rem 0;
+  padding: 6.5rem 0 5rem;
   background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.4)),
-    url('https://images.unsplash.com/photo-1616048056617-93b94a339009?auto=format&fit=crop&w=1800&q=80') center/cover;
+    url('https://marmoleriapietra.com/images/categorias/cocina-6.jpg') center/cover;
   color: #fff;
 }
 
@@ -98,6 +113,7 @@ h3 {
 .hero h1 {
   font-size: clamp(2rem, 5vw, 3.6rem);
   margin: 0 0 1rem;
+  max-width: 760px;
 }
 
 .hero p {
@@ -118,6 +134,18 @@ h3 {
   font-weight: 600;
 }
 
+.btn-secondary {
+  display: inline-block;
+  margin-top: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  color: #fff;
+  padding: 0.85rem 1.4rem;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
 .btn-whatsapp {
   background: #25d366;
 }
@@ -128,6 +156,118 @@ h3 {
 
 .section-head {
   margin-bottom: 2rem;
+}
+
+.hero-actions,
+.highlight-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.ambientes-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.ambiente-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.ambiente-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.ambiente-card h3 {
+  position: absolute;
+  left: 1rem;
+  bottom: 0.7rem;
+  color: #fff;
+  margin: 0;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
+}
+
+.catalog-link-wrap {
+  text-align: center;
+  margin-top: 1.4rem;
+}
+
+.catalog-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.highlight-card {
+  display: grid;
+  gap: 1.2rem;
+  background: #f8f7f3;
+  border: 1px solid #ece8e0;
+  padding: 1rem;
+}
+
+.highlight-card .btn-secondary {
+  color: var(--color-dark);
+  border-color: #a8a8a8;
+}
+
+.highlight-card img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+.work-feature {
+  background: #faf9f7;
+}
+
+.work-feature-grid {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.work-feature-grid ul {
+  padding-left: 1.1rem;
+  line-height: 1.7;
+}
+
+.work-feature-images {
+  display: grid;
+  gap: 0.7rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.work-feature-images img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+}
+
+.works-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.work-card {
+  position: relative;
+}
+
+.work-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.work-card span {
+  position: absolute;
+  left: 0.8rem;
+  bottom: 0.8rem;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.88rem;
 }
 
 .products-grid {
@@ -276,20 +416,71 @@ h3 {
 }
 
 .site-footer {
-  border-top: 1px solid #eee;
-  background: var(--color-light);
+  border-top: 1px solid #2b2b2b;
+  background: #121212;
   margin-top: 3rem;
+  color: #ddd;
 }
 
 .footer-inner {
-  padding: 1.4rem 0;
-  font-size: 0.9rem;
-  color: #4f4f4f;
+  padding: 2rem 0 1.4rem;
+  font-size: 0.95rem;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.footer-inner h4 {
+  margin: 0 0 0.7rem;
+  color: #fff;
+  font-family: var(--font-serif), serif;
+}
+
+.footer-inner p,
+.footer-inner ul {
+  margin: 0;
+  color: #c7c7c7;
+  line-height: 1.6;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-inner a {
+  color: #c7c7c7;
+  text-decoration: none;
+}
+
+.footer-bottom {
+  border-top: 1px solid #2b2b2b;
+  padding: 1rem 0 1.4rem;
+  color: #9e9e9e;
+  font-size: 0.85rem;
 }
 
 @media (min-width: 768px) {
+  .ambientes-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .highlight-card {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 1.2rem;
+  }
+
+  .work-feature-grid {
+    grid-template-columns: 1.1fr 1fr;
+  }
+
+  .works-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-inner {
+    grid-template-columns: 1.3fr 1fr 1fr 1fr;
   }
 
   .product-specs {
@@ -316,6 +507,37 @@ h3 {
 }
 
 @media (max-width: 767px) {
+  .site-header {
+    position: static;
+    background: #111;
+  }
+
+  .header-inner {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0.6rem 0;
+    min-height: 0;
+  }
+
+  .brand img {
+    height: 46px;
+  }
+
+  .nav-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .btn-quote {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero {
+    padding-top: 4rem;
+  }
+
   .product-gallery {
     grid-template-columns: 1fr;
   }
