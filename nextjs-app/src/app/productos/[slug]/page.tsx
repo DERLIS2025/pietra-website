@@ -39,11 +39,20 @@ export default async function ProductPage({ params }: ProductPageParams) {
   return (
     <section className="section">
       <div className="container product-detail">
-        <div>
+        <div className="product-summary">
           <p className="eyebrow">{product.category}</p>
           <h1>{product.name}</h1>
-          <p className="lead">{product.description}</p>
+          <div className="product-description">
+            <h2>Descripción del material</h2>
+            <p className="lead">{product.shortDescription}</p>
+            <p>{product.description}</p>
+          </div>
           <WhatsAppButton productName={product.name} productUrl={productUrl} />
+          <ul className="product-benefits" aria-label="Beneficios del material">
+            <li>✔ Alta resistencia</li>
+            <li>✔ Bajo mantenimiento</li>
+            <li>✔ Ideal para cocinas y baños</li>
+          </ul>
         </div>
 
         <ProductGallery name={product.name} images={product.images} />
