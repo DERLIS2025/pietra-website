@@ -53,6 +53,10 @@ export default async function ProductPage({ params }: ProductPageParams) {
             <li>✔ Bajo mantenimiento</li>
             <li>✔ Ideal para cocinas y baños</li>
           </ul>
+
+          <p className="lead">{product.description}</p>
+          <WhatsAppButton productName={product.name} productUrl={productUrl} />
+ main
         </div>
 
         <ProductGallery name={product.name} images={product.images} />

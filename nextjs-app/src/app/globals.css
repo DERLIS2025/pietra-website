@@ -122,6 +122,8 @@ h3 {
   background: #25d366;
   min-height: 48px;
   padding-inline: 1.6rem;
+
+ main
 }
 
 .section {
@@ -200,7 +202,6 @@ h3 {
   display: grid;
   gap: 2rem;
 }
-
 .product-description {
   margin-bottom: 1rem;
 }
@@ -216,6 +217,8 @@ h3 {
   line-height: 1.7;
 }
 
+
+ main
 .lead {
   line-height: 1.75;
   color: #444;
@@ -243,7 +246,6 @@ h3 {
   padding-left: 1rem;
   line-height: 1.7;
 }
-
 .benefits-list {
   margin: 1rem 0 0;
   padding: 0;
@@ -255,7 +257,6 @@ h3 {
   color: #444;
   line-height: 1.6;
 }
-
 .related-products h2 {
   margin-bottom: 1rem;
 }
@@ -276,7 +277,6 @@ h3 {
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
   .product-gallery {
     gap: 1rem;
   }
@@ -284,6 +284,8 @@ h3 {
   .gallery-item img {
     height: 230px;
   }
+
+
 
   .product-specs {
     grid-template-columns: repeat(2, 1fr);
@@ -306,4 +308,6 @@ h3 {
   .gallery-item img {
     height: 250px;
   }
+
+ main
 }
