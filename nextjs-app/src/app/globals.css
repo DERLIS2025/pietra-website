@@ -222,6 +222,105 @@ h4 {
   font-size: 0.75rem;
 }
 
+.catalog-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-bottom: 1.4rem;
+}
+
+.filter-btn {
+  border: 1px solid #d8d1c8;
+  background: #fff;
+  color: #444;
+  padding: 0.55rem 0.95rem;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.filter-btn.active {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
+}
+
+.material-card {
+  background: #fff;
+  border: 1px solid #e8e3db;
+}
+
+.material-image-wrapper {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.material-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.material-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: rgba(26, 26, 26, 0.88);
+  color: #fff;
+  font-size: 0.67rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.35rem 0.55rem;
+}
+
+.material-info {
+  padding: 0.95rem;
+}
+
+.material-name {
+  margin: 0 0 0.7rem;
+  font-size: 1.05rem;
+}
+
+.btn-cotizar {
+  display: inline-block;
+  background: var(--color-primary);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.6rem 0.9rem;
+}
+
+.special-section {
+  padding: 1.8rem 0 0;
+  background: #faf8f5;
+}
+
+.special-material-card {
+  max-width: 420px;
+}
+
+.special-actions {
+  display: flex;
+  gap: 0.55rem;
+}
+
+.btn-dark {
+  background: #222;
+}
+
 .products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -533,6 +632,10 @@ footer {
     grid-template-columns: repeat(3, 1fr);
   }
 
+  .materials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .products-grid,
   .works-category-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -583,6 +686,7 @@ footer {
   }
 
   .categories-grid,
+  .materials-grid,
   .products-grid,
   .works-category-grid,
   .footer-content {
@@ -606,6 +710,10 @@ footer {
     width: 100%;
     text-align: center;
     margin-top: 0.5rem;
+  }
+
+  .special-actions {
+    flex-direction: column;
   }
 }
 
