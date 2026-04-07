@@ -11,6 +11,8 @@ export default function RelatedProducts({ currentProductId, products }: RelatedP
 
   return (
     <section className="related-products">
+
+      <h2>Otros materiales que te pueden interesar</h2>
       <h2>Productos relacionados</h2>
       <div className="products-grid">
         {related.map((product) => (

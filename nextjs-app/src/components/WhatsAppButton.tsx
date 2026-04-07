@@ -13,6 +13,8 @@ export default function WhatsAppButton({ productName, productUrl }: WhatsAppButt
       rel="noreferrer"
       className="btn-whatsapp"
     >
+
+      Solicitar cotización
       Consultar por WhatsApp
     </a>
   )
