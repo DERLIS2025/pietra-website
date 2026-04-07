@@ -1,22 +1,24 @@
 export default function Footer() {
   return (
-    <footer className="site-footer" id="contacto">
-      <div className="container footer-inner">
-        <div>
+    <footer id="contacto">
+      <div className="container footer-content">
+        <div className="footer-section">
           <h4>PIETRA.</h4>
           <p>
-            Especialistas en mármol, granito y cuarzo. Diseñando espacios únicos desde 2008.
+            Especialistas en mármol, granito y cuarzo. Diseñando espacios únicos para cocinas,
+            baños y proyectos residenciales o comerciales.
           </p>
         </div>
-        <div>
+        <div className="footer-section">
           <h4>Servicios</h4>
           <ul>
             <li>Cocinas</li>
             <li>Baños</li>
-            <li>Quinchos</li>
+            <li>Quinchos y exteriores</li>
+            <li>Asesoramiento técnico</li>
           </ul>
         </div>
-        <div>
+        <div className="footer-section">
           <h4>Contacto</h4>
           <ul>
             <li>info@pietra.com</li>
@@ -28,7 +30,7 @@ export default function Footer() {
             <li>Asunción, Paraguay</li>
           </ul>
         </div>
-        <div>
+        <div className="footer-section">
           <h4>Redes</h4>
           <ul>
             <li>
@@ -40,7 +42,10 @@ export default function Footer() {
         </div>
       </div>
       <div className="container footer-bottom">
-        <p>Desarrollado por eQuantum | © {new Date().getFullYear()} Marmolería Pietra.</p>
+        <p>
+          Desarrollado por <a href="https://www.equantum.com.py">eQuantum</a> | ©{' '}
+          {new Date().getFullYear()} Marmolería Pietra.
+        </p>
       </div>
     </footer>
   )
