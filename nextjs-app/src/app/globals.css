@@ -1,0 +1,309 @@
+:root {
+  --color-primary: #5a7c6c;
+  --color-primary-dark: #4a6356;
+  --color-secondary: #c4b5a0;
+  --color-dark: #1a1a1a;
+  --color-light: #f5f5f0;
+  --container: 1120px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans), sans-serif;
+  color: var(--color-dark);
+  background: #fff;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: min(var(--container), 92%);
+  margin-inline: auto;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid #eee;
+  z-index: 20;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 74px;
+}
+
+.brand {
+  text-decoration: none;
+  color: var(--color-dark);
+  font-family: var(--font-serif), serif;
+  font-size: 1.2rem;
+}
+
+.brand span {
+  color: var(--color-primary);
+}
+
+.nav-list {
+  display: flex;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: var(--color-dark);
+  font-size: 0.92rem;
+}
+
+.hero {
+  padding: 4.5rem 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.4)),
+    url('https://images.unsplash.com/photo-1616048056617-93b94a339009?auto=format&fit=crop&w=1800&q=80') center/cover;
+  color: #fff;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 0.72rem;
+  color: var(--color-primary);
+  margin-bottom: 0.8rem;
+}
+
+.hero .eyebrow {
+  color: #d5e4d9;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif), serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  margin: 0 0 1rem;
+}
+
+.hero p {
+  max-width: 700px;
+  line-height: 1.7;
+}
+
+.btn-primary,
+.btn-whatsapp {
+  display: inline-block;
+  margin-top: 1rem;
+  background: var(--color-primary);
+  color: white;
+  padding: 0.85rem 1.4rem;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.btn-whatsapp {
+  background: #25d366;
+  min-height: 48px;
+  padding-inline: 1.6rem;
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+.section-head {
+  margin-bottom: 2rem;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+}
+
+.product-card {
+  border: 1px solid #ececec;
+  background: #fff;
+}
+
+.product-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.product-image-wrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.04);
+}
+
+.badge {
+  position: absolute;
+  left: 0.8rem;
+  top: 0.8rem;
+  background: rgba(26, 26, 26, 0.88);
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 0.35rem 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.product-content {
+  padding: 1rem;
+}
+
+.product-content h3 {
+  margin: 0 0 0.5rem;
+}
+
+.product-content p {
+  margin: 0 0 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.view-more {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.product-detail {
+  display: grid;
+  gap: 2rem;
+}
+
+.product-description {
+  margin-bottom: 1rem;
+}
+
+.product-description h2 {
+  font-size: 1.15rem;
+  margin: 0 0 0.75rem;
+}
+
+.product-description p {
+  margin: 0 0 0.75rem;
+  color: #4a4a4a;
+  line-height: 1.7;
+}
+
+.lead {
+  line-height: 1.75;
+  color: #444;
+}
+
+.product-gallery {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-specs {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.product-specs ul {
+  margin: 0;
+  padding-left: 1rem;
+  line-height: 1.7;
+}
+
+.benefits-list {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.benefits-list li {
+  margin-bottom: 0.45rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+.related-products h2 {
+  margin-bottom: 1rem;
+}
+
+.site-footer {
+  border-top: 1px solid #eee;
+  background: var(--color-light);
+  margin-top: 3rem;
+}
+
+.footer-inner {
+  padding: 1.4rem 0;
+  font-size: 0.9rem;
+  color: #4f4f4f;
+}
+
+@media (min-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-gallery {
+    gap: 1rem;
+  }
+
+  .gallery-item img {
+    height: 230px;
+  }
+
+  .product-specs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .product-detail {
+    grid-template-columns: 1.2fr 1fr;
+  }
+
+  .product-detail > .related-products {
+    grid-column: 1 / -1;
+  }
+
+  .gallery-item img {
+    height: 250px;
+  }
+}
